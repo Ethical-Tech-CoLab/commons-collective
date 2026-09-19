@@ -5,16 +5,16 @@
 - **Short name:** CCSL
 - **Repository location:** `agentic-model/`
 - **Document:** `CONCEPT-IDEA.md`
-- **Status:** concept for human review, not an approved specification
-- **Version/date:** 0.2 / 19 September 2026
+- **Status:** concept developed into specification, plan, and backlog drafts; implementation not started
+- **Version/date:** 0.3 / 19 September 2026
 - **Research baseline:** Commons Collective commit `1c7b016b0dbb76d3623e7747ac6c327acfa45673`
 - **Authorship boundary:** AI-assisted proposal; no endorsement by the research circle, institutions, or communities is implied.
 
-> **Review gate:** This document proposes what to model and how to know whether the model is useful. No simulator, empirical result, calibrated population, or validated policy recommendation exists as a result of this document. Do not create `SPECIFICATION.md`, `BACKLOG.md`, production infrastructure, or implementation work until the concept has been reviewed and explicitly approved.
+> **Review gate update, 19 September 2026:** The user authorized [SPECIFICATION.md](SPECIFICATION.md), [PLAN.md](PLAN.md), and [BACKLOG.md](BACKLOG.md), and clarified that the direct AI Commons Collective must be the primary model. Those documents now define two required models: **AI Commons Collective** and **library-led open education**. No simulator, empirical result, calibrated population, production infrastructure, or validated policy recommendation exists as a result of these documents. Implementation, real API spending, empirical data collection, and public deployment remain separately gated.
 
 ## 1. Decision and purpose
 
-**Use a subfolder, not a new public research section.** Keep this study in `agentic-model/`, with this concept as its only initial artifact. The working name is **Commons Collective Simulation Lab (CCSL)**. "Lab" signals an experimental environment; neither "digital twin" nor "prediction engine" is justified without real-world validation.
+**Use a subfolder, not a new public research section.** Keep this study in `agentic-model/`, now containing the concept and the authorized specification, plan, and backlog drafts. The working name is **Commons Collective Simulation Lab (CCSL)**. "Lab" signals an experimental environment; neither "digital twin" nor "prediction engine" is justified without real-world validation.
 
 The folder is versioned in GitHub but is not added to the website navigation, report, overview, public-paper manifest, or downloadable research PDF. The current website build copies explicit sources; this folder is not among them. It is public repository material, **not confidential**: repository browsing and GitHub source archives can expose it. A later website release requires a separate editorial decision.
 
@@ -38,7 +38,7 @@ This is an **institutional experiment**, not merely a set of chatbots role-playi
 
 | Decision | Recommended choice | Reason |
 |---|---|---|
-| Initial domain | Library-led open-education collective | Already has a concrete institutional example and a bounded public-interest service |
+| Required domains | Direct AI Commons Collective (default), plus library-led open education | Directly tests the central AI procurement/contribution/commons problem, then checks the institutional architecture in a concrete domain |
 | Unit of simulation | People, organizations, contracts, and knowledge-object versions | Preserves authority, liabilities, and distinctions between people and their roles |
 | Core method | Agent-based, event-ordered state transitions with stochastic behavior | Allows strategic interaction and path dependence without opaque accounting |
 | Time basis | Explicit time-tick kernel; proposed one-model-day ticks, 30-tick accounting periods, 36 periods | Separates world time, process decision cadence, and display speed; tests renewal, grant expiry, maintenance, and reserve depletion |
@@ -72,9 +72,13 @@ For every experiment, write the hypothesis, comparator, outcome, mechanism, comp
 
 ## 3. Scope: enough institution, not the whole economy
 
-### First bounded world
+### Two required worlds, one institutional research question
 
-Use a fictional library-led open-education service within **one explicitly hypothetical jurisdiction**. Include households/patrons, overlapping contributor roles, library buyers, service suppliers, an existing host organization, a proposed collective, and commons stewards. Represent affected nonmembers even when they never join or pay.
+The primary/default world is the **AI Commons Collective itself**: consumers collectively procure AI services, providers respond to costs and credible alternatives, contributors separately authorize specific services/uses, and independent stewards receive and allocate commons support. Consumer service access, contributor payment, and commons finance remain distinct. Membership or AI use does not automatically mean data donation or training. The specification's [direct AI model](SPECIFICATION.md#s06-direct-ai-commons-collective-model-contract) makes these mechanisms explicit.
+
+The second required world is a fictional **library-led open-education service** within an explicitly hypothetical jurisdiction. Include households/patrons, overlapping contributor roles, library buyers, service suppliers, an existing host organization, a proposed collective, and commons stewards. Represent affected nonmembers even when they never join or pay. The [library model](SPECIFICATION.md#s07-library-model-contract) has different resource-defect, accessibility, maintenance, and renewal dynamics while reusing the institutional kernel.
+
+These are scenario variants of the same institutional thesis, not successive AI-model training iterations or replacements for the central problem. The considered community environmental-observation case is deferred; the current scope has exactly two required dropdown choices. Switching either choice replaces all simulation variables with that model's defaults and invalidates old asynchronous work, as required by the [reset contract](SPECIFICATION.md#s09-model-dropdown-and-complete-reset-transaction).
 
 The institutional example proposes New York as a context requiring review. This concept does not convert that into an approved legal regime: an eventual New York scenario needs a dated, reviewed rule set. Preserve its initial adult-facing, low-risk OER scope, item-level public-domain/open-license/other authority checks, and exclusion of learner records, minors' data, and unresolved sensitive material. Synthetic patron demand is a modeling device, not a proposal to log real learner behavior.
 
@@ -93,6 +97,7 @@ These are bundled institutional arrangements. An A3-A0 difference does **not** i
 
 | Module | Additional representation required | Why not silently include it in version one |
 |---|---|---|
+| Community environmental observations | Station ownership, equipment/maintenance cost, freshness, coverage, measurement error, and correlated outages | Potential later robustness case; deferred to keep the direct AI commons problem central |
 | Professional catalogs and cross-CMO cooperation | Rights chains, permitted repertoire, independent pricing, information-sharing constraints | Competition and copyright arrangements differ by jurisdiction |
 | Contributor equity and investment instruments | Vesting, dilution, liquidity, risk, distributions, capital claims, and insolvency priorities | Equity is not cash compensation, guaranteed value, or automatic extra governance power |
 | Workplace-data trust | Employer/worker/third-party authority, insolvency, custody, succession | A simulation must not imply bankruptcy-proof rights |
@@ -541,7 +546,7 @@ Common random numbers support paired comparisons, but do not guarantee variance 
 8. **Robustness:** alternative behavioral structures, dependency models, horizons, initialization, event ordering, and time resolution.
 9. **Held-out empirical comparison:** only after appropriate data collection and review.
 
-An illustrative **computational planning envelope**, not an executed study, is 50 parameter settings x 20 stochastic replications x 4 arrangements x 2 behavioral structures = **8,000 trajectories**. At 36 accounting periods and 30 daily ticks per period, that is **288,000 accounting-period boundaries** and **8,640,000 world time-ticks**, not that many people or LLM calls. Actor activation, event counts, and policy-mode assignments add further cost; adding another policy-mode factor also multiplies the design unless explicitly nested or sampled. A more precise plan belongs in the specification after timing a small non-LLM prototype.
+An illustrative **per-domain computational planning envelope**, not an executed study, is 50 parameter settings x 20 stochastic replications x 4 arrangements x 2 behavioral structures = **8,000 trajectories**. At 36 accounting periods and 30 daily ticks per period, that is **288,000 accounting-period boundaries** and **8,640,000 world time-ticks**, not that many people or LLM calls. The two required domains double the envelope to **16,000 trajectories and 17,280,000 ticks**; the specification starts with much smaller fixtures and pilot batches. Actor activation, event counts, and policy-mode assignments add further cost; adding another policy-mode factor also multiplies the design unless explicitly nested or sampled. Actual execution size requires profiling and a reviewed budget.
 
 ### Sampling and dependence
 
@@ -784,7 +789,7 @@ Separate three stores conceptually: public synthetic experiments; access-control
 
 The recommendation is to approve or revise a **bounded modeling question**, not to approve an imagined institution.
 
-1. Is the library/open-education case the right first domain, or is another existing sector case better evidenced?
+1. Does the direct AI model faithfully represent the central procurement/contribution/commons problem, and does the library case provide a genuinely different test of its institutional mechanisms?
 2. Are A0-A3 credible comparators, especially the option of improving an existing institution?
 3. Which primary outcomes and non-negotiable rights constraints should govern interpretation?
 4. Which mechanisms require autonomous actor behavior, and which should remain simple procedures?
@@ -799,7 +804,7 @@ The recommendation is to approve or revise a **bounded modeling question**, not 
 
 **Exit criteria for concept review:** record the chosen domain, comparators, hypothesis set, outcome definitions, hard constraints, evidence gaps, reviewer roles, resource limits, and unresolved disagreements. No named person is assigned a duty or presumed to have agreed in this document.
 
-Only after explicit approval should `SPECIFICATION.md` formalize equations, schemas, algorithms, framework choice, tests, and interfaces. Only after that specification is accepted should `BACKLOG.md` sequence implementation work and owners. Neither file is created by this concept study.
+The documentation gate has now been authorized: [SPECIFICATION.md](SPECIFICATION.md) defines the proposed contracts, [PLAN.md](PLAN.md) sequences delivery/review gates, and [BACKLOG.md](BACKLOG.md) records unstarted implementation work and acceptance criteria. Their creation does not mark any implementation item or empirical hypothesis complete. Review the specification and remaining assumptions before beginning implementation or approving live execution.
 
 ## 18. Source and provenance register
 
