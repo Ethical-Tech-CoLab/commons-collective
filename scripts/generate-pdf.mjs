@@ -1,9 +1,9 @@
 import { createServer } from 'node:http';
-import { existsSync } from 'node:fs';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
+import { browserExecutablePath } from './browser.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
@@ -15,27 +15,6 @@ const contentTypes = {
   '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp',
   '.json': 'application/json', '.ico': 'image/x-icon',
 };
-
-function executablePath() {
-  if (process.env.PDF_BROWSER_PATH) {
-    if (!existsSync(process.env.PDF_BROWSER_PATH)) {
-      throw new Error(`PDF_BROWSER_PATH does not exist: ${process.env.PDF_BROWSER_PATH}`);
-    }
-    return process.env.PDF_BROWSER_PATH;
-  }
-  const candidates = [
-    chromium.executablePath(),
-    process.env.PROGRAMFILES && path.join(process.env.PROGRAMFILES, 'Google', 'Chrome', 'Application', 'chrome.exe'),
-    process.env['PROGRAMFILES(X86)'] && path.join(process.env['PROGRAMFILES(X86)'], 'Microsoft', 'Edge', 'Application', 'msedge.exe'),
-    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-    '/usr/bin/google-chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser',
-  ];
-  const browser = candidates.find(candidate => candidate && existsSync(candidate));
-  if (!browser) {
-    throw new Error('No Chromium browser found. Run npx playwright install chromium, or set PDF_BROWSER_PATH.');
-  }
-  return browser;
-}
 
 try {
   await readFile(path.join(dist, 'index.html'));
@@ -74,7 +53,7 @@ try {
   });
   const origin = `http://127.0.0.1:${server.address().port}`;
   console.log(`PDF preview: ${origin} (closed when export finishes)`);
-  browser = await chromium.launch({ executablePath: executablePath(), headless: true });
+  browser = await chromium.launch({ executablePath: browserExecutablePath(), headless: true });
   if (Number(browser.version().split('.')[0]) < 131) {
     throw new Error('Chromium 131 or newer is required for CSS page counters and margin boxes.');
   }

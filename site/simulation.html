@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#120c1a">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Explore two synthetic commons economies with local, seeded simulations. Compare institutions, inspect outcomes, and replay saved runs.">
+  <title>Simulation Lab | Commons Collective</title>
+  <link rel="icon" type="image/svg+xml" sizes="any" href="../favicon.svg">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../header.css">
+  <link rel="stylesheet" href="./simulation.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body class="simulation">
+  <a class="skip" href="#lab">Skip to simulation workspace</a>
+  {{HEADER}}
+  <main id="lab">
+    <section class="sim-hero" aria-labelledby="lab-title">
+      <div>
+        <p class="sim-eyebrow">Commons Collective / interactive research</p>
+        <h1 id="lab-title">Simulation <em>Lab.</em></h1>
+        <p class="sim-deck">Different institutions. Shared constraints.<br>Explore what changes—and what does not.</p>
+      </div>
+      <div class="sim-hero-note">
+        <span class="sim-local"><span aria-hidden="true">●</span> Runs in your browser</span>
+        <p>Two synthetic worlds.<br>One inspectable experiment at a time.</p>
+        <a href="../index.html#report">Read the research <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <div class="sim-evidence">
+      <span class="sim-evidence-mark" aria-hidden="true">!</span>
+      <p><strong>Synthetic &amp; uncalibrated.</strong> These are illustrative assumptions, not empirical estimates, forecasts, or evidence that a collective will succeed. Seeded results are conditional on the selected model. No real people, money, or AI services are involved.</p>
+    </div>
+    <noscript><p class="sim-error">JavaScript and module workers are required to run this local lab. No simulation has run. The <a href="../index.html#report">research report</a> is available without JavaScript.</p></noscript>
+    <p id="announcement" class="sim-announcement" role="status" aria-live="polite" aria-atomic="true">Loading the local simulation controls. If this message persists, reload the page or check that JavaScript and module workers are supported.</p>
+    <div id="sim-error" class="sim-error" role="alert" hidden></div>
+
+    <div class="sim-workspace">
+      <aside class="sim-config" aria-labelledby="scenario-heading">
+        <div class="sim-panel-heading"><span class="sim-section-number">01</span><h2 id="scenario-heading">Set the scenario</h2></div>
+        <div class="sim-model-choice">
+          <label for="model-select">Simulation model</label>
+          <select id="model-select" aria-describedby="model-description model-reset-note" disabled></select>
+          <p id="model-description" class="sim-help"></p>
+          <p id="model-reset-note" class="sim-help">Switching model clears the current scenario, unsaved edits, active run, and displayed results. Saved runs remain available separately as downloaded files.</p>
+        </div>
+        <form id="scenario-form" novalidate>
+          <fieldset class="sim-control-group">
+            <legend>Institution &amp; behavior</legend>
+            <label for="arrangement">Institutional arrangement</label>
+            <select id="arrangement"></select>
+            <label for="family">Behavioral family</label>
+            <select id="family">
+              <option value="F0">F0 · Current-offer choice</option>
+              <option value="F1">F1 · Adaptive / aspiration choice</option>
+            </select>
+            <label for="mode">Policy execution</label>
+            <select id="mode" aria-describedby="mode-help">
+              <option value="P0">P0 · Deterministic choices</option>
+              <option value="P1">P1 · Seeded stochastic choices</option>
+              <option value="P2" disabled>P2 · Live AI — unavailable</option>
+            </select>
+            <p id="mode-help" class="sim-help">P0 can still include seeded world randomness. P2 has no live adapter, backend, or authorization on this static site. No API calls or real charges are made; it cannot be enabled here.</p>
+            <label for="seed">Random seed</label>
+            <input id="seed" name="seed" type="text" maxlength="80" required autocomplete="off" spellcheck="false" aria-describedby="seed-help">
+            <p id="seed-help" class="sim-help">The same complete configuration and seed reproduce the same trajectory. Each tick is one synthetic day.</p>
+          </fieldset>
+          <fieldset class="sim-control-group">
+            <legend>Core assumptions</legend>
+            <div id="core-fields" class="sim-fields"></div>
+          </fieldset>
+          <details id="advanced-controls" class="sim-advanced">
+            <summary>All advanced assumptions <span id="advanced-count"></span></summary>
+            <p class="sim-help">All values belong to this scenario and reset on model change, including values hidden in this panel.</p>
+            <div id="advanced-fields" class="sim-fields"></div>
+          </details>
+        </form>
+        <p class="sim-help sim-unit-note"><strong>Units:</strong> monetary fixtures use illustrative USD; 100 cents = $1 and 100 basis points = 1%. Fractions and probabilities run from 0 to 1. No real payments, currency conversion, or calibration is implied.</p>
+        <button id="reset" class="sim-button sim-button-wide" type="button" disabled>Reset selected model</button>
+        <p class="sim-help">Restores every default, including seed, arrangement, batch, replay, filters, and charts. It does not delete downloaded files.</p>
+      </aside>
+
+      <div class="sim-results-column">
+        <section class="sim-panel sim-run-panel" aria-labelledby="run-heading">
+          <div class="sim-panel-heading">
+            <span class="sim-section-number">02</span>
+            <h2 id="run-heading">Observe a trajectory</h2>
+            <span id="run-status" class="sim-status" data-state="ready">Not started</span>
+          </div>
+          <p id="active-model" class="sim-active-model">No model loaded</p>
+          <div class="sim-clock">
+            <div><span class="sim-clock-label">Tick</span><strong id="tick">0</strong><span id="horizon">/ —</span></div>
+            <div><span class="sim-clock-label">Period</span><strong id="period">0</strong><span>30 days</span></div>
+          </div>
+          <progress id="run-progress" max="1" value="0" aria-label="Trajectory progress"></progress>
+          <div class="sim-transport" role="group" aria-label="Simulation playback">
+            <button id="run" class="sim-button sim-primary" type="button" disabled>Run scenario</button>
+            <button id="pause" class="sim-button" type="button" disabled>Pause</button>
+            <button id="resume" class="sim-button" type="button" disabled>Resume</button>
+            <button id="step" class="sim-button" type="button" disabled>Step 1 tick</button>
+            <button id="cancel" class="sim-button sim-quiet" type="button" disabled>Cancel job</button>
+          </div>
+          <p class="sim-help">Run starts a fresh trajectory. Step starts or advances a paused trajectory by one tick. Editing a scenario stops the worker and clears its results. No simulation starts on model selection.</p>
+          <p id="run-identity" class="sim-identity">Local engine identity pending.</p>
+        </section>
+
+        <section class="sim-panel" aria-labelledby="outcomes-heading">
+          <div class="sim-panel-heading"><h2 id="outcomes-heading">Outcomes, not predictions</h2><span class="sim-caption">Committed worker snapshots</span></div>
+          <p id="results-empty" class="sim-empty">Your results begin here. Run or step the selected scenario; no outcomes are calculated in advance.</p>
+          <div id="snapshot-output" hidden>
+            <p id="institution-status" class="sim-health"></p>
+            <dl id="metrics" class="sim-metrics"></dl>
+            <div class="sim-chart-heading">
+              <h3>Trajectory</h3>
+              <div><label for="chart-metric">Chart metric</label><select id="chart-metric">
+                <option value="operatorCashCents">Unrestricted operator cash (USD)</option>
+                <option value="qualityRate">Observed service quality (%)</option>
+                <option value="participants">Participants (count)</option>
+                <option value="commonsWork">Commons work (count)</option>
+              </select></div>
+            </div>
+            <figure class="sim-chart">
+              <svg id="trajectory-chart" viewBox="0 0 640 230" role="img" aria-labelledby="chart-title chart-description">
+                <title id="chart-title">Trajectory chart</title>
+                <desc id="chart-description">No observed snapshots yet. The equivalent data table follows.</desc>
+              </svg>
+              <figcaption id="chart-caption">Only recorded observations are plotted; gaps are not interpolated.</figcaption>
+            </figure>
+            <details class="sim-table-details">
+              <summary>Equivalent chart data table</summary>
+              <div class="sim-table-scroll" tabindex="0" role="region" aria-label="Trajectory observations">
+                <table><caption>Recorded timeline; cash is in illustrative USD</caption>
+                  <thead><tr><th scope="col">Tick</th><th scope="col">Operator cash (USD)</th><th scope="col">Quality (%)</th><th scope="col">Participants</th><th scope="col">Commons work</th></tr></thead>
+                  <tbody id="timeline-table"></tbody>
+                </table>
+              </div>
+            </details>
+            <details class="sim-table-details">
+              <summary>Domain metrics &amp; accounting balances</summary>
+              <div class="sim-table-scroll" tabindex="0" role="region" aria-label="Domain and account metrics">
+                <table><caption>Selected model's latest committed snapshot</caption>
+                  <thead><tr><th scope="col">Metric</th><th scope="col">Value</th><th scope="col">Unit</th></tr></thead>
+                  <tbody id="domain-table"></tbody>
+                </table>
+              </div>
+            </details>
+          </div>
+          <div class="sim-reading-note">
+            <h3>Keep money, rights, and quality separate</h3>
+            <p>Operator cash is not member welfare. The purchasing cost difference compares modeled purchasing costs with direct purchasing and includes outstanding buyer liabilities—not just paid cash. Positive values mean lower modeled cost; late payments do not create savings. Restricted commons funds and contributor agency balances are not unrestricted operating income. Permission is a gate, not a price: more budget does not create contribution or repair authority.</p>
+            <p>Quality is the observed fulfilled/attempted task rate, not a promise. Read it beside denied and unmet demand: lower spending can accompany reduced service, and cost differences alone do not establish greater benefit. A missing quality rate means no valid denominator, not zero quality.</p>
+          </div>
+        </section>
+
+        <section class="sim-panel" aria-labelledby="experiment-heading">
+          <div class="sim-panel-heading"><span class="sim-section-number">03</span><h2 id="experiment-heading">Compare the arrangements</h2></div>
+          <p class="sim-help">A small local experiment, not the full research study. Compare A0–A3 within the selected domain and F/P choices. Paired arrangements use the same seed for each replication. No jobs start until you press a comparison button.</p>
+          <p class="sim-help">Larger populations, horizons, and sweeps can take several minutes. Progress and Cancel remain available; reduce the horizon or population for a quick first experiment.</p>
+          <div class="sim-replications">
+            <div><label for="replications">Replications per arrangement</label><input id="replications" type="number" min="2" max="30" step="1" value="5" aria-describedby="replications-help"></div>
+            <p id="replications-help" class="sim-help">2–30; default 5. Small samples give unstable Monte Carlo estimates. These errors do not measure uncertainty about the real world.</p>
+          </div>
+          <div class="sim-experiment-cards">
+            <div class="sim-experiment-card">
+              <h3>One configuration</h3>
+              <p>Hold the assumptions fixed and compare all four arrangements.</p>
+              <p id="batch-plan" class="sim-plan">5 replications × 4 arrangements = 20 trajectories</p>
+              <button id="run-batch" class="sim-button" type="button" disabled>Run arrangement comparison</button>
+            </div>
+            <div class="sim-experiment-card">
+              <h3>One-dial sweep</h3>
+              <label for="sweep-parameter">Parameter to vary</label>
+              <select id="sweep-parameter" aria-describedby="sweep-bounds"><option value="">Choose a parameter</option></select>
+              <p id="sweep-bounds" class="sim-help">Choose a parameter to see its units and allowed range.</p>
+              <label for="sweep-values">Exactly 3 distinct values, comma-separated</label>
+              <input id="sweep-values" type="text" placeholder="e.g. 0.6, 0.8, 1" autocomplete="off" spellcheck="false" aria-describedby="sweep-bounds">
+              <p id="sweep-plan" class="sim-plan">3 settings × 5 replications × 4 arrangements = 60 trajectories</p>
+              <button id="run-sweep" class="sim-button" type="button" disabled>Run three-value sweep</button>
+            </div>
+          </div>
+          <div id="batch-progress-panel" hidden>
+            <p id="batch-progress-text" role="status" aria-live="polite" aria-atomic="true"></p>
+            <progress id="batch-progress" value="0" max="1" aria-label="Completed experiment trajectories"></progress>
+          </div>
+          <p id="batch-empty" class="sim-empty">No comparison results. Each comparison replaces the active trajectory and uses a fresh worker.</p>
+          <div id="batch-output" hidden></div>
+        </section>
+
+        <section class="sim-panel" aria-labelledby="audit-heading">
+          <div class="sim-panel-heading"><h2 id="audit-heading">Inspect the event trail</h2><span class="sim-caption">Latest 40 events</span></div>
+          <div class="sim-audit-controls"><label for="event-filter">Event type</label><select id="event-filter"><option value="all">All event types</option></select></div>
+          <p id="event-count" class="sim-help">No committed events yet.</p>
+          <div class="sim-table-scroll" tabindex="0" role="region" aria-label="Simulation event trail">
+            <table class="sim-event-table"><caption>Recent synthetic events, not a complete transaction ledger</caption>
+              <thead><tr><th scope="col">Tick</th><th scope="col">Type</th><th scope="col">Event</th></tr></thead>
+              <tbody id="event-table"><tr><td colspan="3">Run or step a scenario to inspect its events.</td></tr></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="sim-panel" aria-labelledby="artifacts-heading">
+          <div class="sim-panel-heading"><h2 id="artifacts-heading">Save, load &amp; verify</h2><span class="sim-caption">Versioned JSON · local files</span></div>
+          <p class="sim-help">Downloads are independent records and survive model resets. This page does not store scenarios in your browser. Save before switching or leaving.</p>
+          <div class="sim-transport">
+            <button id="save-scenario" class="sim-button" type="button" disabled>Save scenario</button>
+            <button id="save-run" class="sim-button" type="button" disabled>Download completed run</button>
+          </div>
+          <p class="sim-help">A scenario saves inputs only. A completed-run export is available only after a successful trajectory; it is never synthesized from partial or batch results.</p>
+          <div class="sim-import">
+            <label for="artifact-file">Choose a saved scenario or completed run (.json, up to 5 MB)</label>
+            <input id="artifact-file" type="file" accept=".json,application/json">
+            <div class="sim-transport">
+              <button id="import-file" class="sim-button" type="button" disabled>Load selected file</button>
+              <button id="replay" class="sim-button" type="button" disabled>Replay &amp; verify imported run</button>
+            </div>
+            <p id="file-status" class="sim-help">No file selected.</p>
+            <p id="replay-status" role="status" aria-live="polite" aria-atomic="true" class="sim-help">Import validates file type, version, and identity before replacing the whole scenario. Nothing executes automatically.</p>
+          </div>
+          <p class="sim-help">Replay regenerates the seeded world in a worker and checks its final digest against the saved run. Pause and step are available during replay. Run scenario instead reruns only the imported inputs, without claiming replay verification. Unsupported scenario/engine versions and completed-run build mismatches are rejected rather than silently migrated.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer class="sim-footer">
+    <p><strong>Understand the mechanism. Question the assumptions.</strong><br>This is a bounded, local simulation—not a live collective, a calibrated forecast, or a completed empirical study.</p>
+    <a href="../index.html#report">Research &amp; limitations <span aria-hidden="true">↗</span></a>
+  </footer>
+</body>
+</html>

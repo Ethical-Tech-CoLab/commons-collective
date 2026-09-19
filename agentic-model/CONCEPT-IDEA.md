@@ -5,12 +5,18 @@
 - **Short name:** CCSL
 - **Repository location:** `agentic-model/`
 - **Document:** `CONCEPT-IDEA.md`
-- **Status:** concept developed into specification, plan, and backlog drafts; implementation not started
+- **Status:** concept developed into implementation documents and an initial static browser prototype; empirical validation remains outstanding
 - **Version/date:** 0.3 / 19 September 2026
 - **Research baseline:** Commons Collective commit `1c7b016b0dbb76d3623e7747ac6c327acfa45673`
 - **Authorship boundary:** AI-assisted proposal; no endorsement by the research circle, institutions, or communities is implied.
 
 > **Review gate update, 19 September 2026:** The user authorized [SPECIFICATION.md](SPECIFICATION.md), [PLAN.md](PLAN.md), and [BACKLOG.md](BACKLOG.md), and clarified that the direct AI Commons Collective must be the primary model. Those documents now define two required models: **AI Commons Collective** and **library-led open education**. No simulator, empirical result, calibrated population, production infrastructure, or validated policy recommendation exists as a result of these documents. Implementation, real API spending, empirical data collection, and public deployment remain separately gated.
+
+> **Build authorization:** The subsequent request to start the build and run it
+> on GitHub Pages authorizes the separate static simulator. Its implemented
+> scope and limitations are recorded in the [plan](PLAN.md#browser-build-status).
+> It uses synthetic rule-based/seeded actors, not real participants or live
+> LLM calls. The original research hypotheses remain unvalidated.
 
 ## 1. Decision and purpose
 

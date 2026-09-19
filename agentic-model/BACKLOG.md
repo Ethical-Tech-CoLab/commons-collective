@@ -1,12 +1,23 @@
 # Commons Collective Simulation Lab: implementation backlog
 
 - **Version/date:** 0.1 / 19 September 2026
-- **Status of every item:** proposed / not started
+- **Status:** initial browser prototype implemented; target items below are not blanket completion claims
 - **Scope:** `ai-commons` as the default direct model and `library-oer` as the second validation model; no required environmental-observation module
-- **Authority:** documentation requested; implementation, real API spending, empirical data, and public deployment still require their applicable gates
+- **Authority:** the user authorized building and publishing the static simulator on GitHub Pages; real API spending, empirical data, and institutional operations remain separately gated
 - **Sources of truth:** [SPECIFICATION.md](SPECIFICATION.md) for behavior; [PLAN.md](PLAN.md) for delivery sequence
 
 `MUST` is required for the synthetic two-model prototype. `GATED` is required only when the separately authorized live-agent capability is pursued. Owners below are roles, not assigned people.
+
+## Initial static release tracking
+
+See [PLAN.md](PLAN.md#browser-build-status) for the delivered browser scope and
+its limits. Core implementation and tests address B02-B20 in a bounded first
+version. Those items still require their full acceptance/review criteria
+before being called complete against the entire specification. B21 currently
+supports seeded kernel replay, not recorded P2 action playback. B22 remains
+unimplemented and disabled; B24's independent empirical/domain validation is
+not established by software tests. GitHub Pages publication authorizes the
+synthetic demo only, not the institutional claims in the research.
 
 ## B01: Freeze scope and reviewed defaults
 

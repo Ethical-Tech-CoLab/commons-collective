@@ -1,8 +1,8 @@
 # Commons Collective Simulation Lab: delivery plan
 
 - **Version/date:** 0.1 / 19 September 2026
-- **Status:** proposed plan; no implementation milestone is complete
-- **Authority:** the user requested the specification, plan, and backlog. This is not approval for live API spending, empirical data collection, public deployment, or institutional operations.
+- **Status:** initial browser-only prototype implemented and locally verified; research validation remains outstanding
+- **Authority:** the user authorized starting the build and running it on GitHub Pages. This does not authorize live API spending, empirical data collection, or institutional operations.
 - **Companions:** [Concept](CONCEPT-IDEA.md), [Specification](SPECIFICATION.md), [Backlog](BACKLOG.md)
 
 ## 1. Objective and scope decision
@@ -17,6 +17,45 @@ The second case tests portability of the institutional architecture; it is not t
 Both models must support the same time-tick/accounting/rights contracts and all four arrangements A0-A3. Neither may pass as a cosmetic reskin of the other. A complete scenario switch resets all active variables and rejects old asynchronous results.
 
 This plan ends at a reviewed synthetic research prototype. Empirical institutional validation is a separate, consented program.
+
+## Browser build status
+
+The first static release implements two domain modules, a shared daily tick and
+protected-cash kernel, versioned complete default configurations, P0/P1 choices,
+fixed-count A0-A3 batches, one-parameter sweeps, and seeded JSON run replay.
+The interface runs in a Web Worker and deploys under the repository's Pages
+prefix; no backend or external model credentials are included.
+
+This is an initial **uncalibrated simulation**, not completion of every proposed
+research/engineering milestone below. Important boundaries:
+
+- Replay currently regenerates a seeded P0/P1 trajectory and verifies its final
+  fingerprint. P3 replay of recorded live-generative actions and the P2 provider
+  adapter are not implemented.
+- Batch analysis compares the selected behavioral family and declared sweep
+  values. Joint dependent-parameter sampling, Shapley/Sobol analysis, adaptive
+  stopping, and a full factorial family/model study remain future work.
+- Governance is a synthetic two-chamber quorum/ballot process and a
+  capacity-limited complaint counter, not a model of legal adjudication.
+- P0/P1 select deterministic versus sampled AI offer acceptance and library
+  patron/resource requests. Library procurement itself remains rule-based;
+  both modes retain seeded environmental/task uncertainty.
+- Contribution outcomes and protected payouts are aggregated. They do not
+  establish empirical subgroup fairness, calibrated preferences, or individual
+  legal authority.
+- The configured simulated budget is separate from real money: this release
+  makes no paid calls and reads no private usage ledger.
+
+Executable tests, rather than this paragraph, are the evidence for runtime
+correctness. The remaining plan is retained as the target and review checklist,
+not relabeled as completed by releasing an interactive page.
+
+The release checks cover project-prefix module loading, both domain worlds,
+complete model reset, stale responses, saved JSON import/export, automatic and
+stepped replay verification, paused batch continuation, and restricted-cash
+invariants. A review identified and corrected underfunded capacity allocation,
+an invoice-queue performance problem, and worker finalization/identity edge
+cases; regression tests preserve those corrections.
 
 ## 2. Delivery principles
 

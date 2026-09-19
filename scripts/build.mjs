@@ -10,6 +10,7 @@ import {
   validateConferenceReview, renderConferenceReview, conferencePresentationSection, renderNodeMechanisms,
 } from './workshop.mjs';
 import { validatePublications, publicationLink, assertNoRepositoryOnlyReferences } from './publications.mjs';
+import { buildSimulation } from './build-simulation.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = path => readFile(new URL(path, root), 'utf8');
@@ -50,7 +51,7 @@ const header = await read('site/header.html');
 const headerCss = await read('site/header.css');
 const renderHeader = page => header.replaceAll('{{PREFIX}}', page === 'main' ? '#' : './index.html#')
   .replace('{{OVERVIEW_CURRENT}}', ['main', 'overview'].includes(page) ? 'aria-current="location"' : '')
-  .replace('{{DEMOS_CURRENT}}', page === 'diagram' ? 'aria-current="location"' : '')
+  .replace('{{DEMOS_CURRENT}}', ['diagram', 'simulation'].includes(page) ? 'aria-current="location"' : '')
   .replace('{{RESEARCH_CURRENT}}', page === 'work' ? 'aria-current="location"' : '');
 const fingerprint = value => createHash('sha256').update(value).digest('hex').slice(0, 12);
 const faviconUrl = `./favicon.svg?v=${fingerprint(await read('site/favicon.svg'))}`;
@@ -308,6 +309,7 @@ async function checkPublicationBoundary(directory) {
     }
   }
 }
+await buildSimulation(root, renderHeader('simulation'));
 await checkPublicationBoundary(new URL('dist/', root));
 await writeFile(new URL('dist/.nojekyll', root), '');
 console.log(`Built ${headings.length} report sections, ${renderedPublications.length} public papers, ${sources.length} cited sources, and ${presentation.workItems.length} linked work items.`);

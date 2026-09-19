@@ -1,13 +1,41 @@
 # Commons Collective Simulation Lab: specification
 
 - **Version/date:** 0.1 / 19 September 2026
-- **Status:** proposed implementation contract; documentation authorized, implementation not started
+- **Status:** target implementation contract with an initial static browser prototype; see the release scope below
 - **Concept baseline:** [CONCEPT-IDEA.md](CONCEPT-IDEA.md), originally published in `cc3dc21`
 - **Companion documents:** [PLAN.md](PLAN.md), [BACKLOG.md](BACKLOG.md)
-- **Publication boundary:** repository-only study; no new website navigation, public simulator, or changes to the research PDF
+- **Publication boundary:** the user authorized a separate GitHub Pages simulator; study Markdown remains repository-only
 - **Evidence boundary:** all new numerical defaults below are illustrative engineering fixtures, not empirical estimates, forecasts, legal approvals, or participant endorsements.
 
 The user's follow-on direction authorizes this specification, plan, and backlog and requires **two different simulation models** and a model-choice dropdown that resets **all simulation variables**. Subsequent clarification makes the direct **AI Commons Collective** the primary problem, not a tangential sector application. It does not authorize collecting real data, spending on model APIs, launching an institution, or claiming that either simulation has run.
+
+### Initial browser-release scope
+
+The subsequent request to start the build authorizes the static app at
+`simulation/`. Its live parameter registry and schemas are in
+[simulation/config.mjs](../simulation/config.mjs); these are authoritative for
+the implemented subset. The broader requirements below remain a target, not
+a claim that all features or empirical validation are complete.
+
+The first build runs both domain models, P0/P1 decisions, protected accounting,
+daily ticks, A0-A3 batches, one-dial sweeps, complete scenario resets and
+same-build seeded replay. It does not call LLM APIs or replay recorded P2
+conversations. Only implemented controls are exposed; no disabled research
+module is presented as if it computed real results.
+
+Implementation refinements are explicit: the schema is a validated flat
+parameter registry within `config.params`; batch defaults use five repetitions
+of the selected family (20 A0-A3 trajectories), not an automatic 16,000-run
+study. Randomness uses a counter-keyed xoshiro128** transform initialized from
+four versioned integer mixers, with no shared mutable draw counter.
+State fingerprints are noncryptographic reproducibility checks, not signatures.
+Build identity, scenario version, schema checks, and regenerated results are
+verified on replay.
+
+See [the plan's status](PLAN.md#browser-build-status) for remaining research and
+implementation limits. Numerical results displayed by the app are simulated
+observations conditional on the selected assumptions; no real population or
+institution has been validated.
 
 **MUST** denotes a release requirement; **SHOULD** denotes a documented default that can change through review. A departure from a MUST requires a specification revision, not an undocumented implementation shortcut.
 

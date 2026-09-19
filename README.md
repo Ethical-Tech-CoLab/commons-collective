@@ -11,6 +11,7 @@
 [Replication blueprint](https://ethical-tech-colab.github.io/commons-collective/blueprint.html) |
 [AI usage audit](https://ethical-tech-colab.github.io/commons-collective/ai-usage.html) |
 [Workshop sources](https://ethical-tech-colab.github.io/commons-collective/workshop.html) |
+[Experimental Simulation Lab](https://ethical-tech-colab.github.io/commons-collective/simulation/) |
 [Source report](research/report.md) |
 [Evidence register](research/sources.json) |
 [Deployment](https://github.com/Ethical-Tech-CoLab/commons-collective/actions/workflows/pages.yml)
@@ -133,6 +134,45 @@ print-safe contrasts; the dark cover retains its lime highlight.
 footers, text preservation, semantic text colors, and in-margin raster images.
 Regenerate the PDF after every site build. Pages CI performs both generation and
 validation before publishing. Overview-slide printing is separate and unchanged.
+
+## Experimental Simulation Lab
+
+The [browser prototype](https://ethical-tech-colab.github.io/commons-collective/simulation/)
+runs entirely on GitHub Pages. No application server, provider credentials,
+analytics, or live AI calls are required. A module Web Worker executes the same
+versioned JavaScript kernel used by the Node tests, using project-relative URLs
+and content-versioned assets.
+
+- **AI Commons Collective** is the default: consumer procurement, provider
+  capacity, scoped professional/synthetic service offers, separate private
+  context, contribution payments, and commons maintenance.
+- **Library-led open education** is the second domain, with its own resource,
+  defect, accessibility, work-queue, and procurement dynamics.
+- One tick is one synthetic day; 30 ticks make an accounting period. Run,
+  pause, step, or compare seeded repetitions of A0-A3, optionally sweeping one
+  parameter. These are conditional model results, not calibrated probabilities.
+- Switching models replaces the configuration and active world, clears results,
+  and invalidates prior worker responses. Explicitly imported scenarios are
+  separate from dropdown defaults.
+- Download a scenario or a completed run as JSON. A run can be replayed by
+  re-executing its seed/configuration and checking its final state fingerprint.
+  This is not replay of live LLM conversations, and a fingerprint is not a
+  signature or proof that the assumptions are true.
+- P0/P1 are scripted/seeded policies, not actual model calls. Live P2 is
+  unavailable in this static release. No simulated participant is a real
+  workshop attendee.
+
+The interface identifies inputs as illustrative and distinguishes unfulfilled
+service, outstanding obligations, restricted cash, and institutional failure.
+An imported run requires the matching engine build. It never silently resumes
+with a newer or incompatible engine.
+
+Source: [simulation/](simulation/), [interface](site/simulation.html),
+[specification](agentic-model/SPECIFICATION.md), and
+[implementation status](agentic-model/PLAN.md#browser-build-status).
+The study Markdown remains repository-only; the new app is a separate published
+demo linked from the existing Demos section. The historical AI-usage audit is
+unchanged and does not claim to measure these future browser executions.
 
 ## Edit and publish
 
