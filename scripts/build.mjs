@@ -13,6 +13,8 @@ import { validatePublications, publicationLink, assertNoRepositoryOnlyReferences
 import { buildSimulation } from './build-simulation.mjs';
 import { referenceMoney, buildMoney, moneyReportMarkdown } from './build-money.mjs';
 import { buildTrialEvidence } from './build-trials.mjs';
+import { validateReviewHistory, createReviewCorpus } from './review-corpus.mjs';
+import { renderAuthorReview } from './review-render.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = path => readFile(new URL(path, root), 'utf8');
@@ -52,6 +54,14 @@ const usageProvenance = JSON.parse(await read('vendor/usage-calc/UPSTREAM.json')
 const captureAdapterSha256 = createHash('sha256')
   .update((await read('scripts/capture-ai-usage.py')).replace(/^\uFEFF/, '').replace(/\r\n/g, '\n')).digest('hex');
 const usageAudit = validateUsageAudit(JSON.parse(usageSource), usageConfig, usageProvenance, captureAdapterSha256);
+const reviewHistorySource = await read('usage/review-history.json');
+const methodHash = async path => createHash('sha256').update((await read(path)).replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n')).digest('hex');
+const reviewHistory = validateReviewHistory(JSON.parse(reviewHistorySource), usageConfig.materialCommit, {
+  script: await methodHash('scripts/capture-review-history.mjs'), text: await methodHash('scripts/review-corpus.mjs'),
+});
+if (reviewHistory.usageCutoffExclusive !== usageConfig.cutoffExclusive) throw new Error('Review history cutoff differs from usage audit.');
+const reviewCorpus = createReviewCorpus(reviewHistory);
+assertNoRepositoryOnlyReferences(reviewHistorySource, publicationManifest);
 const header = await read('site/header.html');
 const headerCss = await read('site/header.css');
 const renderHeader = page => header.replaceAll('{{PREFIX}}', page === 'main' ? '#' : './index.html#')
@@ -170,12 +180,12 @@ const presentation = createPresentationData({
     ...publicationDocuments.map(publication => createCompanionSection(publication.markdown, {
       id: publication.id, url: `./${publication.output}#abstract`,
     })),
-    usageAuditSection(usageAudit),
+    usageAuditSection(usageAudit, reviewCorpus),
     workshopPresentationSection(workshop),
     conferencePresentationSection(conferenceReview),
   ],
   revision: {
-    contentHash: fingerprint([expandedReport, ...publicationDocuments.map(publication => publication.markdown), template, diagramTemplate, workSource, usageSource,
+    contentHash: fingerprint([expandedReport, ...publicationDocuments.map(publication => publication.markdown), template, diagramTemplate, workSource, usageSource, JSON.stringify(reviewCorpus),
       workshopSource, workshopMappingSource, conferenceSource, nodeMechanismsSource, JSON.stringify(sources)].join('\0')),
     builtAt: new Date().toISOString(),
     commit: process.env.GITHUB_SHA || null,
@@ -229,20 +239,33 @@ await writeFile(new URL('dist/open-work.html', root), workPage);
 await writeFile(new URL('dist/open-work.css', root), workCss);
 
 const auditCss = await read('site/ai-usage.css');
+const reviewModel = await read('site/review-time-model.mjs');
+const reviewController = (await read('site/review-time.mjs')).replace("'./review-time-model.mjs'", `'./review-time-model.mjs?v=${fingerprint(reviewModel)}'`);
 const auditPage = (await read('site/ai-usage.html'))
   .replace('{{HEADER}}', renderHeader('work'))
   .replaceAll('./favicon.svg', faviconUrl)
   .replace('href="./styles.css"', `href="./styles.css?v=${fingerprint(stylesheet)}"`)
   .replace('href="./header.css"', `href="./header.css?v=${fingerprint(headerCss)}"`)
   .replace('href="./ai-usage.css"', `href="./ai-usage.css?v=${fingerprint(auditCss)}"`)
-  .replace('{{AUDIT}}', renderUsageAudit(usageAudit));
+  .replace('{{AUDIT}}', renderUsageAudit(usageAudit, reviewCorpus))
+  .replace('{{AUTHOR_REVIEW}}', renderAuthorReview(reviewCorpus, await read('site/author-review.html')))
+  .replace('./review-time.mjs', `./review-time.mjs?v=${fingerprint(reviewController)}`);
 if (/\{\{[A-Z_]+\}\}/.test(auditPage)) throw new Error('Unresolved AI-usage template placeholder');
 await writeFile(new URL('dist/ai-usage.html', root), auditPage);
 await writeFile(new URL('dist/ai-usage.css', root), auditCss);
 await writeFile(new URL('dist/ai-usage.json', root), usageSource);
+await writeFile(new URL('dist/author-review.json', root), `${JSON.stringify(reviewCorpus, null, 2)}\n`);
+await writeFile(new URL('dist/review-history.json', root), reviewHistorySource);
+await writeFile(new URL('dist/review-time-model.mjs', root), reviewModel);
+await writeFile(new URL('dist/review-time.mjs', root), reviewController);
 await copyFile(new URL('usage/audit-config.json', root), new URL('dist/usage-audit-config.json', root));
 await copyFile(new URL('vendor/usage-calc/UPSTREAM.json', root), new URL('dist/usage-calc-provenance.json', root));
-await copyFile(new URL('usage/README.md', root), new URL('dist/usage-method.md', root));
+const usageMethod = (await read('usage/README.md'))
+  .replaceAll('(history/2026-09-19.json)', '(./ai-usage-2026-09-19.json)')
+  .replaceAll('(history/2026-09-19-config.json)', '(./usage-audit-config-2026-09-19.json)');
+await writeFile(new URL('dist/usage-method.md', root), usageMethod);
+await copyFile(new URL('usage/history/2026-09-19.json', root), new URL('dist/ai-usage-2026-09-19.json', root));
+await copyFile(new URL('usage/history/2026-09-19-config.json', root), new URL('dist/usage-audit-config-2026-09-19.json', root));
 
 const workshopPage = (await read('site/workshop.html'))
   .replace('{{HEADER}}', renderHeader('work'))

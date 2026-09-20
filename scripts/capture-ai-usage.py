@@ -57,16 +57,28 @@ def tool_modules():
     sys.path.insert(0, str(VENDOR))
     from usagecalc.store import load_events, NANO_PER_AIU, CENTS_PER_AIU
     from usagecalc.metrics import group, CHANNELS
-    from usagecalc.intervals import busy_union
+    from usagecalc.intervals import busy_union, sitting_intervals, span
     if NANO_PER_AIU != 1_000_000_000 or CENTS_PER_AIU != 1.0:
         raise AuditError("The upstream unit conversion needs an explicit adapter review")
-    return provenance, load_events, group, CHANNELS, busy_union
+    return provenance, load_events, group, CHANNELS, busy_union, sitting_intervals, span
 
 
 def capture(db_path, scope_directory, config):
-    provenance, load_events, group, channels, busy_union = tool_modules()
-    if config.get("schemaVersion") != 1:
+    provenance, load_events, group, channels, busy_union, sitting_intervals, span = tool_modules()
+    if config.get("schemaVersion") != 2:
         raise AuditError("Unsupported audit configuration")
+    inference = config.get("timeInference")
+    if not isinstance(inference, dict) or set(inference) != {"defaultIdleCutoffMinutes", "sensitivityMinutes"}:
+        raise AuditError("Explicit time-inference assumptions are required")
+    thresholds = inference["sensitivityMinutes"]
+    if not isinstance(thresholds, list) or not thresholds or thresholds != sorted(set(thresholds)):
+        raise AuditError("Time sensitivity thresholds must be unique and increasing")
+    for threshold in thresholds:
+        if integer(threshold, "idle threshold") == 0 or threshold > 240:
+            raise AuditError("Idle thresholds must be within 1..240 minutes")
+    integer(inference["defaultIdleCutoffMinutes"], "default idle threshold")
+    if inference["defaultIdleCutoffMinutes"] not in thresholds:
+        raise AuditError("The default idle threshold must be included in sensitivity results")
     cutoff = utc(config["cutoffExclusive"])
     approved = set(config["approvedModels"])
     wanted = os.path.normcase(os.path.abspath(scope_directory))
@@ -193,6 +205,24 @@ def capture(db_path, scope_directory, config):
     totals["requestActiveUnionMs"] = round(union_seconds * 1000)
     totals["busyBlocks"] = blocks
     totals["embeddedAgentCount"] = len({event["agent_id"] for event in events if event["agent_id"]})
+    first_start_ms = min(round(event["ts"] * 1000) - event["duration_ms"] for event in events)
+    last_end_ms = max(round(event["ts"] * 1000) for event in events)
+    first_start = dt.datetime.fromtimestamp(first_start_ms / 1000, dt.timezone.utc)
+    last_end = dt.datetime.fromtimestamp(last_end_ms / 1000, dt.timezone.utc)
+    sensitivities = []
+    for threshold in thresholds:
+        sittings = sitting_intervals(events, threshold * 60)
+        engaged_ms = round(span(sittings) * 1000)
+        residual_ms = engaged_ms - totals["requestActiveUnionMs"]
+        if residual_ms < 0:
+            raise AuditError("Sitting intervals do not cover all recorded model intervals")
+        sensitivities.append({
+            "idleCutoffMinutes": threshold,
+            "sittingCount": len(sittings),
+            "engagedUnionMs": engaged_ms,
+            "inferredHumanMs": residual_ms,
+        })
+    default_time = next(row for row in sensitivities if row["idleCutoffMinutes"] == inference["defaultIdleCutoffMinutes"])
     models = aggregate(events, "model", "model")
     roles = aggregate(events, "role", "role")
     model_roles = []
@@ -225,7 +255,7 @@ def capture(db_path, scope_directory, config):
         raise AuditError("Channel totals do not reconcile")
     canonical = json.dumps(sorted(selected, key=lambda row: row["id"]), sort_keys=True, separators=(",", ":"))
     return {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "project": config["project"],
         "repository": config["repository"],
         "generatedAt": dt.datetime.now(dt.timezone.utc).isoformat().replace("+00:00", "Z"),
@@ -249,7 +279,8 @@ def capture(db_path, scope_directory, config):
             "repository": provenance["repository"],
             "commit": provenance["commit"],
             "version": provenance["version"],
-            "functions": ["store.load_events(strict=True)", "metrics.group", "intervals.busy_union"],
+            "functions": ["store.load_events(strict=True)", "metrics.group", "intervals.busy_union",
+                          "intervals.sitting_intervals", "intervals.span"],
         },
         "pricing": {
             "nanoAiuPerCredit": "1000000000",
@@ -277,6 +308,23 @@ def capture(db_path, scope_directory, config):
             "note": "Digest commits to selected usage metadata, not prompts. It is not a provider signature or independent attestation of the private ledger.",
         },
         "totals": totals,
+        "timing": {
+            "timeZone": "UTC",
+            "firstRequestStartedAt": first_start.isoformat(timespec="milliseconds").replace("+00:00", "Z"),
+            "lastRequestCompletedAt": last_end.isoformat(timespec="milliseconds").replace("+00:00", "Z"),
+            "recordedSpanMs": last_end_ms - first_start_ms,
+            "calendarDaysInclusive": (last_end.date() - first_start.date()).days + 1,
+            "datesWithRecordedUsage": len({event["day"] for event in events}),
+        },
+        "humanTime": {
+            "method": "usage-calc-sitting-residual",
+            "actualHumanLaborMeasured": False,
+            "defaultIdleCutoffMinutes": inference["defaultIdleCutoffMinutes"],
+            "engagedUnionMs": default_time["engagedUnionMs"],
+            "inferredHumanMs": default_time["inferredHumanMs"],
+            "sensitivity": sensitivities,
+            "interpretation": "Non-model residual within merged request sittings, using completion gaps to infer engagement. This is not measured human attention, labor, or manual-work replacement time.",
+        },
         "models": models,
         "roles": roles,
         "modelRoles": model_roles,
@@ -291,11 +339,13 @@ def capture(db_path, scope_directory, config):
         },
         "limitations": [
             "This is a one-machine, selected-record snapshot, not proof that all project activity or other machines were logged.",
-            "The fixed cutoff excludes this audit's production and later work; the snapshot does not refresh from private telemetry in GitHub Pages.",
+            "The fixed cutoff excludes this refresh and later work, while earlier audit production is included. The snapshot does not refresh from private telemetry in GitHub Pages.",
             "Model identifiers are reported exactly as recorded, not mapped to unverified public product names.",
             "Requests are ledger events, not human messages; cached input is repeated traffic, not unique authored content.",
             "Reasoning metadata is not added to the priced token-channel total; zero does not establish absence of reasoning.",
             "Summed request duration is model work; union time removes overlaps using usage-calc's completion-timestamp interpretation. Neither measures GPU-hours or human attention.",
+            "Inferred human time is engaged sitting-union time minus model-active union time at a declared idle threshold. Tool waits, interruptions and unattended automation can inflate it; reading after the last request and human work concurrent with model activity can be missed.",
+            "Idle-threshold sensitivity is not a confidence interval. These single-project sittings cannot establish actual presence, other-project work, or a person's total workday.",
             "Recorded charge units reconcile; their USD interpretation follows the upstream conversion assumption and is not an actual bill.",
             "No energy, water, carbon, human labor, or output value is measured by this audit.",
             "Non-model tool services, CI, storage, network charges, and any hidden upstream routing are not measured.",

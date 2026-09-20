@@ -8,6 +8,22 @@
 .audit-metrics > div { padding: 1.2rem; background: var(--card); border-top: 2px solid var(--accent); }
 .audit-metrics dt { font-size: .78rem; }
 .audit-metrics dd { font-size: clamp(1.6rem, 2.6vw, 2.6rem); margin-top: .5rem; color: var(--accent); }
+.audit-metrics [data-audit-metric=start-date] dd, .audit-metrics [data-audit-metric=last-update] dd { font-size: clamp(1.2rem, 2vw, 1.85rem); }
+.audit-metrics p { margin: .5rem 0 0; color: var(--muted); font-size: .72rem; line-height: 1.5; }
+.audit-metrics [data-audit-metric=human-time], .audit-metrics [data-audit-metric=author-review] { border-top-color: var(--violet); }
+.audit-metrics [data-audit-metric=author-review] dd { font-size: clamp(1.3rem, 2vw, 2rem); }
+.review-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.review-controls label, .review-controls small { display: block; }
+.review-controls small { color: var(--muted); margin-top: .4rem; }
+.review-controls input, .review-controls select { box-sizing: border-box; width: 100%; padding: .6rem; margin-top: .4rem; background: var(--surface); color: var(--text); border: 1px solid var(--line); }
+#review-documents label { display: block; margin: .6rem 0; font-size: .9rem; }
+#review-documents input { margin-right: .4rem; }
+#review-form fieldset { border: 1px solid var(--line); min-width: 0; }
+#review-reset { padding: .7rem 1rem; background: var(--surface); color: var(--accent); border: 1px solid var(--accent); cursor: pointer; }
+#review-error { color: var(--accent); border-left: 3px solid var(--accent); padding: 1rem; }
+.review-revisions { font-size: .85rem; }
+.review-revisions > li { margin-bottom: 1rem; }
+.audit-time-equation { padding: 1rem; border: 1px solid var(--line); font-variant-numeric: tabular-nums; }
 .audit-links { display: flex; flex-wrap: wrap; gap: .8rem 1.5rem; font-size: .85rem; }
 .audit-main table { min-width: 650px; }
 .audit-main td { font-variant-numeric: tabular-nums; }
@@ -26,6 +42,7 @@
   .audit-main { padding-top: 2rem; }
   .audit-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .audit-facts > div { grid-template-columns: 1fr; gap: .25rem; }
+  .review-controls { grid-template-columns: 1fr; }
 }
 @media(max-width:420px) {
   .audit-metrics { grid-template-columns: 1fr; }

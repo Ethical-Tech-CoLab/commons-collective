@@ -14,12 +14,13 @@
 <body>
   <a class="skip" href="#usage-summary">Skip to usage audit</a>
   {{HEADER}}
-  <main class="audit-main">{{AUDIT}}</main>
+  <main class="audit-main">{{AUDIT}}{{AUTHOR_REVIEW}}</main>
   <footer>
-    <p>Usage accounting is not evidence of research correctness, value, human attention, or a provider's invoice. The underlying session records remain private.</p>
+    <p>Usage accounting is not evidence of research correctness, value, human attention, or a provider's invoice. The interaction proxy is a sitting residual; author review is a revision-based workload estimate. Neither measures actual human labor. The underlying session records remain private.</p>
     <a href="./overview.html">Live overview</a> ·
     <a href="./index.html#report">Research</a> ·
     <a href="https://github.com/Ethical-Tech-CoLab/commons-collective/tree/main/usage">Audit sources and method</a>
   </footer>
+  <script type="module" src="./review-time.mjs"></script>
 </body>
 </html>

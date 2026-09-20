@@ -1,0 +1,41 @@
+<section id="author-review" data-corpus="./author-review.json" aria-labelledby="author-review-heading">
+  <h2 id="author-review-heading">Author review, rereading and corrections</h2>
+  <p><strong>Review is substantive human work, not merely prompting.</strong> Reading, checking claims, taking responsibility for the content, making corrections and reviewing those corrections are distinct activities. API timing does not measure them.</p>
+  <p><strong>Git revisions establish the review workload, not whether reading happened.</strong> The baseline assumes one contextual reading pass per version of each level-two source section. It counts the latest text once, plus the previous text of each changed or removed section. Unchanged sections, whitespace-only edits and section renumbering add no pass. This is a declared review policy, not a measured minimum of actual human time.</p>
+  <p>The author reports rereading some sections two or three times. Those reads may already be represented by section revisions, so additional passes default to zero. Add them only for reading beyond the version-based baseline. Only the main report is selected by default.</p>
+  <form id="review-form" novalidate>
+    <fieldset><legend>Published text included in the estimate</legend><div id="review-documents">{{REVIEW_DOCUMENTS}}</div></fieldset>
+    <div class="review-controls">
+      <div><label for="review-basis">Review basis</label><select id="review-basis"><option value="revision">Recorded section versions (default)</option><option value="current">Current text only (comparison)</option></select></div>
+      <div><label for="review-pace">Declared reading/review pace</label><input id="review-pace" type="number" min="30" max="600" value="238" step="1"><small>Words per minute. Use a slower pace for deliberate technical reading where appropriate.</small></div>
+      <div><label for="review-coverage">Current text receiving extra rereads (%)</label><input id="review-coverage" type="number" min="0" max="100" step="1" value="0"><small>Applies to current text only, not all historical word exposures.</small></div>
+      <div><label for="review-rereads-min">Minimum extra rereads beyond baseline</label><input id="review-rereads-min" type="number" min="0" max="20" step="1" value="0"></div>
+      <div><label for="review-rereads-max">Maximum extra rereads beyond baseline</label><input id="review-rereads-max" type="number" min="0" max="20" step="1" value="0"><small>Do not count a revision-related reread twice.</small></div>
+      <div><label for="review-additional">Additional checking/editing/reflection time</label><input id="review-additional" type="number" min="0" max="100000" step="1" placeholder="Not quantified"><small>Author-entered minutes, excluding time already represented by the reading estimate. Blank is unknown, not a measured zero.</small></div>
+    </div>
+    <button id="review-reset" type="button">Reset review assumptions</button>
+  </form>
+  <p id="review-error" role="alert" hidden></p>
+  <div id="review-results">
+    <dl class="audit-facts">
+      <div><dt>Current selected text</dt><dd><span id="review-words">{{REVIEW_WORDS}}</span> words</dd></div>
+      <div><dt>Superseded section text</dt><dd><span id="review-prior-words">{{REVIEW_PRIOR_WORDS}}</span> prior-version words</dd></div>
+      <div><dt>Baseline word exposures</dt><dd id="review-exposures">{{REVIEW_EXPOSURES}}</dd></div>
+      <div><dt>Current text, one pass</dt><dd id="review-first-pass">{{REVIEW_FIRST_PASS}}</dd></div>
+      <div><dt>Selected baseline reading</dt><dd id="review-baseline">{{REVIEW_BASELINE}}</dd></div>
+      <div><dt>Baseline plus extra rereads</dt><dd id="review-reading">{{REVIEW_RANGE}}</dd></div>
+      <div><dt>Additional review work</dt><dd id="review-extra">Not quantified; not included in the reading estimate</dd></div>
+      <div><dt>Estimated author-review effort</dt><dd id="review-estimate">{{REVIEW_RANGE}}</dd></div>
+    </dl>
+    <p id="review-scope-note">{{REVIEW_NOTE}}</p>
+    <p id="review-speed-sensitivity" class="audit-note">{{REVIEW_SENSITIVITY}}</p>
+  </div>
+  <p class="audit-time-equation">Revision baseline = current words + superseded/removed section words. Reading minutes = (baseline word exposures + current words × extra-reread fraction × extra passes) ÷ words per minute. Add only separately entered, non-overlapping checking/editing minutes.</p>
+  <p class="audit-note">Reference: <a href="https://doi.org/10.1016/j.jml.2019.104047">Brysbaert (2019), review and meta-analysis of reading rate</a>. The 238 words/minute reference and 175-300 sensitivity range concern adult English silent nonfiction reading, not technical review or fact-checking productivity.</p>
+  <p class="audit-note">Counts cover selected Markdown source prose, headings, tables and captions through the audit's material commit, not today's rendered pages. Bibliography, citation markers, image pixels and code blocks are excluded. Generated-only financial tables, charts, layout, code, external sources, uncommitted drafts and later changes are not counted. Mechanical wording edits are included when section text changes. A section title change is recorded as removal/addition, retaining one pass per version rather than a whole-document reread per commit.</p>
+  <h3>Traceable section-revision evidence</h3>
+  {{REVIEW_EVIDENCE}}
+  <p class="audit-note"><strong>Do not add this estimate to the interaction proxy or model elapsed time.</strong> Review can happen during model calls, inside the non-model residual, or outside recorded sittings. The quantities overlap and have different scopes. Actual prompting and actual review time remain unmeasured without an author time log. A word-based estimate does not certify that review occurred, that the content is correct, or that responsibility has been discharged.</p>
+  <p class="audit-note">Assumption changes remain in this page and are not uploaded or added to the ledger audit. <a href="./author-review.json" download>Download word counts and review assumptions</a> or <a href="./review-history.json" download>download commit/section evidence and fingerprints</a>.</p>
+  <noscript><p>The static estimate uses the main report's section-version baseline with zero extra passes. JavaScript enables assumption changes; no actual human time has been measured.</p></noscript>
+</section>

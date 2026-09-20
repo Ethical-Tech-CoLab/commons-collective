@@ -201,8 +201,8 @@ Source: [simulation/](simulation/), [interface](site/simulation.html),
 [specification](agentic-model/SPECIFICATION.md), and
 [implementation status](agentic-model/PLAN.md#browser-build-status).
 The study Markdown remains repository-only; the new app is a separate published
-demo linked from the existing Demos section. The historical AI-usage audit is
-unchanged and does not claim to measure these future browser executions.
+demo linked from the existing Demos section. The AI-usage audit remains a bounded
+capture of recorded model requests, not a meter of browser simulation executions.
 
 ## Follow the Money and trial evidence
 
@@ -305,11 +305,21 @@ The [AI usage page](https://ethical-tech-colab.github.io/commons-collective/ai-u
 uses a reviewed aggregate snapshot and pinned, unmodified calculation modules
 from [Ethical Tech CoLab usage-calc](https://github.com/Ethical-Tech-CoLab/usage-calc).
 It reports recorded model IDs, requests, token channels, main/delegated work,
-observed rates, and overlap-aware request time. USD figures are the tool's
+observed rates, dates, overlap-aware elapsed request time, and an explicitly
+inferred human-side sitting residual with idle-threshold sensitivity. USD figures are the tool's
 list-price equivalents, **not actual subscription charges**.
 
-See [usage/README.md](usage/README.md) for scope and reproduction. The initial
-cutoff precedes this audit request, so its creation and later work are excluded.
+See [usage/README.md](usage/README.md) for scope and reproduction. The current
+cutoff is 20 September 2026 at 19:50:27.262 UTC. It includes earlier audit work
+but excludes this refresh and later activity. The original snapshot is retained
+in [usage/history](usage/history/). Human-side residual is not measured labor,
+attention, or manual-work replacement time.
+Author review is reported separately using committed section revisions:
+49,444 main-report word exposures, or 3.46 reading-equivalent hours at the
+declared 238 words/minute reference pace. This is a review-workload scenario,
+not actual tracked labor. Editable scope, pace and extra-review assumptions,
+plus commit/section evidence, are on the audit page. The estimate must not be
+added to the overlapping model time or interaction proxy.
 No raw prompts, responses, working paths, machine names, or session/agent IDs
 are published. The website and CI validate committed aggregates; they never
 open the private session store. `python scripts\capture-ai-usage.py` is an

@@ -16,12 +16,14 @@ const adapterSha256 = createHash('sha256').update(
 
 test('published usage reconciles by model, role, channel, day, and observed rate', () => {
   assert.equal(validateUsageAudit(data, config, upstream, adapterSha256), data);
-  assert.equal(data.models.length, 1);
-  assert.equal(data.models[0].model, 'gpt-6-astra');
-  assert.equal(data.totals.requests, 401);
-  assert.equal(data.totals.nanoAiu, '16486140250000');
-  assert.equal(data.totals.listPriceUsdExact, '164.8614025');
-  assert.equal(data.totals.embeddedAgentCount, 7);
+  assert.equal(data.models.length, 2);
+  assert.deepEqual(Object.fromEntries(data.models.map(row => [row.model, row.requests])), { 'gpt-6-astra': 1153, 'gpt-5.4-mini': 11 });
+  assert.equal(data.totals.requests, 1164);
+  assert.equal(data.totals.nanoAiu, '88883661940000');
+  assert.equal(data.totals.listPriceUsdExact, '888.8366194');
+  assert.equal(data.totals.embeddedAgentCount, 24);
+  assert.equal(data.totals.requestActiveUnionMs, 37811777);
+  assert.equal(data.totals.modelWorkMs, 42016957);
 });
 
 test('scope and privacy fields are enforced, not just asserted in prose', () => {
@@ -51,6 +53,12 @@ test('inconsistent numbers and billing claims fail publication', () => {
     copy => { copy.totals.requestActiveUnionMs = copy.totals.modelWorkMs + 1; },
     copy => { copy.pricing.invoiceMeasured = true; },
     copy => { copy.coverage.allSelectedChargesReconciled = false; },
+    copy => { copy.timing.calendarDaysInclusive += 1; },
+    copy => { copy.timing.recordedSpanMs += 1; },
+    copy => { copy.humanTime.actualHumanLaborMeasured = true; },
+    copy => { copy.humanTime.inferredHumanMs += 1; },
+    copy => { copy.humanTime.sensitivity[0].inferredHumanMs += 1; },
+    copy => { copy.humanTime.defaultIdleCutoffMinutes = 30; },
     copy => {
       [copy.roles[0].role, copy.roles[1].role] = [copy.roles[1].role, copy.roles[0].role];
     },
@@ -84,8 +92,9 @@ test('the actual Python collector passes scoped synthetic-ledger privacy and rec
 test('the audit page and live overview explain the measurement boundaries', () => {
   const html = renderUsageAudit(data);
   assert.match(html, /gpt-6-astra/);
-  assert.match(html, /401/);
-  assert.match(html, /\$164\.86/);
+  assert.match(html, /gpt-5\.4-mini/);
+  assert.match(html, /1,164/);
+  assert.match(html, /\$888\.84/);
   assert.match(html, /not a bill/);
   assert.match(html, /unrounded/);
   assert.match(html, /does not independently establish the model weights/);
@@ -94,6 +103,45 @@ test('the audit page and live overview explain the measurement boundaries', () =
   assert.equal(section.url, './ai-usage.html#usage-summary');
   assert.ok(section.paragraphs.join(' ').includes('not an invoice'));
   const changed = structuredClone(data);
-  changed.totals.requests = 402;
-  assert.ok(usageAuditSection(changed).paragraphs[0].includes('402'));
+  changed.totals.requests = 1165;
+  assert.ok(usageAuditSection(changed).paragraphs[0].includes('1,165'));
+  assert.match(html, /Start date \(UTC\)/);
+  assert.match(html, /Last update \(UTC\)/);
+  assert.match(html, /Days in recorded span/);
+  assert.match(html, /Elapsed model usage/);
+  assert.match(html, /Interaction-time proxy/);
+  assert.match(html, /10\.50 h/);
+  assert.match(html, /2\.76 h/);
+  assert.match(html, /not a timesheet or a productivity estimate/);
+  assert.match(html, /not a confidence interval/);
+  assert.ok(section.paragraphs.join(' ').includes('inferred human-side residual'));
+});
+
+test('date coverage and human-time inference reconcile without counting idle wall time as labor', () => {
+  assert.equal(data.timing.firstRequestStartedAt, '2026-09-18T17:27:17.907Z');
+  assert.equal(data.timing.lastRequestCompletedAt, '2026-09-20T19:36:13.463Z');
+  assert.equal(data.timing.calendarDaysInclusive, 3);
+  assert.equal(data.timing.recordedSpanMs, 180535556);
+  assert.equal(data.humanTime.actualHumanLaborMeasured, false);
+  assert.equal(data.humanTime.defaultIdleCutoffMinutes, 10);
+  assert.equal(data.humanTime.inferredHumanMs, 9936700);
+  assert.equal(data.humanTime.engagedUnionMs, 47748477);
+  for (const row of data.humanTime.sensitivity) {
+    assert.equal(row.engagedUnionMs, data.totals.requestActiveUnionMs + row.inferredHumanMs);
+    assert.ok(row.engagedUnionMs < data.timing.recordedSpanMs);
+  }
+  assert.deepEqual(data.humanTime.sensitivity.map(row => row.idleCutoffMinutes), [2, 5, 10, 30]);
+  assert.deepEqual(data.humanTime.sensitivity.map(row => row.inferredHumanMs), [7096347, 9414092, 9936700, 13508361]);
+});
+
+test('the initial aggregate snapshot remains a distinct immutable historical boundary', async () => {
+  const historical = await readJson('../usage/history/2026-09-19.json');
+  const priorConfig = await readJson('../usage/history/2026-09-19-config.json');
+  assert.equal(historical.schemaVersion, 1);
+  assert.equal(historical.totals.requests, 401);
+  assert.equal(historical.totals.listPriceUsdExact, '164.8614025');
+  assert.equal(historical.scope.cutoffExclusive, '2026-09-19T13:47:16.543Z');
+  assert.equal(priorConfig.cutoffExclusive, historical.scope.cutoffExclusive);
+  assert.equal(historical.humanTime, undefined);
+  assert.ok(Object.values(historical.privacy).every(value => value === false));
 });

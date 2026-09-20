@@ -223,7 +223,10 @@ test('current publication branding and repository links use Commons Collective',
     const page = await readFile(new URL(`../dist/${file}`, import.meta.url), 'utf8');
     assert.match(page, /Commons Collective/);
     assert.match(page, /github\.com\/Ethical-Tech-CoLab\/commons-collective/);
-    assert.doesNotMatch(page, /Commons Bargaining|COMMONS BARGAINING|commons-bargaining/);
+    const currentText = file === 'ai-usage.html'
+      ? page.replace(/<q data-review-historical-title>[^<]*<\/q>/g, '')
+      : page;
+    assert.doesNotMatch(currentText, /Commons Bargaining|COMMONS BARGAINING|commons-bargaining/);
   }
   const data = JSON.parse(await readFile(new URL('../dist/presentation-data.json', import.meta.url)));
   assert.equal(data.project.title, 'Commons Collective');

@@ -1,0 +1,2876 @@
+{
+  "format": "ccsl-review-history",
+  "version": 1,
+  "materialCommit": "6ed823c3f96a8760c0b6d4e5664326d21af5b4da",
+  "usageCutoffExclusive": "2026-09-20T19:50:27.262Z",
+  "capturedAt": "2026-09-20T21:22:26.268Z",
+  "method": "One contextual reading pass per version of each source section. Latest source-section words are counted once; each superseded or removed section contributes its prior-version words. Added sections are not counted twice. Unchanged sections, whitespace-only changes and heading renumbering do not create extra passes.",
+  "identityRule": "Level-two headings, with leading section numbers removed, identify sections; a title change is recorded as removal/addition. Preamble is its own section.",
+  "interpretation": "Required-review workload estimate, not observed reading, a timesheet, or proof that every change was reviewed. Mechanical wording edits are included when visible source text changes.",
+  "limitations": [
+    "Only committed versions of the selected Markdown sources through the recorded material commit are counted.",
+    "Bibliographies headed References, Bibliography or Source register, citation markers, code blocks and image pixels are excluded.",
+    "Generated financial tables, external source changes, charts, layout, code review, uncommitted drafts and extra checking may require additional review not captured in source-section words.",
+    "Reading speed is an assumption. Actual editorial effort and author responsibility cannot be measured from word counts or API gaps.",
+    "Reported rereads may already correspond to these revision passes. Add extra passes only when they are not represented by the version history."
+  ],
+  "documents": [
+    {
+      "id": "main-report",
+      "title": "Main research report",
+      "source": "research/report.md",
+      "group": "Public research",
+      "url": "https://github.com/Ethical-Tech-CoLab/commons-collective/blob/6ed823c3f96a8760c0b6d4e5664326d21af5b4da/research/report.md",
+      "words": 22130,
+      "priorVersionWords": 27314,
+      "reviewWordExposures": 49444,
+      "sourceSha256": "2f3d63cc004341ff8639a2ec991f555f83dd1f3115f10217c41295cb6709aa3e",
+      "versions": [
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "sourceSha256": "2ebde0c3d24f31e005495df8016f9e4cb32f300e7679fa4a1d69219c06cf7467",
+          "words": 9289,
+          "changedSections": 0,
+          "addedSections": 21
+        },
+        {
+          "commit": "0d749bf897dbd6864d389ccf48ef78d489c72a29",
+          "at": "2026-09-18T18:16:07.000Z",
+          "sourceSha256": "f2ece5d4f7cec9d3a8646b6a998448fda57a0496ff82e822fe82df85f0e01e7c",
+          "words": 10908,
+          "changedSections": 3,
+          "addedSections": 1
+        },
+        {
+          "commit": "6297394b6f6b0c2f21fb853992c7dcf262fa7fda",
+          "at": "2026-09-18T18:33:44.000Z",
+          "sourceSha256": "e336e5e5489a2562b2c23009af21fee63489332410bddecdd16fc55fb09531ae",
+          "words": 12099,
+          "changedSections": 0,
+          "addedSections": 1
+        },
+        {
+          "commit": "07a4586674c6e6f0c41d18614680a5a7c0e92fdf",
+          "at": "2026-09-18T18:36:52.000Z",
+          "sourceSha256": "52123e553cff205c110449c071a1b2951358c959ef79aae3f99c8a3a5a4c819d",
+          "words": 13299,
+          "changedSections": 0,
+          "addedSections": 1
+        },
+        {
+          "commit": "6e942fccecafc458bb66958f1fd8f144cf3d7b0d",
+          "at": "2026-09-18T19:39:29.000Z",
+          "sourceSha256": "31ea15becc671e609542d95064258a1b66cc17cb866cf4e4bb5e8a2f8a28f6c4",
+          "words": 14485,
+          "changedSections": 3,
+          "addedSections": 1
+        },
+        {
+          "commit": "d09dbe3166e13bd142f1d82933dbb17476002d0a",
+          "at": "2026-09-18T19:48:47.000Z",
+          "sourceSha256": "1d31c3f43bb48bfc7df521075ac8ecc06cd91149cfff69eac88b579d00588358",
+          "words": 15499,
+          "changedSections": 0,
+          "addedSections": 1
+        },
+        {
+          "commit": "339e4db3bf44b261427f12ffc9dc214a034e81dc",
+          "at": "2026-09-18T20:01:44.000Z",
+          "sourceSha256": "e2d801ce8ff0754021a77467dba040fde064df0bde742e6605c94f85dd2095b9",
+          "words": 15499,
+          "changedSections": 7,
+          "addedSections": 2
+        },
+        {
+          "commit": "9ba532f2b15ec1ee4fd903358818eaeb4e081ffc",
+          "at": "2026-09-18T20:05:27.000Z",
+          "sourceSha256": "0b0e9f376a7c5f0e1644cd9e6ad26c351a34099c37b5cd2a3e6c2c6681444046",
+          "words": 16471,
+          "changedSections": 1,
+          "addedSections": 1
+        },
+        {
+          "commit": "d572c10f70435c338225edaa982c60e9890f3cb0",
+          "at": "2026-09-18T20:24:45.000Z",
+          "sourceSha256": "0972aa7edb38cbf553ae8ab36d15a06972d18522d7e82a4220911ac2ef9d7674",
+          "words": 17572,
+          "changedSections": 0,
+          "addedSections": 1
+        },
+        {
+          "commit": "bb0a939e539135a212194006a01001ce33746083",
+          "at": "2026-09-18T20:40:56.000Z",
+          "sourceSha256": "9ef0df70c5d47c58af222a509b7208ade68c259a98ddedc28088069ef6079507",
+          "words": 18902,
+          "changedSections": 0,
+          "addedSections": 1
+        },
+        {
+          "commit": "78a898a2d0bde5cbb3b5ec6056790fb75f142c60",
+          "at": "2026-09-18T20:47:44.000Z",
+          "sourceSha256": "f6edcf7fab401f85efd3e9b1fc6770bf6151c51edfe0cc48ca0c0455d76a9d3c",
+          "words": 19898,
+          "changedSections": 0,
+          "addedSections": 1
+        },
+        {
+          "commit": "14215be94badc7389edd195b0bc8934a339a9cb2",
+          "at": "2026-09-19T13:40:53.000Z",
+          "sourceSha256": "712baec94106e3b79d80800acd987c4118bbe3fc9c5d10a44e7296f0f1515058",
+          "words": 20293,
+          "changedSections": 0,
+          "addedSections": 1
+        },
+        {
+          "commit": "3c4c7b42e785afbf95fd67f39488f3cdf32fff14",
+          "at": "2026-09-19T14:33:51.000Z",
+          "sourceSha256": "a0917b4a200d3a973f5af5e99c09c2ba8fb65f07207f5927d73a01cec9aa7c38",
+          "words": 20354,
+          "changedSections": 1,
+          "addedSections": 0
+        },
+        {
+          "commit": "b7e3dbec4e2a471dddb0a774aa5f89378fd07ce9",
+          "at": "2026-09-19T16:03:15.000Z",
+          "sourceSha256": "98cca6fa9b08d0d181c69bedddf217b44d412de3ab2e122ae76e1ab277cecbdf",
+          "words": 20424,
+          "changedSections": 2,
+          "addedSections": 0
+        },
+        {
+          "commit": "b601191f5227c2731fffe78f92368b3294b796c0",
+          "at": "2026-09-19T17:20:53.000Z",
+          "sourceSha256": "d2268c133680a0c952a99fec518a9b4ec1f8c9a1695a1c230dea15fe026e35ba",
+          "words": 20421,
+          "changedSections": 1,
+          "addedSections": 0
+        },
+        {
+          "commit": "2b9f262452358bf9bc65144cd9c0c38ccee696a0",
+          "at": "2026-09-19T18:34:35.000Z",
+          "sourceSha256": "712c853c262a21caecdd00880a511b8c52b91d33f2732315fe1be8a89626947c",
+          "words": 21917,
+          "changedSections": 12,
+          "addedSections": 1
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "sourceSha256": "d55e3d242a1407121b437dba104b5becabb7b86cbcd9160888cd34d47255eb95",
+          "words": 21961,
+          "changedSections": 1,
+          "addedSections": 0
+        },
+        {
+          "commit": "1c7b016b0dbb76d3623e7747ac6c327acfa45673",
+          "at": "2026-09-19T20:54:41.000Z",
+          "sourceSha256": "1b3a59f70a86b95328dcd0087c4577ceb4e3eba80bbb1f207b2d70326332353a",
+          "words": 21981,
+          "changedSections": 2,
+          "addedSections": 0
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "sourceSha256": "9baacf834b2c482e1d909eb12b29a9f335164e8069946ada7215be1eff9bc904",
+          "words": 22183,
+          "changedSections": 6,
+          "addedSections": 0
+        },
+        {
+          "commit": "6ed823c3f96a8760c0b6d4e5664326d21af5b4da",
+          "at": "2026-09-20T19:32:24.000Z",
+          "sourceSha256": "2f3d63cc004341ff8639a2ec991f555f83dd1f3115f10217c41295cb6709aa3e",
+          "words": 22130,
+          "changedSections": 1,
+          "addedSections": 0
+        }
+      ],
+      "changes": [
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "abstract",
+          "title": "Abstract",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 266,
+          "priorTextSha256": null,
+          "nextTextSha256": "370a8f41d8f2f4843014f0c4771c601b840ceba5d10ba45c7d91357e62f787c2"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "research-circle-and-ethical-commitments",
+          "title": "Research circle and ethical commitments",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 326,
+          "priorTextSha256": null,
+          "nextTextSha256": "c950e0dbcf168ea19f7c2bd64acdc2e400df3b31238a99d8ad65ef27cd19a828"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "method-scope-and-limits",
+          "title": "Method, scope, and limits",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 225,
+          "priorTextSha256": null,
+          "nextTextSha256": "baa5a5ad11103206f7273c81f1f1f93a9dd8830ccf09103adf699443885e21b7"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "the-commons-problem-and-the-grazing-analogy",
+          "title": "The commons problem and the grazing analogy",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 389,
+          "priorTextSha256": null,
+          "nextTextSha256": "69e83c8db5151885b26097d6d99b46313ab7895f22bcaf8d83b0e6a94df29b98"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "a-spectrum-not-a-single-data-commodity",
+          "title": "A spectrum, not a single data commodity",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 415,
+          "priorTextSha256": null,
+          "nextTextSha256": "980795e56814cd3902d532c32e77059851accfb0a074b93194f98a00407a96ab"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "from-digital-costco-to-a-bargaining-federation",
+          "title": "From digital Costco to a bargaining federation",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 508,
+          "priorTextSha256": null,
+          "nextTextSha256": "442cd8834087c0ec184ec09ac15cdfdfd4026021ce441209cbdc885e0c240423"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "archetypes-and-the-multi-sided-marketplace",
+          "title": "Archetypes and the multi-sided marketplace",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 407,
+          "priorTextSha256": null,
+          "nextTextSha256": "5697ac82ffc2aadc177492e4cec43ff5ad66ed00a7fbac1238412a24f378d31c"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "business-model-and-economic-discipline",
+          "title": "Business model and economic discipline",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 489,
+          "priorTextSha256": null,
+          "nextTextSha256": "71813b802d29235d5cd57ccb7f19dcc599236d7099ffd96008178fee068bd418"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "payment-disbursement-and-public-good-return",
+          "title": "Payment, disbursement, and public-good return",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 443,
+          "priorTextSha256": null,
+          "nextTextSha256": "a294214cea1a35e8b9c1296a21e3a1e1495789e95d530c209389986daec4aee4"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "creative-commons-as-an-aggregation-model",
+          "title": "Creative Commons as an aggregation model",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 289,
+          "priorTextSha256": null,
+          "nextTextSha256": "4e9cb3e2c8bc5585904a786152b1820c9501c2ca122761455a2b9897f222d555"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "gmail-private-ai-and-meaningful-opt-in",
+          "title": "Gmail, private AI, and meaningful opt-in",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 291,
+          "priorTextSha256": null,
+          "nextTextSha256": "12be2e8d62e1639195737cde2a5302b73f2a7bccd9c764e83b5f40b27b270447"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "new-knowledge-objects-and-technical-architecture",
+          "title": "New knowledge objects and technical architecture",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 654,
+          "priorTextSha256": null,
+          "nextTextSha256": "fa22370e3df969f006dc31b30bb374a29502e5d2bd8502337b0b58339cde85c1"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "alice-and-bob-three-end-to-end-flows",
+          "title": "Alice and Bob: three end-to-end flows",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 524,
+          "priorTextSha256": null,
+          "nextTextSha256": "aa6be8f0f5bab2781a7be8c9b02d166265794d2cd824457ce93722d921139981"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "regulatory-framework-present-rules-and-proposals",
+          "title": "Regulatory framework: present rules and proposals",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 673,
+          "priorTextSha256": null,
+          "nextTextSha256": "9183dcd0e4e13a6d51ff378f3d5f2d09f0ae8de44b11494d26e7f13abcba3905"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "energy-data-centers-and-community-bargaining",
+          "title": "Energy, data centers, and community bargaining",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 317,
+          "priorTextSha256": null,
+          "nextTextSha256": "8751907bb70f57892b865f1399060db5bbe08f2e8bd4210b02dc5a462c190b36"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "a-philanthropic-strategy-relevant-to-humanity-ai",
+          "title": "A philanthropic strategy relevant to Humanity AI",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 621,
+          "priorTextSha256": null,
+          "nextTextSha256": "4f59b918d0021ff06db1729712635ecc435a9870d2504e90cc43b7c95797a92a"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "research-program-and-falsifiable-hypotheses",
+          "title": "Research program and falsifiable hypotheses",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 517,
+          "priorTextSha256": null,
+          "nextTextSha256": "9582604dc6854b8577cef114340fc8d90ea34f52e11f38a85761f5026e125384"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "failure-modes-counterarguments-and-safeguards",
+          "title": "Failure modes, counterarguments, and safeguards",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 315,
+          "priorTextSha256": null,
+          "nextTextSha256": "89e4b454bf1ef008ffb13f503b4b649291dd183234b7ed4e59799532a48f84d0"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "a-ninety-day-starting-sequence",
+          "title": "A ninety-day starting sequence",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 190,
+          "priorTextSha256": null,
+          "nextTextSha256": "c8252ccfe059de4ff2bb1d5e8dea771a3b36f1fb19d243b006eef1dca8921b61"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "data-dividends-pigouvian-taxes-and-commons-credits",
+          "title": "Data dividends, Pigouvian taxes, and commons credits",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 1262,
+          "priorTextSha256": null,
+          "nextTextSha256": "4d7d35d030b05e6f8b4e7066dd789a9b8ebdae441250485aa1fea971b85e1334"
+        },
+        {
+          "commit": "686e8c631b1a3c4958cba2c690bb714257e649af",
+          "at": "2026-09-18T18:07:34.000Z",
+          "section": "conclusion",
+          "title": "Conclusion",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 168,
+          "priorTextSha256": null,
+          "nextTextSha256": "d8714e9a12d7194067e1cf0d01175643c1883ab621c8951c851c80b61c234227"
+        },
+        {
+          "commit": "0d749bf897dbd6864d389ccf48ef78d489c72a29",
+          "at": "2026-09-18T18:16:07.000Z",
+          "section": "abstract",
+          "title": "Abstract",
+          "change": "changed",
+          "priorWords": 266,
+          "nextWords": 267,
+          "priorTextSha256": "370a8f41d8f2f4843014f0c4771c601b840ceba5d10ba45c7d91357e62f787c2",
+          "nextTextSha256": "134cafb0fa571f25ea39888fc8fd74ae5cc2785b17c24821dd183b94af4ad095"
+        },
+        {
+          "commit": "0d749bf897dbd6864d389ccf48ef78d489c72a29",
+          "at": "2026-09-18T18:16:07.000Z",
+          "section": "from-digital-costco-to-a-bargaining-federation",
+          "title": "From digital Costco to a bargaining federation",
+          "change": "changed",
+          "priorWords": 508,
+          "nextWords": 1177,
+          "priorTextSha256": "442cd8834087c0ec184ec09ac15cdfdfd4026021ce441209cbdc885e0c240423",
+          "nextTextSha256": "208b37571a748901424e659d1ffb52d506a96497a0e7a849a01fd8cfe80e9628"
+        },
+        {
+          "commit": "0d749bf897dbd6864d389ccf48ef78d489c72a29",
+          "at": "2026-09-18T18:16:07.000Z",
+          "section": "business-model-and-economic-discipline",
+          "title": "Business model and economic discipline",
+          "change": "changed",
+          "priorWords": 489,
+          "nextWords": 536,
+          "priorTextSha256": "71813b802d29235d5cd57ccb7f19dcc599236d7099ffd96008178fee068bd418",
+          "nextTextSha256": "baf3b43e71a71eca2840f122574af6bf7f7036cf926ebae2a74e38dfff782c3d"
+        },
+        {
+          "commit": "0d749bf897dbd6864d389ccf48ef78d489c72a29",
+          "at": "2026-09-18T18:16:07.000Z",
+          "section": "follow-on-research-a-commons-bargaining-framework-agreement",
+          "title": "Follow-on research: a Commons Bargaining Framework Agreement",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 902,
+          "priorTextSha256": null,
+          "nextTextSha256": "d6f462216296692302b29d24f0be82cc00bc64869e2dac3f5825dc628a9ead60"
+        },
+        {
+          "commit": "6297394b6f6b0c2f21fb853992c7dcf262fa7fda",
+          "at": "2026-09-18T18:33:44.000Z",
+          "section": "reputation-validation-and-quality-ranking",
+          "title": "Reputation, validation, and quality ranking",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 1191,
+          "priorTextSha256": null,
+          "nextTextSha256": "8cd2faeb9ee906b6a0cc69cc8fad7be394c5124a5383ae7892405bde82ea7b41"
+        },
+        {
+          "commit": "07a4586674c6e6f0c41d18614680a5a7c0e92fdf",
+          "at": "2026-09-18T18:36:52.000Z",
+          "section": "participation-incentives-and-the-future-ai-data-club",
+          "title": "Participation incentives and the future AI data club",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 1200,
+          "priorTextSha256": null,
+          "nextTextSha256": "088673441df59496f3c5c842257536c97d0793c38f57ce1d4f3edbf36b1bea37"
+        },
+        {
+          "commit": "6e942fccecafc458bb66958f1fd8f144cf3d7b0d",
+          "at": "2026-09-18T19:39:29.000Z",
+          "section": "from-digital-costco-to-a-bargaining-federation",
+          "title": "From digital Costco to a bargaining federation",
+          "change": "changed",
+          "priorWords": 1177,
+          "nextWords": 1230,
+          "priorTextSha256": "208b37571a748901424e659d1ffb52d506a96497a0e7a849a01fd8cfe80e9628",
+          "nextTextSha256": "e0c28a969ae60a778c18dbc342ba4715129b06e0c2d4d026cbf88d96846e91bc"
+        },
+        {
+          "commit": "6e942fccecafc458bb66958f1fd8f144cf3d7b0d",
+          "at": "2026-09-18T19:39:29.000Z",
+          "section": "new-knowledge-objects-and-technical-architecture",
+          "title": "New knowledge objects and technical architecture",
+          "change": "changed",
+          "priorWords": 654,
+          "nextWords": 700,
+          "priorTextSha256": "fa22370e3df969f006dc31b30bb374a29502e5d2bd8502337b0b58339cde85c1",
+          "nextTextSha256": "089d95c21ddf23d66ec97ec37d2ab90f93e42790f704da38536ef778d89c87bb"
+        },
+        {
+          "commit": "6e942fccecafc458bb66958f1fd8f144cf3d7b0d",
+          "at": "2026-09-18T19:39:29.000Z",
+          "section": "research-program-and-falsifiable-hypotheses",
+          "title": "Research program and falsifiable hypotheses",
+          "change": "changed",
+          "priorWords": 517,
+          "nextWords": 560,
+          "priorTextSha256": "9582604dc6854b8577cef114340fc8d90ea34f52e11f38a85761f5026e125384",
+          "nextTextSha256": "65aee7e93cd9bf82117f6e2626445c33da4cbda535de5d07bae7507f299b9982"
+        },
+        {
+          "commit": "6e942fccecafc458bb66958f1fd8f144cf3d7b0d",
+          "at": "2026-09-18T19:39:29.000Z",
+          "section": "institution-blueprint-a-commons-bargaining-federation",
+          "title": "Institution blueprint: a Commons Bargaining Federation",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 1044,
+          "priorTextSha256": null,
+          "nextTextSha256": "35d4f2f5c7c35cd923679dc65c3464fda9cb3164843775927b9875a20ffe2d02"
+        },
+        {
+          "commit": "d09dbe3166e13bd142f1d82933dbb17476002d0a",
+          "at": "2026-09-18T19:48:47.000Z",
+          "section": "commons-authored-rl-rewards-and-regulatory-design",
+          "title": "Commons-authored RL rewards and regulatory design",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 1014,
+          "priorTextSha256": null,
+          "nextTextSha256": "39b77deb03bc447aa725ba01aa01010d4278a472c11b2c1e1d2d10c50af368c6"
+        },
+        {
+          "commit": "339e4db3bf44b261427f12ffc9dc214a034e81dc",
+          "at": "2026-09-18T20:01:44.000Z",
+          "section": "abstract",
+          "title": "Abstract",
+          "change": "changed",
+          "priorWords": 267,
+          "nextWords": 267,
+          "priorTextSha256": "134cafb0fa571f25ea39888fc8fd74ae5cc2785b17c24821dd183b94af4ad095",
+          "nextTextSha256": "74eccefa94d67feb0fcb9d6a3ad269e1b167c31587e241712a55565bf40cefab"
+        },
+        {
+          "commit": "339e4db3bf44b261427f12ffc9dc214a034e81dc",
+          "at": "2026-09-18T20:01:44.000Z",
+          "section": "from-digital-costco-to-a-bargaining-federation",
+          "title": "From digital Costco to a bargaining federation",
+          "change": "changed",
+          "priorWords": 1230,
+          "nextWords": 1230,
+          "priorTextSha256": "e0c28a969ae60a778c18dbc342ba4715129b06e0c2d4d026cbf88d96846e91bc",
+          "nextTextSha256": "29f826fa13e88d4dd23d467699fac8189628a20971963766b44292a7b81787a2"
+        },
+        {
+          "commit": "339e4db3bf44b261427f12ffc9dc214a034e81dc",
+          "at": "2026-09-18T20:01:44.000Z",
+          "section": "data-dividends-pigouvian-taxes-and-commons-credits",
+          "title": "Data dividends, Pigouvian taxes, and commons credits",
+          "change": "changed",
+          "priorWords": 1262,
+          "nextWords": 1262,
+          "priorTextSha256": "4d7d35d030b05e6f8b4e7066dd789a9b8ebdae441250485aa1fea971b85e1334",
+          "nextTextSha256": "aeef70cf0dcd3d09cf4ad76e6dbc640eb1023125c21827cdb11010fad27f54de"
+        },
+        {
+          "commit": "339e4db3bf44b261427f12ffc9dc214a034e81dc",
+          "at": "2026-09-18T20:01:44.000Z",
+          "section": "follow-on-research-a-commons-bargaining-framework-agreement",
+          "title": "Follow-on research: a Commons Bargaining Framework Agreement",
+          "change": "removed",
+          "priorWords": 902,
+          "nextWords": 0,
+          "priorTextSha256": "d6f462216296692302b29d24f0be82cc00bc64869e2dac3f5825dc628a9ead60",
+          "nextTextSha256": null
+        },
+        {
+          "commit": "339e4db3bf44b261427f12ffc9dc214a034e81dc",
+          "at": "2026-09-18T20:01:44.000Z",
+          "section": "participation-incentives-and-the-future-ai-data-club",
+          "title": "Participation incentives and the future AI data club",
+          "change": "changed",
+          "priorWords": 1200,
+          "nextWords": 1200,
+          "priorTextSha256": "088673441df59496f3c5c842257536c97d0793c38f57ce1d4f3edbf36b1bea37",
+          "nextTextSha256": "c328e6a8ae918fe56adb998ee07c737d57a5f758dc09e280311d7d42025874d1"
+        },
+        {
+          "commit": "339e4db3bf44b261427f12ffc9dc214a034e81dc",
+          "at": "2026-09-18T20:01:44.000Z",
+          "section": "institution-blueprint-a-commons-bargaining-federation",
+          "title": "Institution blueprint: a Commons Bargaining Federation",
+          "change": "removed",
+          "priorWords": 1044,
+          "nextWords": 0,
+          "priorTextSha256": "35d4f2f5c7c35cd923679dc65c3464fda9cb3164843775927b9875a20ffe2d02",
+          "nextTextSha256": null
+        },
+        {
+          "commit": "339e4db3bf44b261427f12ffc9dc214a034e81dc",
+          "at": "2026-09-18T20:01:44.000Z",
+          "section": "conclusion",
+          "title": "Conclusion",
+          "change": "changed",
+          "priorWords": 168,
+          "nextWords": 168,
+          "priorTextSha256": "d8714e9a12d7194067e1cf0d01175643c1883ab621c8951c851c80b61c234227",
+          "nextTextSha256": "71c908ddfb732d6afe5f47f10b3bfdc3d9cf178a964d807b3db50c32ca4455d6"
+        },
+        {
+          "commit": "339e4db3bf44b261427f12ffc9dc214a034e81dc",
+          "at": "2026-09-18T20:01:44.000Z",
+          "section": "follow-on-research-a-commons-collective-framework-agreement",
+          "title": "Follow-on research: a Commons Collective Framework Agreement",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 902,
+          "priorTextSha256": null,
+          "nextTextSha256": "1345b249893dce0d3cde75f726de42ac31d5332bdf00de3be165ba00222bd20a"
+        },
+        {
+          "commit": "339e4db3bf44b261427f12ffc9dc214a034e81dc",
+          "at": "2026-09-18T20:01:44.000Z",
+          "section": "institution-blueprint-a-commons-collective-federation",
+          "title": "Institution blueprint: a Commons Collective Federation",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 1044,
+          "priorTextSha256": null,
+          "nextTextSha256": "5235609248cc44f900d7eee558e76a6ab11871047217fa422e4040a0f1e279b3"
+        },
+        {
+          "commit": "9ba532f2b15ec1ee4fd903358818eaeb4e081ffc",
+          "at": "2026-09-18T20:05:27.000Z",
+          "section": "from-digital-costco-to-a-bargaining-federation",
+          "title": "From digital Costco to a bargaining federation",
+          "change": "changed",
+          "priorWords": 1230,
+          "nextWords": 1248,
+          "priorTextSha256": "29f826fa13e88d4dd23d467699fac8189628a20971963766b44292a7b81787a2",
+          "nextTextSha256": "dd32d224a18d43ac74a021a5719fa5c2e5eb5ed3c3a2df5778f2c15b50b81d0b"
+        },
+        {
+          "commit": "9ba532f2b15ec1ee4fd903358818eaeb4e081ffc",
+          "at": "2026-09-18T20:05:27.000Z",
+          "section": "a-pro-human-stack-working-definition-and-test",
+          "title": "A pro-human stack: working definition and test",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 954,
+          "priorTextSha256": null,
+          "nextTextSha256": "d879615bade38bc6eed7e2e21c7dd3b69098903bee61a32d855e00592f2de36c"
+        },
+        {
+          "commit": "d572c10f70435c338225edaa982c60e9890f3cb0",
+          "at": "2026-09-18T20:24:45.000Z",
+          "section": "open-agent-incentives-and-a-commons-collective-agency-starter-kit",
+          "title": "Open-agent incentives and a Commons Collective Agency Starter Kit",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 1101,
+          "priorTextSha256": null,
+          "nextTextSha256": "3b03716eeb4c80ee240675276e87ec0b69cc50da1d833fbb24ae4336bed67f99"
+        },
+        {
+          "commit": "bb0a939e539135a212194006a01001ce33746083",
+          "at": "2026-09-18T20:40:56.000Z",
+          "section": "private-institutions-and-the-commons-service-model",
+          "title": "Private institutions and the commons service model",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 1330,
+          "priorTextSha256": null,
+          "nextTextSha256": "a26bf2ca3c1865c34053290c9541f425067b7cd059710cfdb9602874b38d9b56"
+        },
+        {
+          "commit": "78a898a2d0bde5cbb3b5ec6056790fb75f142c60",
+          "at": "2026-09-18T20:47:44.000Z",
+          "section": "the-quasi-commons-tension-contribution-without-control",
+          "title": "The quasi-commons tension: contribution without control",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 996,
+          "priorTextSha256": null,
+          "nextTextSha256": "2c574b3369d4ddd16d37a7f982c96dd9198634d1bc9868c6175a48fbe94d5379"
+        },
+        {
+          "commit": "14215be94badc7389edd195b0bc8934a339a9cb2",
+          "at": "2026-09-19T13:40:53.000Z",
+          "section": "replicable-sector-collectives-blueprint-and-templates",
+          "title": "Replicable sector collectives: blueprint and templates",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 395,
+          "priorTextSha256": null,
+          "nextTextSha256": "e6f6f02f98168b171bcacc885cf70387684ee40c4013ecbce4f2596475706ca4"
+        },
+        {
+          "commit": "3c4c7b42e785afbf95fd67f39488f3cdf32fff14",
+          "at": "2026-09-19T14:33:51.000Z",
+          "section": "method-scope-and-limits",
+          "title": "Method, scope, and limits",
+          "change": "changed",
+          "priorWords": 225,
+          "nextWords": 286,
+          "priorTextSha256": "baa5a5ad11103206f7273c81f1f1f93a9dd8830ccf09103adf699443885e21b7",
+          "nextTextSha256": "5fdee54242c7d4d448eeaf1baeda7da792fd6880cda0a09ddd6c9ed9b2fc50db"
+        },
+        {
+          "commit": "b7e3dbec4e2a471dddb0a774aa5f89378fd07ce9",
+          "at": "2026-09-19T16:03:15.000Z",
+          "section": "research-circle-and-ethical-commitments",
+          "title": "Research circle and ethical commitments",
+          "change": "changed",
+          "priorWords": 326,
+          "nextWords": 381,
+          "priorTextSha256": "c950e0dbcf168ea19f7c2bd64acdc2e400df3b31238a99d8ad65ef27cd19a828",
+          "nextTextSha256": "ab162047e8fb16136327f40b6580ff4c584b076ef29f25aa27e82e5a1344582d"
+        },
+        {
+          "commit": "b7e3dbec4e2a471dddb0a774aa5f89378fd07ce9",
+          "at": "2026-09-19T16:03:15.000Z",
+          "section": "method-scope-and-limits",
+          "title": "Method, scope, and limits",
+          "change": "changed",
+          "priorWords": 286,
+          "nextWords": 301,
+          "priorTextSha256": "5fdee54242c7d4d448eeaf1baeda7da792fd6880cda0a09ddd6c9ed9b2fc50db",
+          "nextTextSha256": "21fe7433e01ac6060522213866e422130711a25bd16350f75c2b1ca1d54649e6"
+        },
+        {
+          "commit": "b601191f5227c2731fffe78f92368b3294b796c0",
+          "at": "2026-09-19T17:20:53.000Z",
+          "section": "research-circle-and-ethical-commitments",
+          "title": "Research circle and ethical commitments",
+          "change": "changed",
+          "priorWords": 381,
+          "nextWords": 378,
+          "priorTextSha256": "ab162047e8fb16136327f40b6580ff4c584b076ef29f25aa27e82e5a1344582d",
+          "nextTextSha256": "85f8b730389503bae97992a2dfe0abc433ea974314f109863eb3789557e6dee1"
+        },
+        {
+          "commit": "2b9f262452358bf9bc65144cd9c0c38ccee696a0",
+          "at": "2026-09-19T18:34:35.000Z",
+          "section": "research-circle-and-ethical-commitments",
+          "title": "Research circle and ethical commitments",
+          "change": "changed",
+          "priorWords": 378,
+          "nextWords": 514,
+          "priorTextSha256": "85f8b730389503bae97992a2dfe0abc433ea974314f109863eb3789557e6dee1",
+          "nextTextSha256": "277931f780df31876fff6cd29e794fbd9c58552f6d726dd5689306eedf89b919"
+        },
+        {
+          "commit": "2b9f262452358bf9bc65144cd9c0c38ccee696a0",
+          "at": "2026-09-19T18:34:35.000Z",
+          "section": "from-digital-costco-to-a-bargaining-federation",
+          "title": "From digital Costco to a bargaining federation",
+          "change": "changed",
+          "priorWords": 1248,
+          "nextWords": 1385,
+          "priorTextSha256": "dd32d224a18d43ac74a021a5719fa5c2e5eb5ed3c3a2df5778f2c15b50b81d0b",
+          "nextTextSha256": "875fa355892ee074a032c5ce98e821313cc54aaa9ba6192046c9b57696f5d9cc"
+        },
+        {
+          "commit": "2b9f262452358bf9bc65144cd9c0c38ccee696a0",
+          "at": "2026-09-19T18:34:35.000Z",
+          "section": "payment-disbursement-and-public-good-return",
+          "title": "Payment, disbursement, and public-good return",
+          "change": "changed",
+          "priorWords": 443,
+          "nextWords": 554,
+          "priorTextSha256": "a294214cea1a35e8b9c1296a21e3a1e1495789e95d530c209389986daec4aee4",
+          "nextTextSha256": "f29642134e69ca6bed8f2e4f081edb03479789b50bfcbe0d68636e6774357117"
+        },
+        {
+          "commit": "2b9f262452358bf9bc65144cd9c0c38ccee696a0",
+          "at": "2026-09-19T18:34:35.000Z",
+          "section": "new-knowledge-objects-and-technical-architecture",
+          "title": "New knowledge objects and technical architecture",
+          "change": "changed",
+          "priorWords": 700,
+          "nextWords": 882,
+          "priorTextSha256": "089d95c21ddf23d66ec97ec37d2ab90f93e42790f704da38536ef778d89c87bb",
+          "nextTextSha256": "66a1322574b31acfe8a9aebf5fb6dd7893bbc9f40506e309c234be9e579a2ba9"
+        },
+        {
+          "commit": "2b9f262452358bf9bc65144cd9c0c38ccee696a0",
+          "at": "2026-09-19T18:34:35.000Z",
+          "section": "alice-and-bob-three-end-to-end-flows",
+          "title": "Alice and Bob: three end-to-end flows",
+          "change": "removed",
+          "priorWords": 524,
+          "nextWords": 0,
+          "priorTextSha256": "aa6be8f0f5bab2781a7be8c9b02d166265794d2cd824457ce93722d921139981",
+          "nextTextSha256": null
+        },
+        {
+          "commit": "2b9f262452358bf9bc65144cd9c0c38ccee696a0",
+          "at": "2026-09-19T18:34:35.000Z",
+          "section": "regulatory-framework-present-rules-and-proposals",
+          "title": "Regulatory framework: present rules and proposals",
+          "change": "changed",
+          "priorWords": 673,
+          "nextWords": 752,
+          "priorTextSha256": "9183dcd0e4e13a6d51ff378f3d5f2d09f0ae8de44b11494d26e7f13abcba3905",
+          "nextTextSha256": "815d6fb242eee984316362b61f4778316faa2b70d2ce79defc76fb5422402944"
+        },
+        {
+          "commit": "2b9f262452358bf9bc65144cd9c0c38ccee696a0",
+          "at": "2026-09-19T18:34:35.000Z",
+          "section": "energy-data-centers-and-community-bargaining",
+          "title": "Energy, data centers, and community bargaining",
+          "change": "changed",
+          "priorWords": 317,
+          "nextWords": 369,
+          "priorTextSha256": "8751907bb70f57892b865f1399060db5bbe08f2e8bd4210b02dc5a462c190b36",
+          "nextTextSha256": "6b9b04598173c3fb2b6d0c6dc6fdc2c59d2e99c141761790f65717e6aa8446d8"
+        },
+        {
+          "commit": "2b9f262452358bf9bc65144cd9c0c38ccee696a0",
+          "at": "2026-09-19T18:34:35.000Z",
+          "section": "research-program-and-falsifiable-hypotheses",
+          "title": "Research program and falsifiable hypotheses",
+          "change": "changed",
+          "priorWords": 560,
+          "nextWords": 605,
+          "priorTextSha256": "65aee7e93cd9bf82117f6e2626445c33da4cbda535de5d07bae7507f299b9982",
+          "nextTextSha256": "1abc1074f30f9d526f86b73df76ff48c9dc15d4fa121ecfd410312ac1795647a"
+        },
+        {
+          "commit": "2b9f262452358bf9bc65144cd9c0c38ccee696a0",
+          "at": "2026-09-19T18:34:35.000Z",
+          "section": "follow-on-research-a-commons-collective-framework-agreement",
+          "title": "Follow-on research: a Commons Collective Framework Agreement",
+          "change": "changed",
+          "priorWords": 902,
+          "nextWords": 1014,
+          "priorTextSha256": "1345b249893dce0d3cde75f726de42ac31d5332bdf00de3be165ba00222bd20a",
+          "nextTextSha256": "9851d7bed79d10503c5c1171357a73773fb92b6d445b00fe28b4b4c6d8a3ca3c"
+        },
+        {
+          "commit": "2b9f262452358bf9bc65144cd9c0c38ccee696a0",
+          "at": "2026-09-19T18:34:35.000Z",
+          "section": "reputation-validation-and-quality-ranking",
+          "title": "Reputation, validation, and quality ranking",
+          "change": "changed",
+          "priorWords": 1191,
+          "nextWords": 1299,
+          "priorTextSha256": "8cd2faeb9ee906b6a0cc69cc8fad7be394c5124a5383ae7892405bde82ea7b41",
+          "nextTextSha256": "5136faa89725f98e89fb364a5852a8828af11ff72d6d16fae033d2ab11e773a1"
+        },
+        {
+          "commit": "2b9f262452358bf9bc65144cd9c0c38ccee696a0",
+          "at": "2026-09-19T18:34:35.000Z",
+          "section": "institution-blueprint-a-commons-collective-federation",
+          "title": "Institution blueprint: a Commons Collective Federation",
+          "change": "changed",
+          "priorWords": 1044,
+          "nextWords": 1179,
+          "priorTextSha256": "5235609248cc44f900d7eee558e76a6ab11871047217fa422e4040a0f1e279b3",
+          "nextTextSha256": "b134f7326abd68af482a9dd9a9c596266c5a68e70540bec9c3ffe8aaaef5b1f4"
+        },
+        {
+          "commit": "2b9f262452358bf9bc65144cd9c0c38ccee696a0",
+          "at": "2026-09-19T18:34:35.000Z",
+          "section": "open-agent-incentives-and-a-commons-collective-agency-starter-kit",
+          "title": "Open-agent incentives and a Commons Collective Agency Starter Kit",
+          "change": "changed",
+          "priorWords": 1101,
+          "nextWords": 1277,
+          "priorTextSha256": "3b03716eeb4c80ee240675276e87ec0b69cc50da1d833fbb24ae4336bed67f99",
+          "nextTextSha256": "6721b040f4c851c4a516f4c6e83f586e8f3b104d0392eb2592aea01b453cd7d7"
+        },
+        {
+          "commit": "2b9f262452358bf9bc65144cd9c0c38ccee696a0",
+          "at": "2026-09-19T18:34:35.000Z",
+          "section": "alice-and-bob-end-to-end-flows",
+          "title": "Alice and Bob: end-to-end flows",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 747,
+          "priorTextSha256": null,
+          "nextTextSha256": "74dffa0c69512561ce57db192bf96b712545e8edff14b61bb2af924ac6dec709"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "method-scope-and-limits",
+          "title": "Method, scope, and limits",
+          "change": "changed",
+          "priorWords": 301,
+          "nextWords": 345,
+          "priorTextSha256": "21fe7433e01ac6060522213866e422130711a25bd16350f75c2b1ca1d54649e6",
+          "nextTextSha256": "83a1ef2ab526ebd2752506fa22208c508ae3c1a2b8a41abe215853c6b1576fee"
+        },
+        {
+          "commit": "1c7b016b0dbb76d3623e7747ac6c327acfa45673",
+          "at": "2026-09-19T20:54:41.000Z",
+          "section": "research-circle-and-ethical-commitments",
+          "title": "Research circle and ethical commitments",
+          "change": "changed",
+          "priorWords": 514,
+          "nextWords": 519,
+          "priorTextSha256": "277931f780df31876fff6cd29e794fbd9c58552f6d726dd5689306eedf89b919",
+          "nextTextSha256": "af423ef1179d4d938d3a4bf76bd16377f749541621e2bece71f4e14b79665490"
+        },
+        {
+          "commit": "1c7b016b0dbb76d3623e7747ac6c327acfa45673",
+          "at": "2026-09-19T20:54:41.000Z",
+          "section": "data-dividends-pigouvian-taxes-and-commons-credits",
+          "title": "Data dividends, Pigouvian taxes, and commons credits",
+          "change": "changed",
+          "priorWords": 1262,
+          "nextWords": 1277,
+          "priorTextSha256": "aeef70cf0dcd3d09cf4ad76e6dbc640eb1023125c21827cdb11010fad27f54de",
+          "nextTextSha256": "95169105f063252f9f1ef11ddf07cdd5fd98cb0d563bf7277325eeb2aee82fcd"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "research-circle-and-ethical-commitments",
+          "title": "Research circle and ethical commitments",
+          "change": "changed",
+          "priorWords": 519,
+          "nextWords": 562,
+          "priorTextSha256": "af423ef1179d4d938d3a4bf76bd16377f749541621e2bece71f4e14b79665490",
+          "nextTextSha256": "de3693c714c337eb32a925f936c9e18e0a37b3c4cb5a2edffde077107fbbbdb3"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "business-model-and-economic-discipline",
+          "title": "Business model and economic discipline",
+          "change": "changed",
+          "priorWords": 536,
+          "nextWords": 524,
+          "priorTextSha256": "baf3b43e71a71eca2840f122574af6bf7f7036cf926ebae2a74e38dfff782c3d",
+          "nextTextSha256": "64e359f540001a8535765fc3a4b11da05bb42de78b6f3158ede468cae91b29c4"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "payment-disbursement-and-public-good-return",
+          "title": "Payment, disbursement, and public-good return",
+          "change": "changed",
+          "priorWords": 554,
+          "nextWords": 679,
+          "priorTextSha256": "f29642134e69ca6bed8f2e4f081edb03479789b50bfcbe0d68636e6774357117",
+          "nextTextSha256": "e998b8e8ff5f9b59c9f8be1868c56515f895437c874fc53c1aba54202c4e4f48"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "alice-and-bob-end-to-end-flows",
+          "title": "Alice and Bob: end-to-end flows",
+          "change": "changed",
+          "priorWords": 747,
+          "nextWords": 783,
+          "priorTextSha256": "74dffa0c69512561ce57db192bf96b712545e8edff14b61bb2af924ac6dec709",
+          "nextTextSha256": "11dba55cdc806f47e092138b162a3c2d1e583685b35d37015dcc71f7b29d5956"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "a-ninety-day-starting-sequence",
+          "title": "A ninety-day starting sequence",
+          "change": "changed",
+          "priorWords": 190,
+          "nextWords": 195,
+          "priorTextSha256": "c8252ccfe059de4ff2bb1d5e8dea771a3b36f1fb19d243b006eef1dca8921b61",
+          "nextTextSha256": "f77c5041ea1a64f5dbe61bc0118004f8e9f5b2a6a833691ff93a61528be6265d"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "a-pro-human-stack-working-definition-and-test",
+          "title": "A pro-human stack: working definition and test",
+          "change": "changed",
+          "priorWords": 954,
+          "nextWords": 959,
+          "priorTextSha256": "d879615bade38bc6eed7e2e21c7dd3b69098903bee61a32d855e00592f2de36c",
+          "nextTextSha256": "e5160ce6ced547210f9fe63c79248266375c9590ad0d800c5f3daeedbaad4ea5"
+        },
+        {
+          "commit": "6ed823c3f96a8760c0b6d4e5664326d21af5b4da",
+          "at": "2026-09-20T19:32:24.000Z",
+          "section": "business-model-and-economic-discipline",
+          "title": "Business model and economic discipline",
+          "change": "changed",
+          "priorWords": 524,
+          "nextWords": 471,
+          "priorTextSha256": "64e359f540001a8535765fc3a4b11da05bb42de78b6f3158ede468cae91b29c4",
+          "nextTextSha256": "3cb9c7dfc615bef1c63df006497d99e1a04474ea88e63187ae20839ba7386784"
+        }
+      ]
+    },
+    {
+      "id": "paper-replication-blueprint",
+      "title": "Replicable sector collectives",
+      "source": "research/replication-blueprint.md",
+      "group": "Public research",
+      "url": "https://github.com/Ethical-Tech-CoLab/commons-collective/blob/6ed823c3f96a8760c0b6d4e5664326d21af5b4da/research/replication-blueprint.md",
+      "words": 2296,
+      "priorVersionWords": 179,
+      "reviewWordExposures": 2475,
+      "sourceSha256": "eef769254825f705948c0913e83815327d6b93074b101000f182ba885681f722",
+      "versions": [
+        {
+          "commit": "14215be94badc7389edd195b0bc8934a339a9cb2",
+          "at": "2026-09-19T13:40:53.000Z",
+          "sourceSha256": "3fbb411154d5400ca5bc7755c36aa7439fbed932ec47217b263b2e23960fe925",
+          "words": 2285,
+          "changedSections": 0,
+          "addedSections": 9
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "sourceSha256": "eef769254825f705948c0913e83815327d6b93074b101000f182ba885681f722",
+          "words": 2296,
+          "changedSections": 1,
+          "addedSections": 0
+        }
+      ],
+      "changes": [
+        {
+          "commit": "14215be94badc7389edd195b0bc8934a339a9cb2",
+          "at": "2026-09-19T13:40:53.000Z",
+          "section": "preamble",
+          "title": "Title and preamble",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 65,
+          "priorTextSha256": null,
+          "nextTextSha256": "b9dd8c7aad7b830ad3ea53e6c54c0f80a0ea0df720d24d3f2b8f1603ff9aef92"
+        },
+        {
+          "commit": "14215be94badc7389edd195b0bc8934a339a9cb2",
+          "at": "2026-09-19T13:40:53.000Z",
+          "section": "abstract",
+          "title": "Abstract",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 98,
+          "priorTextSha256": null,
+          "nextTextSha256": "da813aca57c29fa3d1d6aaa5744ccccb182015a8e93bb370c552512da6ea47f9"
+        },
+        {
+          "commit": "14215be94badc7389edd195b0bc8934a339a9cb2",
+          "at": "2026-09-19T13:40:53.000Z",
+          "section": "method-and-research-question",
+          "title": "Method and research question",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 179,
+          "priorTextSha256": null,
+          "nextTextSha256": "092affc4fcf7a0aed9c2b1df38c9fe52d12c4c3dfdeb2b9ffe87a0fb2156d494"
+        },
+        {
+          "commit": "14215be94badc7389edd195b0bc8934a339a9cb2",
+          "at": "2026-09-19T13:40:53.000Z",
+          "section": "normative-proposal-functions-before-entities",
+          "title": "Normative proposal: functions before entities",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 331,
+          "priorTextSha256": null,
+          "nextTextSha256": "e0c317736e39523b3aac4d7a3586abcf3189a514586d480e605fe799f7bf25d0"
+        },
+        {
+          "commit": "14215be94badc7389edd195b0bc8934a339a9cb2",
+          "at": "2026-09-19T13:40:53.000Z",
+          "section": "a-federation-charter-without-compulsory-membership",
+          "title": "A federation charter without compulsory membership",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 255,
+          "priorTextSha256": null,
+          "nextTextSha256": "523a26c238245c633b471cfc5593b9e6a1a748843733929cf6404c0301256b90"
+        },
+        {
+          "commit": "14215be94badc7389edd195b0bc8934a339a9cb2",
+          "at": "2026-09-19T13:40:53.000Z",
+          "section": "the-rights-and-revenue-boundary",
+          "title": "The rights and revenue boundary",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 201,
+          "priorTextSha256": null,
+          "nextTextSha256": "74afda3c416183c00f79a1c5ad78316c429a0e585fd38beae1d4e87daa962a4a"
+        },
+        {
+          "commit": "14215be94badc7389edd195b0bc8934a339a9cb2",
+          "at": "2026-09-19T13:40:53.000Z",
+          "section": "six-sector-adapters",
+          "title": "Six sector adapters",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 742,
+          "priorTextSha256": null,
+          "nextTextSha256": "8523c239b073cab10f030eb8c94c784d9792d2cda8922606a6fc63e36c39d9b3"
+        },
+        {
+          "commit": "14215be94badc7389edd195b0bc8934a339a9cb2",
+          "at": "2026-09-19T13:40:53.000Z",
+          "section": "falsifiable-pilot-and-evaluation",
+          "title": "Falsifiable pilot and evaluation",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 262,
+          "priorTextSha256": null,
+          "nextTextSha256": "9578b39797081d2a7ea07ec196d02e6525ef00fd61a34426a419263d0712e526"
+        },
+        {
+          "commit": "14215be94badc7389edd195b0bc8934a339a9cb2",
+          "at": "2026-09-19T13:40:53.000Z",
+          "section": "limitations-and-reusable-contribution",
+          "title": "Limitations and reusable contribution",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 152,
+          "priorTextSha256": null,
+          "nextTextSha256": "a8f3ce39b32030b01fc9bf9ddcec5a76caf5f85d124c745eeff5ecbab2a4dbb8"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "method-and-research-question",
+          "title": "Method and research question",
+          "change": "changed",
+          "priorWords": 179,
+          "nextWords": 190,
+          "priorTextSha256": "092affc4fcf7a0aed9c2b1df38c9fe52d12c4c3dfdeb2b9ffe87a0fb2156d494",
+          "nextTextSha256": "f347378559a42361b49378d0b7b240403d4e815cebfc6a71f3313bc3afafa945"
+        }
+      ]
+    },
+    {
+      "id": "paper-prioritized-draft",
+      "title": "Commons Collective: prioritized research paper",
+      "source": "papers/commons-collective-paper-draft.md",
+      "group": "Public research",
+      "url": "https://github.com/Ethical-Tech-CoLab/commons-collective/blob/6ed823c3f96a8760c0b6d4e5664326d21af5b4da/papers/commons-collective-paper-draft.md",
+      "words": 2310,
+      "priorVersionWords": 510,
+      "reviewWordExposures": 2820,
+      "sourceSha256": "01d4407aac0181bbbc97fc85e3e17023db97e189b15a7f64f937f2650e1c74e1",
+      "versions": [
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "sourceSha256": "9906e51f23f8756cd7beb1a2f678c76239318746c04375ed436b772f11b561fb",
+          "words": 2305,
+          "changedSections": 0,
+          "addedSections": 12
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "sourceSha256": "01d4407aac0181bbbc97fc85e3e17023db97e189b15a7f64f937f2650e1c74e1",
+          "words": 2310,
+          "changedSections": 3,
+          "addedSections": 0
+        }
+      ],
+      "changes": [
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "preamble",
+          "title": "Title and preamble",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 43,
+          "priorTextSha256": null,
+          "nextTextSha256": "22a150dca25ed91b2a34dc5bd0cd25c2c32df33851a57a44c15156ece091de0f"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "abstract",
+          "title": "Abstract",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 151,
+          "priorTextSha256": null,
+          "nextTextSha256": "65f16a2cabcfc105172cfc20a6758ba4f8b257743473b7ec00a886bab15e1382"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "research-question-and-evidence-boundary",
+          "title": "Research question and evidence boundary",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 191,
+          "priorTextSha256": null,
+          "nextTextSha256": "a26e650ffa4ccc432f425516323c1d930bb5fc64bfbbbf5fb878247ec69f0337"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "claim-one-nonrival-knowledge-still-requires-costly-stewardship",
+          "title": "Claim one: nonrival knowledge still requires costly stewardship",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 201,
+          "priorTextSha256": null,
+          "nextTextSha256": "9d08ac81142f402cd6c7663551fdde2a0bc31c9e4b62481f713f41854018446a"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "claim-two-aggregate-mandates-not-indiscriminate-data",
+          "title": "Claim two: aggregate mandates, not indiscriminate data",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 287,
+          "priorTextSha256": null,
+          "nextTextSha256": "d348e722eceef284dbad9393a5bc8c131682f19db0907b64cd75d88fe2393d8d"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "claim-three-federation-must-distribute-authority-not-merely-infrastructure",
+          "title": "Claim three: federation must distribute authority, not merely infrastructure",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 290,
+          "priorTextSha256": null,
+          "nextTextSha256": "a3522c10f65aa3480669b70b1fd5e31def939c87e208dd3c620c70750c54405b"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "claim-four-sell-maintained-services-without-enclosing-the-commons",
+          "title": "Claim four: sell maintained services without enclosing the commons",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 226,
+          "priorTextSha256": null,
+          "nextTextSha256": "aa1e8103e3c2888358fd6e226a6b26ed89034e93715f00fc7d794fd322c24d6d"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "claim-five-evidence-and-participation-are-mechanisms-not-certificates",
+          "title": "Claim five: evidence and participation are mechanisms, not certificates",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 263,
+          "priorTextSha256": null,
+          "nextTextSha256": "9c2cd926f1d9aaa5e98a5262440be65563d760bfa8960ffa6ad0bf5581041794"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "research-design-one-paid-pilot-with-disconfirming-outcomes",
+          "title": "Research design: one paid pilot with disconfirming outcomes",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 337,
+          "priorTextSha256": null,
+          "nextTextSha256": "67322144beee2a8fe28ca110abc5421661e9385fe84ff23b4c772e1c2e654d35"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "limitations-and-counterarguments",
+          "title": "Limitations and counterarguments",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 163,
+          "priorTextSha256": null,
+          "nextTextSha256": "b962570105479387c756d12810c162108a5db3c9755336029fa807e66caaa109"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "conclusion",
+          "title": "Conclusion",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 72,
+          "priorTextSha256": null,
+          "nextTextSha256": "c72a9f38268e5c7c16266271ef945ce9dea2aaee534872762361f1e854512bfa"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "provenance-and-license",
+          "title": "Provenance and license",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 81,
+          "priorTextSha256": null,
+          "nextTextSha256": "6a35eef822d8cc2f7c87ff413330b984f70c2bf50cb647f9c45e721556e0acf4"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "abstract",
+          "title": "Abstract",
+          "change": "changed",
+          "priorWords": 151,
+          "nextWords": 152,
+          "priorTextSha256": "65f16a2cabcfc105172cfc20a6758ba4f8b257743473b7ec00a886bab15e1382",
+          "nextTextSha256": "c9bb2c9e157e7e81b3491c4a2686b22eed20aa963e1c262feaf21f681c5f296d"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "claim-two-aggregate-mandates-not-indiscriminate-data",
+          "title": "Claim two: aggregate mandates, not indiscriminate data",
+          "change": "changed",
+          "priorWords": 287,
+          "nextWords": 290,
+          "priorTextSha256": "d348e722eceef284dbad9393a5bc8c131682f19db0907b64cd75d88fe2393d8d",
+          "nextTextSha256": "0a925d133ed284724ad8b9a0877e948049d7637ebf4d44616acae09d9ea9f4b5"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "conclusion",
+          "title": "Conclusion",
+          "change": "changed",
+          "priorWords": 72,
+          "nextWords": 73,
+          "priorTextSha256": "c72a9f38268e5c7c16266271ef945ce9dea2aaee534872762361f1e854512bfa",
+          "nextTextSha256": "b29bb8d776f959a0547b0ae480e815d31a17f06083d883ad03bd6c85dddbeb87"
+        }
+      ]
+    },
+    {
+      "id": "paper-institution-example",
+      "title": "A library-led institutional blueprint",
+      "source": "papers/institutional-blueprint-example.md",
+      "group": "Public research",
+      "url": "https://github.com/Ethical-Tech-CoLab/commons-collective/blob/6ed823c3f96a8760c0b6d4e5664326d21af5b4da/papers/institutional-blueprint-example.md",
+      "words": 2313,
+      "priorVersionWords": 687,
+      "reviewWordExposures": 3000,
+      "sourceSha256": "11b7867de20154b167161203acec2ece307509ca849aa0ac03cc81f43ce7c759",
+      "versions": [
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "sourceSha256": "00f96f3c9950650c3a1d028850fd20da5918e2b7a383af2e72a62c82e4b81420",
+          "words": 2307,
+          "changedSections": 0,
+          "addedSections": 10
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "sourceSha256": "11b7867de20154b167161203acec2ece307509ca849aa0ac03cc81f43ce7c759",
+          "words": 2313,
+          "changedSections": 4,
+          "addedSections": 0
+        }
+      ],
+      "changes": [
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "preamble",
+          "title": "Title and preamble",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 72,
+          "priorTextSha256": null,
+          "nextTextSha256": "3ceafaa50e66675485efc3fd0f79c841ae660d59abbf1858d4fc7631309b9631"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "abstract",
+          "title": "Abstract",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 108,
+          "priorTextSha256": null,
+          "nextTextSha256": "7dda138899813cbfb76aff210ac38d54926bde5f09b4ab15875683c482e5c5df"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "founding-choice-and-public-purpose",
+          "title": "Founding choice and public purpose",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 185,
+          "priorTextSha256": null,
+          "nextTextSha256": "088399c22b4df7036d70f4bede2c9e11e6c1500978955ca270533cb99e39398d"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "customers-services-and-the-open-boundary",
+          "title": "Customers, services, and the open boundary",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 263,
+          "priorTextSha256": null,
+          "nextTextSha256": "4efe89b826a3733a07ed68bdaefaa30f79658e94ce9f11c85b983a930a218780"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "membership-and-governing-bodies",
+          "title": "Membership and governing bodies",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 323,
+          "priorTextSha256": null,
+          "nextTextSha256": "83b45686908316db0e93492a7a1b40e311dd1835114444303add79ccd83358ce"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "six-functions-and-an-authority-matrix",
+          "title": "Six functions and an authority matrix",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 277,
+          "priorTextSha256": null,
+          "nextTextSha256": "a1fc226dee6bd4605e2880651bc5a4cdd50eb22a66fd614b90d265becac6871d"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "contracts-alice-and-bob-and-enforceable-exit",
+          "title": "Contracts, Alice and Bob, and enforceable exit",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 326,
+          "priorTextSha256": null,
+          "nextTextSha256": "94f6a8600e750d610f4bd2cd3f291ea19d4433086e7728c882d7c1e1d9c8972c"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "separate-accounts-and-conditional-economics",
+          "title": "Separate accounts and conditional economics",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 264,
+          "priorTextSha256": null,
+          "nextTextSha256": "3395d7f44c5c95efd37272c7c8851a5e0df7a53c80cc467e7d5507c5f8cf6be7"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "delivery-and-stopping-gates",
+          "title": "Delivery and stopping gates",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 322,
+          "priorTextSha256": null,
+          "nextTextSha256": "1a3b360ef611e14f9716791fc5d7889fa5ec240dad2f8d88ca0ced9700af3090"
+        },
+        {
+          "commit": "1f07d0eb3bed3a62a61a66d7fdb684044489b72c",
+          "at": "2026-09-19T18:54:12.000Z",
+          "section": "counterfactuals-and-limitations",
+          "title": "Counterfactuals and limitations",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 167,
+          "priorTextSha256": null,
+          "nextTextSha256": "f1b1d17725040ef091bbe1dbfc1bcc4ed250fcb67f66351e84ba8c95ab00a8bc"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "preamble",
+          "title": "Title and preamble",
+          "change": "changed",
+          "priorWords": 72,
+          "nextWords": 72,
+          "priorTextSha256": "3ceafaa50e66675485efc3fd0f79c841ae660d59abbf1858d4fc7631309b9631",
+          "nextTextSha256": "a14948f614b1f4dfb69d81b7617779153ff3f3e37bd3bdafe7fe160b13b82c1b"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "founding-choice-and-public-purpose",
+          "title": "Founding choice and public purpose",
+          "change": "changed",
+          "priorWords": 185,
+          "nextWords": 186,
+          "priorTextSha256": "088399c22b4df7036d70f4bede2c9e11e6c1500978955ca270533cb99e39398d",
+          "nextTextSha256": "5998df89cbbc03b229127df14675afd7c2c706d78abe2362fea3d39a968b8436"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "customers-services-and-the-open-boundary",
+          "title": "Customers, services, and the open boundary",
+          "change": "changed",
+          "priorWords": 263,
+          "nextWords": 265,
+          "priorTextSha256": "4efe89b826a3733a07ed68bdaefaa30f79658e94ce9f11c85b983a930a218780",
+          "nextTextSha256": "7cfc2b19512730b8cc2e1ccca3e4e257dc951425634ead3d5fc6c50b318f44d8"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "counterfactuals-and-limitations",
+          "title": "Counterfactuals and limitations",
+          "change": "changed",
+          "priorWords": 167,
+          "nextWords": 170,
+          "priorTextSha256": "f1b1d17725040ef091bbe1dbfc1bcc4ed250fcb67f66351e84ba8c95ab00a8bc",
+          "nextTextSha256": "76560b887986b6a1b3036fcd5dc4b9bb0844a443114f29cb314d133d6f346bbf"
+        }
+      ]
+    },
+    {
+      "id": "study-concept",
+      "title": "Simulation concept",
+      "source": "agentic-model/CONCEPT-IDEA.md",
+      "group": "Repository study documents",
+      "url": "https://github.com/Ethical-Tech-CoLab/commons-collective/blob/6ed823c3f96a8760c0b6d4e5664326d21af5b4da/agentic-model/CONCEPT-IDEA.md",
+      "words": 11750,
+      "priorVersionWords": 5530,
+      "reviewWordExposures": 17280,
+      "sourceSha256": "88e076615d8f9dfbbe6503fbbc129de561ba16945e20d42c8bd9088b29d0c6df",
+      "versions": [
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "sourceSha256": "7ee358774eb07840305d29d06b3fe45bbc7e1f06cff61a6702b17b51f75db94a",
+          "words": 11427,
+          "changedSections": 0,
+          "addedSections": 20
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "sourceSha256": "b2d7ed80f94c7ecece3f882aae6299854317ace6575dad5be5a5ba8c248095f9",
+          "words": 11680,
+          "changedSections": 5,
+          "addedSections": 0
+        },
+        {
+          "commit": "071939d6943a76dc18c3b0ae7a9747d68a7b81a7",
+          "at": "2026-09-19T23:45:22.000Z",
+          "sourceSha256": "7bf797f587a8522432d5ddec08d3edfc91e18522eed6b3da6416f08c7408e755",
+          "words": 11732,
+          "changedSections": 1,
+          "addedSections": 0
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "sourceSha256": "88e076615d8f9dfbbe6503fbbc129de561ba16945e20d42c8bd9088b29d0c6df",
+          "words": 11750,
+          "changedSections": 3,
+          "addedSections": 0
+        }
+      ],
+      "changes": [
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "preamble",
+          "title": "Title and preamble",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 4,
+          "priorTextSha256": null,
+          "nextTextSha256": "4e55c4a9bbfed004e80e08261b1a6b43e9ae01a06bdee6227616aad023e9d042"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "a-concept-for-an-agent-based-institutional-laboratory-with-monte-carlo-experiments",
+          "title": "A concept for an agent-based institutional laboratory with Monte Carlo experiments",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 107,
+          "priorTextSha256": null,
+          "nextTextSha256": "121558d4c4e51142c3e4f934dfdbae90c5de6e4a8217dea2e43c70882584e835"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "decision-and-purpose",
+          "title": "Decision and purpose",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 435,
+          "priorTextSha256": null,
+          "nextTextSha256": "ec61e83e1c35c461714c475dcec57f45ba0c6026b0e7c80ad222997324404de4"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "what-the-study-must-explain",
+          "title": "What the study must explain",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 390,
+          "priorTextSha256": null,
+          "nextTextSha256": "bb458c6fa18a4064bdc32c9d2625042d57be0713c3b92278db815e4dc2649200"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "scope-enough-institution-not-the-whole-economy",
+          "title": "Scope: enough institution, not the whole economy",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 497,
+          "priorTextSha256": null,
+          "nextTextSha256": "c1628013c63c72fe5b4bf5fd14ef6d6dbf4b89788026147e9d93eb6422dd5fbe"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "ontology-four-meanings-of-agent-must-not-be-mixed",
+          "title": "Ontology: four meanings of \"agent\" must not be mixed",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 655,
+          "priorTextSha256": null,
+          "nextTextSha256": "2e8d5424dbe3141813417235d63db8748842d2de2757f1009fb41d6c24555627"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "knowledge-and-rights-a-multidimensional-spectrum",
+          "title": "Knowledge and rights: a multidimensional spectrum",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 314,
+          "priorTextSha256": null,
+          "nextTextSha256": "a7d640a74d7f26e0697512e184d1658c504e5e138b8f1a63fda5370e7f2489e2"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "proposed-architecture-and-naming",
+          "title": "Proposed architecture and naming",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 274,
+          "priorTextSha256": null,
+          "nextTextSha256": "72c27790a58d415c322dbbee338e9d0d5d54807ae07884e871dab44c1fd68752"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "time-tick-model-actor-activation-and-world-transitions",
+          "title": "Time-tick model, actor activation, and world transitions",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 1183,
+          "priorTextSha256": null,
+          "nextTextSha256": "31c2bce50a219e2001c7d36e0b4ab572085dc957f60964a2e9aff00dc9f088ba"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "variable-catalogue-and-control-discipline",
+          "title": "Variable catalogue and control discipline",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 1931,
+          "priorTextSha256": null,
+          "nextTextSha256": "7044e11587861f0e592161f4ce814aa8e71067dd96209130ebc83e7d2661240c"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "accounting-and-outcome-definitions",
+          "title": "Accounting and outcome definitions",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 401,
+          "priorTextSha256": null,
+          "nextTextSha256": "e18c5110cfbe7d823a3aef891ab29fd70a5b738a1ff24374368a80d2a8c971be"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "monte-carlo-and-sensitivity-the-experiment-is-the-unit-of-evidence",
+          "title": "Monte Carlo and sensitivity: the experiment is the unit of evidence",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 1007,
+          "priorTextSha256": null,
+          "nextTextSha256": "dae2a0c7b8bb3e4763159fef9d33a4417d821a23bbd424bb4f69cc9272f63dd3"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "alice-and-bob-a-trace-a-reviewer-can-follow",
+          "title": "Alice and Bob: a trace a reviewer can follow",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 354,
+          "priorTextSha256": null,
+          "nextTextSha256": "2b081d81397603095baaf1a01d4e2a2af6294a295e2b54ec3fb281aca29826a6"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "visual-design-explain-mechanisms-and-expose-uncertainty",
+          "title": "Visual design: explain mechanisms and expose uncertainty",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 424,
+          "priorTextSha256": null,
+          "nextTextSha256": "a19c5712e30a8ab4c3bbd02949d3d407ca5c3a815f929f104e6d072b01a11d17"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "agentic-execution-without-delegated-scientific-authority",
+          "title": "Agentic execution without delegated scientific authority",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 489,
+          "priorTextSha256": null,
+          "nextTextSha256": "1dccbb3aeadafa33225beb09f1d347bebc9e6dc3e2a34d681ce9cfcf394df3c1"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "verification-and-validation-different-claims-different-evidence",
+          "title": "Verification and validation: different claims, different evidence",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 823,
+          "priorTextSha256": null,
+          "nextTextSha256": "30c9fac1bcd40a659ce880a8318e147a6cc6ddb0e6e9c66e1fc44dc6171945df"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "reproducibility-and-proposed-research-objects",
+          "title": "Reproducibility and proposed research objects",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 216,
+          "priorTextSha256": null,
+          "nextTextSha256": "d037b1acfcbae026e490dfb03acd84c7d00dbb46022ca2cb54c9bf9f18c68c1a"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "main-failure-risks-and-countermeasures",
+          "title": "Main failure risks and countermeasures",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 184,
+          "priorTextSha256": null,
+          "nextTextSha256": "4ce340bf0036e91800e677e010214f45932cf54ce0d046bf656b71adabd4b437"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "what-review-should-decide-before-specification",
+          "title": "What review should decide before specification",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 247,
+          "priorTextSha256": null,
+          "nextTextSha256": "b2c8e5be9963dedbfcd65bcf0dc1db918618fe19d62f4bd1a70ccffd040fc5ff"
+        },
+        {
+          "commit": "cc3dc21291c5d4c40447a598cd876c5abf78c06b",
+          "at": "2026-09-19T22:06:32.000Z",
+          "section": "source-and-provenance-register",
+          "title": "Source and provenance register",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 1492,
+          "priorTextSha256": null,
+          "nextTextSha256": "c6f5a66acd3d7054ea5a721a132f0cd6e7d812852800c37aa9dfa478c051018c"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "a-concept-for-an-agent-based-institutional-laboratory-with-monte-carlo-experiments",
+          "title": "A concept for an agent-based institutional laboratory with Monte Carlo experiments",
+          "change": "changed",
+          "priorWords": 107,
+          "nextWords": 129,
+          "priorTextSha256": "121558d4c4e51142c3e4f934dfdbae90c5de6e4a8217dea2e43c70882584e835",
+          "nextTextSha256": "4213023818eb30ebf136833ef5fcd3ba3c2d8ccf9024b685a671e8371d0228a9"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "decision-and-purpose",
+          "title": "Decision and purpose",
+          "change": "changed",
+          "priorWords": 435,
+          "nextWords": 450,
+          "priorTextSha256": "ec61e83e1c35c461714c475dcec57f45ba0c6026b0e7c80ad222997324404de4",
+          "nextTextSha256": "55fba2e47f5538142f97114fab3d16d8df69b39f5f43f6e2ee8fd1f3d7851b22"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "scope-enough-institution-not-the-whole-economy",
+          "title": "Scope: enough institution, not the whole economy",
+          "change": "changed",
+          "priorWords": 497,
+          "nextWords": 671,
+          "priorTextSha256": "c1628013c63c72fe5b4bf5fd14ef6d6dbf4b89788026147e9d93eb6422dd5fbe",
+          "nextTextSha256": "ee1b0e5fefce1b5be3b0fad4e6c11ca48226ea0c27c373b60b8f2cdacf125295"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "monte-carlo-and-sensitivity-the-experiment-is-the-unit-of-evidence",
+          "title": "Monte Carlo and sensitivity: the experiment is the unit of evidence",
+          "change": "changed",
+          "priorWords": 1007,
+          "nextWords": 1026,
+          "priorTextSha256": "dae2a0c7b8bb3e4763159fef9d33a4417d821a23bbd424bb4f69cc9272f63dd3",
+          "nextTextSha256": "b04373900f8792fc912a2a0905ea779fd3feb7460959948a479d19c9a9fccea2"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "what-review-should-decide-before-specification",
+          "title": "What review should decide before specification",
+          "change": "changed",
+          "priorWords": 247,
+          "nextWords": 270,
+          "priorTextSha256": "b2c8e5be9963dedbfcd65bcf0dc1db918618fe19d62f4bd1a70ccffd040fc5ff",
+          "nextTextSha256": "bd7525290b421cb25eb614fa3b70ab5ea5d3858b8ba410776b9efe41728d8f3b"
+        },
+        {
+          "commit": "071939d6943a76dc18c3b0ae7a9747d68a7b81a7",
+          "at": "2026-09-19T23:45:22.000Z",
+          "section": "a-concept-for-an-agent-based-institutional-laboratory-with-monte-carlo-experiments",
+          "title": "A concept for an agent-based institutional laboratory with Monte Carlo experiments",
+          "change": "changed",
+          "priorWords": 129,
+          "nextWords": 181,
+          "priorTextSha256": "4213023818eb30ebf136833ef5fcd3ba3c2d8ccf9024b685a671e8371d0228a9",
+          "nextTextSha256": "22130b8c6dc0cd6c3b9cfda92e1b6de2db654d9df7c7c6442b40ab8593148044"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "variable-catalogue-and-control-discipline",
+          "title": "Variable catalogue and control discipline",
+          "change": "changed",
+          "priorWords": 1931,
+          "nextWords": 1948,
+          "priorTextSha256": "7044e11587861f0e592161f4ce814aa8e71067dd96209130ebc83e7d2661240c",
+          "nextTextSha256": "7688b596101cf0cc7a9065d1f1dc338898d068b905e24b42664e1d6e0a9bcb20"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "alice-and-bob-a-trace-a-reviewer-can-follow",
+          "title": "Alice and Bob: a trace a reviewer can follow",
+          "change": "changed",
+          "priorWords": 354,
+          "nextWords": 351,
+          "priorTextSha256": "2b081d81397603095baaf1a01d4e2a2af6294a295e2b54ec3fb281aca29826a6",
+          "nextTextSha256": "e864f6dec2556bb57d638df89c10a8720ae981ad3c2a16ee80297d2cca9e891e"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "verification-and-validation-different-claims-different-evidence",
+          "title": "Verification and validation: different claims, different evidence",
+          "change": "changed",
+          "priorWords": 823,
+          "nextWords": 827,
+          "priorTextSha256": "30c9fac1bcd40a659ce880a8318e147a6cc6ddb0e6e9c66e1fc44dc6171945df",
+          "nextTextSha256": "659c3127538fcd6e8d71ef2393e55fd79aae4df98f7b2b8dedefded510dbc966"
+        }
+      ]
+    },
+    {
+      "id": "study-specification",
+      "title": "Simulation specification",
+      "source": "agentic-model/SPECIFICATION.md",
+      "group": "Repository study documents",
+      "url": "https://github.com/Ethical-Tech-CoLab/commons-collective/blob/6ed823c3f96a8760c0b6d4e5664326d21af5b4da/agentic-model/SPECIFICATION.md",
+      "words": 10702,
+      "priorVersionWords": 788,
+      "reviewWordExposures": 11490,
+      "sourceSha256": "441947892b69a18a327c2005eee279880350b3e390f38056b97d8d9e5668058a",
+      "versions": [
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "sourceSha256": "ffa6a934dc1679253e11a3ba1669d35e312e41acb984b730ccb7d3509b0afe53",
+          "words": 9655,
+          "changedSections": 0,
+          "addedSections": 16
+        },
+        {
+          "commit": "071939d6943a76dc18c3b0ae7a9747d68a7b81a7",
+          "at": "2026-09-19T23:45:22.000Z",
+          "sourceSha256": "2fe5a5219935f056ce9e6faae50b87c30aaf3e42a1f4fc1fe76fd17472fb55b3",
+          "words": 9863,
+          "changedSections": 1,
+          "addedSections": 0
+        },
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "sourceSha256": "c0d8812823bb43dc1bef151b544eac1bd24c3cf16a4f6694eaae48fdcaba5dd2",
+          "words": 10415,
+          "changedSections": 0,
+          "addedSections": 1
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "sourceSha256": "441947892b69a18a327c2005eee279880350b3e390f38056b97d8d9e5668058a",
+          "words": 10702,
+          "changedSections": 1,
+          "addedSections": 1
+        }
+      ],
+      "changes": [
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "preamble",
+          "title": "Title and preamble",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 157,
+          "priorTextSha256": null,
+          "nextTextSha256": "aaf7c9bf5cafaf7cb7e3b6f9dd0cf363db3a912935413fca3b72eb088671763f"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s01-scope-and-required-models",
+          "title": "S01: Scope and required models",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 567,
+          "priorTextSha256": null,
+          "nextTextSha256": "17675e523bbe40d856f3aef8d63b91144bdf66a99de9cdb52696f14c015ab806"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s02-architecture-and-domain-module-contract",
+          "title": "S02: Architecture and domain-module contract",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 312,
+          "priorTextSha256": null,
+          "nextTextSha256": "72692bf48f1c23bce491d0e6fc5422305cf9b4f05873cd88774059af9e6a7266"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s03-configuration-state-and-artifact-schemas",
+          "title": "S03: Configuration, state, and artifact schemas",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 1045,
+          "priorTextSha256": null,
+          "nextTextSha256": "ef642ea0275094be85d33e13753e48a1fed367979afee76d271223c304273198"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s04-time-tick-randomness-and-policy-contracts",
+          "title": "S04: Time-tick, randomness, and policy contracts",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 763,
+          "priorTextSha256": null,
+          "nextTextSha256": "4dbcf4151e9648d3078e87bc539f9c7ab69aa5bf9ea5b4374603803ba399fe85"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s05-rights-governance-contracts-and-money",
+          "title": "S05: Rights, governance, contracts, and money",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 631,
+          "priorTextSha256": null,
+          "nextTextSha256": "14e15dbb31e3650f29be02a93d24c703f45fb0bd0c4dd208c02f868a3b910f6f"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s06-direct-ai-commons-collective-model-contract",
+          "title": "S06: Direct AI Commons Collective model contract",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 2180,
+          "priorTextSha256": null,
+          "nextTextSha256": "cdaaccdc03757ee7a1886e8e4ccac9b108e9ee2007dfac6ee3f6ce9796b5b2de"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s07-library-model-contract",
+          "title": "S07: Library model contract",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 983,
+          "priorTextSha256": null,
+          "nextTextSha256": "4f7d3d3adf087ecad536ad20e10c15e371357d4923658e5ac06d5058f5c3fc08"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s08-monte-carlo-and-cross-model-experiment-contract",
+          "title": "S08: Monte Carlo and cross-model experiment contract",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 422,
+          "priorTextSha256": null,
+          "nextTextSha256": "4dd8312cf1d4a68bd8087e791663eb715525d5aa3e7f71831e73b37114122e07"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s09-model-dropdown-and-complete-reset-transaction",
+          "title": "S09: Model dropdown and complete reset transaction",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 733,
+          "priorTextSha256": null,
+          "nextTextSha256": "78dbafd7b724dc1b97068dfa4b7f00d36b88b791c636e24032ab54e7391027bc"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s10-review-interface-and-visual-contract",
+          "title": "S10: Review interface and visual contract",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 289,
+          "priorTextSha256": null,
+          "nextTextSha256": "df3a671464a84a0d4149f4fb47ef5d6e21ef2f6ac487a8e1e6868189814f65c7"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s11-metrics-result-status-and-claims",
+          "title": "S11: Metrics, result status, and claims",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 223,
+          "priorTextSha256": null,
+          "nextTextSha256": "514805f73fdafbc680aeb72f10a74f72d7faa3c6a1ec027cd1c2f91f662856a2"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s12-storage-privacy-ai-cost-and-execution-boundary",
+          "title": "S12: Storage, privacy, AI cost, and execution boundary",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 246,
+          "priorTextSha256": null,
+          "nextTextSha256": "fc04c14c74ea0403a63f6e4bf59a6d23a369b6436d40039676b7c5afb7efc9ad"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s13-acceptance-and-validation-matrix",
+          "title": "S13: Acceptance and validation matrix",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 673,
+          "priorTextSha256": null,
+          "nextTextSha256": "0d2950ec3a8475ff9820759a86f2ed9564e13cb3ae932814781d7dd47e75123e"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s14-resource-limits-and-operating-profile",
+          "title": "S14: Resource limits and operating profile",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 161,
+          "priorTextSha256": null,
+          "nextTextSha256": "0f52d211ece56e52e517a8d0d1848b28935274161727886bda5c68950f34682a"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "s15-review-gates-and-sources",
+          "title": "S15: Review gates and sources",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 270,
+          "priorTextSha256": null,
+          "nextTextSha256": "db79ab3a5ae5422482f6efa52495a80c028fb63c487787cda7cecc6eef5f8aa7"
+        },
+        {
+          "commit": "071939d6943a76dc18c3b0ae7a9747d68a7b81a7",
+          "at": "2026-09-19T23:45:22.000Z",
+          "section": "preamble",
+          "title": "Title and preamble",
+          "change": "changed",
+          "priorWords": 157,
+          "nextWords": 365,
+          "priorTextSha256": "aaf7c9bf5cafaf7cb7e3b6f9dd0cf363db3a912935413fca3b72eb088671763f",
+          "nextTextSha256": "7fcce6b8bf2be108b6b66b36dd52144b18e08e89998b88608f020e7d6f421c70"
+        },
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "section": "s16-staffed-startup-finance-and-capital-availability",
+          "title": "S16: Staffed startup finance and capital availability",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 552,
+          "priorTextSha256": null,
+          "nextTextSha256": "b656efe7aeefb820a36bc1aa36f708717a208a7613425074bee397e0e1c68167"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "s05-rights-governance-contracts-and-money",
+          "title": "S05: Rights, governance, contracts, and money",
+          "change": "changed",
+          "priorWords": 631,
+          "nextWords": 656,
+          "priorTextSha256": "14e15dbb31e3650f29be02a93d24c703f45fb0bd0c4dd208c02f868a3b910f6f",
+          "nextTextSha256": "32cbda8071358feb135a4c194942c60bed96975b6039d34f289ef97097b8f57b"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "s17-one-financial-source-and-public-trial-evidence",
+          "title": "S17: One financial source and public trial evidence",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 262,
+          "priorTextSha256": null,
+          "nextTextSha256": "6233539cdf2efe1a865a9df320ba341ab887fb502aa49bb8c681b107eaa2c420"
+        }
+      ]
+    },
+    {
+      "id": "study-plan",
+      "title": "Implementation plan",
+      "source": "agentic-model/PLAN.md",
+      "group": "Repository study documents",
+      "url": "https://github.com/Ethical-Tech-CoLab/commons-collective/blob/6ed823c3f96a8760c0b6d4e5664326d21af5b4da/agentic-model/PLAN.md",
+      "words": 2277,
+      "priorVersionWords": 48,
+      "reviewWordExposures": 2325,
+      "sourceSha256": "d128d9f29d998254d821f80d9d6d5814fe9d03649a38a6ccca8a0ee94a374e33",
+      "versions": [
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "sourceSha256": "4c6c2962916e67101612e15cb281283534946b1587ffa69c303556a5dc2d627a",
+          "words": 1743,
+          "changedSections": 0,
+          "addedSections": 8
+        },
+        {
+          "commit": "071939d6943a76dc18c3b0ae7a9747d68a7b81a7",
+          "at": "2026-09-19T23:45:22.000Z",
+          "sourceSha256": "a5ad7281d6bfc96d8661417a955006e5ff9b0a4277382a3d2d65d7db9dd94433",
+          "words": 2038,
+          "changedSections": 1,
+          "addedSections": 1
+        },
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "sourceSha256": "88a388a16d2f917c69b29da9d6ff41a0ccd9facff85770842a4f768f2d5cd80b",
+          "words": 2181,
+          "changedSections": 0,
+          "addedSections": 1
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "sourceSha256": "d128d9f29d998254d821f80d9d6d5814fe9d03649a38a6ccca8a0ee94a374e33",
+          "words": 2277,
+          "changedSections": 0,
+          "addedSections": 1
+        }
+      ],
+      "changes": [
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "preamble",
+          "title": "Title and preamble",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 48,
+          "priorTextSha256": null,
+          "nextTextSha256": "a42419dd5f91016cf0fd36823b63d9b1cafacb8e1d732a1d3d4922fcc30b31a1"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "objective-and-scope-decision",
+          "title": "Objective and scope decision",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 157,
+          "priorTextSha256": null,
+          "nextTextSha256": "d13260382eeeb073ec2b63c81cfb055f14d36c59f2dedae2c2678720f2c50e53"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "delivery-principles",
+          "title": "Delivery principles",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 113,
+          "priorTextSha256": null,
+          "nextTextSha256": "34606a40e8762d66935bc8f75faaf8645975b3fd0df5409243358957ce2619e9"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "phase-map-and-exit-gates",
+          "title": "Phase map and exit gates",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 987,
+          "priorTextSha256": null,
+          "nextTextSha256": "e3368a7e05bba0cf2d746dcc9a93450ffb6c1e7274564ac52e700c94e19289b7"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "dependency-summary",
+          "title": "Dependency summary",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 42,
+          "priorTextSha256": null,
+          "nextTextSha256": "35ff46ae23d3636d2584e39f229204fdf0c51b670a549d4319ead7dacfca9c78"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "work-and-review-roles",
+          "title": "Work and review roles",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 161,
+          "priorTextSha256": null,
+          "nextTextSha256": "3584783cb8082efe373edb6bb25296d133072badcc8f1e1a7f76aeb02f3dbab6"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "risks-that-change-the-plan",
+          "title": "Risks that change the plan",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 172,
+          "priorTextSha256": null,
+          "nextTextSha256": "a2b13fd86df29f17330a58f5d4825077da70b01237098a627f37c2c482ca664e"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "validation-of-this-documentation-stage",
+          "title": "Validation of this documentation stage",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 63,
+          "priorTextSha256": null,
+          "nextTextSha256": "a7095c4f58702b2b009af18ddcb17d11bc1d9e8eb017dd140ab0fdbc0aec3ca9"
+        },
+        {
+          "commit": "071939d6943a76dc18c3b0ae7a9747d68a7b81a7",
+          "at": "2026-09-19T23:45:22.000Z",
+          "section": "preamble",
+          "title": "Title and preamble",
+          "change": "changed",
+          "priorWords": 48,
+          "nextWords": 53,
+          "priorTextSha256": "a42419dd5f91016cf0fd36823b63d9b1cafacb8e1d732a1d3d4922fcc30b31a1",
+          "nextTextSha256": "3477791a3573af18941dc0bbc986bdad3135d131bf3bf54bb5f59f8cafca986a"
+        },
+        {
+          "commit": "071939d6943a76dc18c3b0ae7a9747d68a7b81a7",
+          "at": "2026-09-19T23:45:22.000Z",
+          "section": "browser-build-status",
+          "title": "Browser build status",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 290,
+          "priorTextSha256": null,
+          "nextTextSha256": "6cbed1ba51104d6dbc486b7b40f2524e22bde3cc789a0eab7b74c6c9e2270c1e"
+        },
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "section": "staffed-startup-finance-extension",
+          "title": "Staffed startup-finance extension",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 143,
+          "priorTextSha256": null,
+          "nextTextSha256": "729ec23d234149e19e67db3ab4c21d5088c7eb215b702154a58833fd49080363"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "reconciled-financial-summary-and-trial-publication",
+          "title": "Reconciled financial summary and trial publication",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 96,
+          "priorTextSha256": null,
+          "nextTextSha256": "c9e5a7a12c562d6b701c77cd3f33fd7f2d40216f0bce6ed2d2921ccfd3d85163"
+        }
+      ]
+    },
+    {
+      "id": "study-backlog",
+      "title": "Implementation backlog",
+      "source": "agentic-model/BACKLOG.md",
+      "group": "Repository study documents",
+      "url": "https://github.com/Ethical-Tech-CoLab/commons-collective/blob/6ed823c3f96a8760c0b6d4e5664326d21af5b4da/agentic-model/BACKLOG.md",
+      "words": 2478,
+      "priorVersionWords": 90,
+      "reviewWordExposures": 2568,
+      "sourceSha256": "39c06bb53f7b73b0422f478984db66f47bb709516f7b5027eff58690b6bdcb90",
+      "versions": [
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "sourceSha256": "96c36fbb306802924dc1192b029a6e33be2aa7c69d62d7373dd3bb03667e8677",
+          "words": 2076,
+          "changedSections": 0,
+          "addedSections": 27
+        },
+        {
+          "commit": "071939d6943a76dc18c3b0ae7a9747d68a7b81a7",
+          "at": "2026-09-19T23:45:22.000Z",
+          "sourceSha256": "9c8544254230af4b3510f5c8600524b869b6934b741a879aa7a8d1bfa5b895b3",
+          "words": 2171,
+          "changedSections": 1,
+          "addedSections": 1
+        },
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "sourceSha256": "bbf7df2e66d66982631a8f4845c9e4cf32b36f818b970da6aa0c24e594489b8d",
+          "words": 2299,
+          "changedSections": 0,
+          "addedSections": 1
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "sourceSha256": "39c06bb53f7b73b0422f478984db66f47bb709516f7b5027eff58690b6bdcb90",
+          "words": 2478,
+          "changedSections": 0,
+          "addedSections": 3
+        }
+      ],
+      "changes": [
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "preamble",
+          "title": "Title and preamble",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 90,
+          "priorTextSha256": null,
+          "nextTextSha256": "2b64696367d5e5239197c8e8966d9d751a6f31702ec3fb0d7b3b37accfc26847"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b01-freeze-scope-and-reviewed-defaults",
+          "title": "B01: Freeze scope and reviewed defaults",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 83,
+          "priorTextSha256": null,
+          "nextTextSha256": "e0c9c3733f8e826a4d2bbf9b4aedaa38c654ea63ddf6e5e0f86194246d3acf40"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b02-model-registry-parameter-metadata-and-complete-factories",
+          "title": "B02: Model registry, parameter metadata, and complete factories",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 65,
+          "priorTextSha256": null,
+          "nextTextSha256": "a99a4587ab4863ce7ac541eb7b451dfa8e5c6ea5b07dd6440898270154b71a02"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b03-tick-scheduler-and-phase-commit-kernel",
+          "title": "B03: Tick scheduler and phase-commit kernel",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 70,
+          "priorTextSha256": null,
+          "nextTextSha256": "f494f87c59158342189c500a8f5952114af0ea679b6e0cabed3888993c93aed5"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b04-named-random-streams-and-artifact-identity",
+          "title": "B04: Named random streams and artifact identity",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 70,
+          "priorTextSha256": null,
+          "nextTextSha256": "1b1a57534532cc222f6a957c7bccbf6ec63ed3efa491e70a3ead015a9167f21e"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b05-protected-ledgers-and-accounting-parity",
+          "title": "B05: Protected ledgers and accounting parity",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 72,
+          "priorTextSha256": null,
+          "nextTextSha256": "9a8ab9789b23df2c64c5b5dea9ed583d84e126b4988f4491221e31f0d8e740ed"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b06-rights-mandates-governance-and-complaints",
+          "title": "B06: Rights, mandates, governance, and complaints",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 73,
+          "priorTextSha256": null,
+          "nextTextSha256": "df9886abab705c19626456f1aedb0909f788fb02ff60806b7791a1e02055e580"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b07-behavioral-families-and-deterministic-stochastic-adapters",
+          "title": "B07: Behavioral families and deterministic/stochastic adapters",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 71,
+          "priorTextSha256": null,
+          "nextTextSha256": "7d2cb135905baea192fe3ef37dd532a7d2ecb349274a3b6c0194fb916799553f"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b08-direct-ai-procurement-and-switching",
+          "title": "B08: Direct AI procurement and switching",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 83,
+          "priorTextSha256": null,
+          "nextTextSha256": "e85c9b73d3b4e3a4e6b0abc702a99e1b7849b78a32630f2c434cb153990e9bbd"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b09-authorized-contributions-and-commons-funding",
+          "title": "B09: Authorized contributions and commons funding",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 84,
+          "priorTextSha256": null,
+          "nextTextSha256": "a8f684dc01994c5350dce2aad17be64d9b24518b5a751a1b8f99e4fce48f6a06"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b10-direct-ai-model-integration-and-negative-cases",
+          "title": "B10: Direct AI model integration and negative cases",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 85,
+          "priorTextSha256": null,
+          "nextTextSha256": "9ef31eae2b0ef5b0dceebc1bbf2a853bd7eb3a0e9ed3ad85d59c944c92bb75c9"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b11-library-resource-and-maintenance-dynamics",
+          "title": "B11: Library resource and maintenance dynamics",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 71,
+          "priorTextSha256": null,
+          "nextTextSha256": "bbf6300c4f9514227bebcc13ae4f8a065b9372a28a0d4eecd8638296b41bb61a"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b12-library-procurement-payments-and-renewal",
+          "title": "B12: Library procurement, payments, and renewal",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 70,
+          "priorTextSha256": null,
+          "nextTextSha256": "ac6882bc4f6d8f85f4e33a065224821d51026d16fd9a90496436ec97ba092365"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b13-two-model-conformance-suite",
+          "title": "B13: Two-model conformance suite",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 65,
+          "priorTextSha256": null,
+          "nextTextSha256": "2647b4786d231bee416b184485b609fa217e88b92f213d86c720569ebb3f3f35"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b14-active-scenario-root-store-and-reset-transaction",
+          "title": "B14: Active-scenario root store and reset transaction",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 83,
+          "priorTextSha256": null,
+          "nextTextSha256": "f5768950c7da9ab88491dab15119141dfd31a83bf71bce02c8bba968ce14a11f"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b15-worker-agent-and-analysis-cancellation-barriers",
+          "title": "B15: Worker, agent, and analysis cancellation barriers",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 68,
+          "priorTextSha256": null,
+          "nextTextSha256": "7183da253c48e6dfc8c14dd974256a9fc629967f239c4b2e1e538194a2cd14de"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b16-registry-driven-model-dropdown-and-controls",
+          "title": "B16: Registry-driven model dropdown and controls",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 77,
+          "priorTextSha256": null,
+          "nextTextSha256": "37f71678aeff0175b6c624350d9fa3387d2ca4d8103696656dedf5f37b2071a2"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b17-fixed-count-experiment-runner",
+          "title": "B17: Fixed-count experiment runner",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 74,
+          "priorTextSha256": null,
+          "nextTextSha256": "f20d4e1817c04755e9693f799b717306c9d1eec4a2e520dfe270626b6da875a9"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b18-metrics-paired-analysis-and-uncertainty",
+          "title": "B18: Metrics, paired analysis, and uncertainty",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 81,
+          "priorTextSha256": null,
+          "nextTextSha256": "287ed8762e42a29a6c283193ee16630f7e7ed6fe11b0fad003418952d166e6a9"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b19-explanatory-views-and-tick-replay-interface",
+          "title": "B19: Explanatory views and tick replay interface",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 67,
+          "priorTextSha256": null,
+          "nextTextSha256": "7e87164e025adc3109cfcb365b7d1cc06d4a4e313c942921416a850bbdbcf83e"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b20-immutable-storage-exports-and-explicit-loading",
+          "title": "B20: Immutable storage, exports, and explicit loading",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 73,
+          "priorTextSha256": null,
+          "nextTextSha256": "bd3d35b7c79cecdd9234f5fd08b2eee5bcabc529d3bc758eedd09561112d25d8"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b21-recorded-action-replay-and-p2-adapter-contract",
+          "title": "B21: Recorded-action replay and P2 adapter contract",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 63,
+          "priorTextSha256": null,
+          "nextTextSha256": "495334319a34e5cf64f0b6b3aba89c4bf50066035aa0d0fedcee22984b449664"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b22-optional-live-generative-agent-adapter",
+          "title": "B22: Optional live generative-agent adapter",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 86,
+          "priorTextSha256": null,
+          "nextTextSha256": "a7da7d0420c123a937a5b40ef96256a1235cc4f7fed14e5369bba88853ff30fd"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b23-accessibility-bounded-execution-and-performance",
+          "title": "B23: Accessibility, bounded execution, and performance",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 64,
+          "priorTextSha256": null,
+          "nextTextSha256": "c48a01333497a81b301579ee2bb143f28b356dada3c1aada7b2d35c931e28897"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b24-independent-model-review-and-reproducibility-bundle",
+          "title": "B24: Independent model review and reproducibility bundle",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 89,
+          "priorTextSha256": null,
+          "nextTextSha256": "c8ce35890227b967ebc51afa13596330a9ae9ad03c4f8172ef398d22c00166a5"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "b25-release-boundary-and-explicit-publication-decision",
+          "title": "B25: Release boundary and explicit publication decision",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 74,
+          "priorTextSha256": null,
+          "nextTextSha256": "d3d80d23bb4e459aceb3605199d6f4c99ae50129c45e997d12bc544270c55406"
+        },
+        {
+          "commit": "527b6e93585aab191137394c4e8a9957405ed84e",
+          "at": "2026-09-19T22:40:38.000Z",
+          "section": "traceability-and-completion-rule",
+          "title": "Traceability and completion rule",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 125,
+          "priorTextSha256": null,
+          "nextTextSha256": "0ac2069f89cd979632014ef7bd4059888c2efa358d435ccf68f522b9447319e7"
+        },
+        {
+          "commit": "071939d6943a76dc18c3b0ae7a9747d68a7b81a7",
+          "at": "2026-09-19T23:45:22.000Z",
+          "section": "preamble",
+          "title": "Title and preamble",
+          "change": "changed",
+          "priorWords": 90,
+          "nextWords": 103,
+          "priorTextSha256": "2b64696367d5e5239197c8e8966d9d751a6f31702ec3fb0d7b3b37accfc26847",
+          "nextTextSha256": "c329a80e2d7b1a8a5dd772f42f44842608ca82c9ced98372de95c617469787dd"
+        },
+        {
+          "commit": "071939d6943a76dc18c3b0ae7a9747d68a7b81a7",
+          "at": "2026-09-19T23:45:22.000Z",
+          "section": "initial-static-release-tracking",
+          "title": "Initial static release tracking",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 82,
+          "priorTextSha256": null,
+          "nextTextSha256": "452f7c6402542728403380edc2cef31e40582f8273df36103e38a3bd02527c49"
+        },
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "section": "b26-investor-capital-staffed-ramp-and-use-of-funds-projection",
+          "title": "B26: Investor capital, staffed ramp and use-of-funds projection",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 128,
+          "priorTextSha256": null,
+          "nextTextSha256": "6339e753e521732b1481f0b8eb951bf960d4231853c7ce10806499e8a0b88802"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "b27-reconcile-the-high-level-money-view-with-detailed-sources",
+          "title": "B27: Reconcile the high-level money view with detailed sources",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 74,
+          "priorTextSha256": null,
+          "nextTextSha256": "9bb37d2d403226683e0d54a2fd94309001e412cd8fe49671b6833a7285682abb"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "b28-publish-the-design-and-holdout-evidence",
+          "title": "B28: Publish the design and holdout evidence",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 62,
+          "priorTextSha256": null,
+          "nextTextSha256": "2e9f62f05ad7d8122c95c9a812d20c6e75809c0ef38b11be05353f344f011885"
+        },
+        {
+          "commit": "5e270c0edfaa4b5109312639a7167c0c43bbed7e",
+          "at": "2026-09-20T16:40:44.000Z",
+          "section": "b29-normalize-authored-punctuation",
+          "title": "B29: Normalize authored punctuation",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 43,
+          "priorTextSha256": null,
+          "nextTextSha256": "5b73f2db94178d0d0783632b7f43b07e8907f3193e0cccb72354b4c1914db91a"
+        }
+      ]
+    },
+    {
+      "id": "study-startup-funding",
+      "title": "Startup funding analysis",
+      "source": "agentic-model/STARTUP-FUNDING.md",
+      "group": "Repository study documents",
+      "url": "https://github.com/Ethical-Tech-CoLab/commons-collective/blob/6ed823c3f96a8760c0b6d4e5664326d21af5b4da/agentic-model/STARTUP-FUNDING.md",
+      "words": 1457,
+      "priorVersionWords": 0,
+      "reviewWordExposures": 1457,
+      "sourceSha256": "89dff21a905804452b07d69e01ed8030a7e0b3fbc50c960d7a4e1b01672a42c2",
+      "versions": [
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "sourceSha256": "89dff21a905804452b07d69e01ed8030a7e0b3fbc50c960d7a4e1b01672a42c2",
+          "words": 1457,
+          "changedSections": 0,
+          "addedSections": 8
+        }
+      ],
+      "changes": [
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "section": "preamble",
+          "title": "Title and preamble",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 22,
+          "priorTextSha256": null,
+          "nextTextSha256": "c9be7bffc7cd1ef44f1e5f5b9b4cbfc8ea94e24e271411d8e80c7cbaef2d3258"
+        },
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "section": "the-corrected-question",
+          "title": "The corrected question",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 130,
+          "priorTextSha256": null,
+          "nextTextSha256": "8c8f0303f98f7f0d43f152f4ff39bc092014d789875ec157b93913e4ae3c707c"
+        },
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "section": "why-the-original-operating-reference-failed",
+          "title": "Why the original operating reference failed",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 162,
+          "priorTextSha256": null,
+          "nextTextSha256": "c042cb8f8bbbaaada410844aaf05b1f1cb792ddd7455025b2ce7f369323cea76"
+        },
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "section": "two-linked-distinct-models",
+          "title": "Two linked, distinct models",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 113,
+          "priorTextSha256": null,
+          "nextTextSha256": "223b29f8c401628d11a993d55dc8ed11c4cadfaba4906ba4b9e830670cf304c3"
+        },
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "section": "illustrative-staffed-starting-plan",
+          "title": "Illustrative staffed starting plan",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 319,
+          "priorTextSha256": null,
+          "nextTextSha256": "e5e1ec0926383257f2502a9af52c68ae2c5e6ef688c6bf139135b3633a28e184"
+        },
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "section": "base-case-result-break-even-is-not-the-same-as-capital-recovery",
+          "title": "Base-case result: break-even is not the same as capital recovery",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 306,
+          "priorTextSha256": null,
+          "nextTextSha256": "7fece7e754087a2f5943983d4e7cdfef65fd3cb81b1a31aff15ce9cc70fc707f"
+        },
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "section": "monte-carlo-conditional-ranges-not-a-promise",
+          "title": "Monte Carlo: conditional ranges, not a promise",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 328,
+          "priorTextSha256": null,
+          "nextTextSha256": "3418bd017be01d20e8ff68f1e984394875485764eaf458ab0b7f76b637d142e8"
+        },
+        {
+          "commit": "989090cfbea7bc4f18f04bb07c0dfbd24e7349da",
+          "at": "2026-09-20T01:39:21.000Z",
+          "section": "reproduction-and-scope",
+          "title": "Reproduction and scope",
+          "change": "added",
+          "priorWords": 0,
+          "nextWords": 77,
+          "priorTextSha256": null,
+          "nextTextSha256": "5ddbaa66d99d7ac821bc933782973d3dbdab0f52479360610ceb4519b154183e"
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "documents": 9,
+    "currentWords": 57713,
+    "priorVersionWords": 35146,
+    "reviewWordExposures": 92859,
+    "changedSectionEvents": 61
+  },
+  "sourceMethod": {
+    "script": "scripts/capture-review-history.mjs",
+    "sha256": "37ef08e5a012a129d086531df8532418187acef6234bf7f514681dbed5ea7d2f",
+    "textMethod": "scripts/review-corpus.mjs",
+    "textMethodSha256": "96e4abb653ef8488def30a2a47b7f0661403a0f02aabda4f967af60b16b43733"
+  }
+}

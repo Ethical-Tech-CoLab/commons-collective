@@ -1,3 +1,5 @@
+import { defaultReviewInputs, estimateReview, reviewRange, reviewCardNote } from '../site/review-time-model.mjs';
+
 const CHANNELS = ['input', 'cache_read', 'cache_write', 'output'];
 const AGGREGATE = ['requests', 'tokens', 'pricedTokens', 'reasoningMetadataTokens', 'nanoAiu', 'listPriceUsdExact', 'modelWorkMs'];
 const escape = value => String(value).replace(/[&<>"']/g, char => ({
@@ -6,6 +8,8 @@ const escape = value => String(value).replace(/[&<>"']/g, char => ({
 const number = value => value.toLocaleString('en-US');
 const dollars = value => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Number(value));
 const hours = value => (value / 3_600_000).toFixed(2);
+const dateLabel = value => new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'long', day: '2-digit', timeZone: 'UTC' }).format(new Date(value));
+const clockLabel = value => `${new Date(value).toISOString().slice(11, 19)} UTC`;
 const channelName = value => ({ input: 'Input channel', cache_read: 'Cache read', cache_write: 'Cache write', output: 'Output channel' })[value];
 const roleName = value => ({ 'main-assistant': 'Main assistant', 'delegated-agents': 'Delegated agents' })[value];
 
@@ -59,16 +63,24 @@ function canonicalJson(value) {
 
 export function validateUsageAudit(data, config, upstream, adapterSha256) {
   keys(config, ['schemaVersion', 'project', 'repository', 'materialCommit', 'cutoffExclusive',
-    'cutoffReason', 'scopePolicy', 'approvedModels'], 'public capture configuration');
-  requireValue(config.schemaVersion === 1 && Array.isArray(config.approvedModels)
+    'cutoffReason', 'scopePolicy', 'approvedModels', 'timeInference'], 'public capture configuration');
+  requireValue(config.schemaVersion === 2 && Array.isArray(config.approvedModels)
     && config.approvedModels.length > 0 && config.approvedModels.every(model =>
       typeof model === 'string' && /^[A-Za-z0-9][A-Za-z0-9._:/-]{0,127}$/.test(model)), 'invalid reviewed model allowlist');
   requireValue(/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(config.repository),
     'project repository must be a public GitHub URL without credentials or query parameters');
   keys(data, ['schemaVersion', 'project', 'repository', 'generatedAt', 'scope', 'upstream', 'pricing',
     'coverage', 'integrity', 'totals', 'models', 'roles', 'modelRoles', 'channels', 'rates',
-    'days', 'dayBoundary', 'privacy', 'limitations'], 'public payload');
-  requireValue(data.schemaVersion === 1, 'unsupported schema');
+    'days', 'dayBoundary', 'privacy', 'limitations', 'timing', 'humanTime'], 'public payload');
+  requireValue(data.schemaVersion === 2, 'unsupported schema');
+  keys(config.timeInference, ['defaultIdleCutoffMinutes', 'sensitivityMinutes'], 'time-inference configuration');
+  count(config.timeInference.defaultIdleCutoffMinutes, 'default idle threshold');
+  requireValue(Array.isArray(config.timeInference.sensitivityMinutes)
+    && config.timeInference.sensitivityMinutes.length > 0
+    && config.timeInference.sensitivityMinutes.every((value, index, all) =>
+      Number.isSafeInteger(value) && value > 0 && value <= 240 && (index === 0 || value > all[index - 1]))
+    && config.timeInference.sensitivityMinutes.includes(config.timeInference.defaultIdleCutoffMinutes),
+  'time thresholds must be explicit, increasing and include the default');
   requireValue(data.project === config.project && data.repository === config.repository, 'project does not match capture configuration');
   keys(data.scope, ['policy', 'cutoffExclusive', 'cutoffReason', 'materialCommit', 'machinesObserved',
     'matchingSessions', 'sessionsWithIncludedUsage', 'matchingSessionsWithoutIncludedUsage', 'sessionFingerprints',
@@ -95,7 +107,7 @@ export function validateUsageAudit(data, config, upstream, adapterSha256) {
   requireValue(data.upstream.repository === upstream.repository && data.upstream.commit === upstream.commit
     && data.upstream.version === upstream.version, 'calculation version is not pinned to the vendored source');
   requireValue(JSON.stringify(data.upstream.functions) === JSON.stringify([
-    'store.load_events(strict=True)', 'metrics.group', 'intervals.busy_union',
+    'store.load_events(strict=True)', 'metrics.group', 'intervals.busy_union', 'intervals.sitting_intervals', 'intervals.span',
   ]), 'unexpected upstream calculation path');
   keys(data.pricing, ['nanoAiuPerCredit', 'assumedUsdPerCredit', 'invoiceMeasured', 'interpretation'], 'pricing');
   requireValue(data.pricing.nanoAiuPerCredit === '1000000000' && data.pricing.assumedUsdPerCredit === '0.01'
@@ -116,6 +128,48 @@ export function validateUsageAudit(data, config, upstream, adapterSha256) {
   requireValue(data.coverage.rowsWithNonzeroReasoningMetadata <= data.coverage.rowsWithReasoningMetadata, 'invalid reasoning coverage');
   for (const key of ['requestActiveUnionMs', 'busyBlocks', 'embeddedAgentCount']) count(data.totals[key], key);
   requireValue(data.totals.requestActiveUnionMs <= data.totals.modelWorkMs, 'union exceeds summed request time');
+  keys(data.timing, ['timeZone', 'firstRequestStartedAt', 'lastRequestCompletedAt', 'recordedSpanMs',
+    'calendarDaysInclusive', 'datesWithRecordedUsage'], 'time coverage');
+  requireValue(data.timing.timeZone === 'UTC', 'audit dates must identify the UTC boundary');
+  for (const key of ['firstRequestStartedAt', 'lastRequestCompletedAt']) {
+    requireValue(typeof data.timing[key] === 'string' && data.timing[key].endsWith('Z')
+      && Number.isFinite(Date.parse(data.timing[key])), 'invalid timing timestamp');
+  }
+  for (const key of ['recordedSpanMs', 'calendarDaysInclusive', 'datesWithRecordedUsage']) count(data.timing[key], key);
+  const firstStart = Date.parse(data.timing.firstRequestStartedAt), lastEnd = Date.parse(data.timing.lastRequestCompletedAt);
+  requireValue(firstStart <= Date.parse(data.scope.firstRecordedAt) + 1
+    && Math.abs(lastEnd - Date.parse(data.scope.lastRecordedAt)) <= 1, 'request interval coverage differs from event coverage');
+  requireValue(data.timing.recordedSpanMs === lastEnd - firstStart
+    && data.totals.requestActiveUnionMs <= data.timing.recordedSpanMs + 1, 'invalid recorded elapsed span');
+  const calendarSpan = Math.floor(Date.parse(data.timing.lastRequestCompletedAt.slice(0, 10)) / 86400000)
+    - Math.floor(Date.parse(data.timing.firstRequestStartedAt.slice(0, 10)) / 86400000) + 1;
+  requireValue(data.timing.calendarDaysInclusive === calendarSpan
+    && data.timing.datesWithRecordedUsage === data.days.length
+    && data.timing.datesWithRecordedUsage <= calendarSpan, 'calendar coverage does not reconcile');
+  keys(data.humanTime, ['method', 'actualHumanLaborMeasured', 'defaultIdleCutoffMinutes', 'engagedUnionMs',
+    'inferredHumanMs', 'sensitivity', 'interpretation'], 'human-time inference');
+  requireValue(data.humanTime.method === 'usage-calc-sitting-residual' && data.humanTime.actualHumanLaborMeasured === false,
+    'human-side residual is an inference, not measured labor');
+  requireValue(data.humanTime.defaultIdleCutoffMinutes === config.timeInference.defaultIdleCutoffMinutes,
+    'human-time headline threshold differs from configuration');
+  requireValue(Array.isArray(data.humanTime.sensitivity)
+    && data.humanTime.sensitivity.length === config.timeInference.sensitivityMinutes.length, 'missing human-time sensitivity');
+  let previousEngaged = -1, previousSittings = data.totals.requests + 1;
+  for (const [index, row] of data.humanTime.sensitivity.entries()) {
+    keys(row, ['idleCutoffMinutes', 'sittingCount', 'engagedUnionMs', 'inferredHumanMs'], 'time sensitivity row');
+    for (const [key, value] of Object.entries(row)) count(value, key);
+    requireValue(row.idleCutoffMinutes === config.timeInference.sensitivityMinutes[index], 'unexpected idle threshold');
+    requireValue(row.engagedUnionMs === data.totals.requestActiveUnionMs + row.inferredHumanMs,
+      'engaged time must equal model union plus inferred human residual');
+    requireValue(row.engagedUnionMs <= data.timing.recordedSpanMs + 1 && row.engagedUnionMs >= previousEngaged
+      && row.sittingCount > 0 && row.sittingCount <= previousSittings, 'inconsistent sitting sensitivity');
+    previousEngaged = row.engagedUnionMs; previousSittings = row.sittingCount;
+  }
+  const primaryTime = data.humanTime.sensitivity.find(row => row.idleCutoffMinutes === data.humanTime.defaultIdleCutoffMinutes);
+  requireValue(data.humanTime.engagedUnionMs === primaryTime.engagedUnionMs
+    && data.humanTime.inferredHumanMs === primaryTime.inferredHumanMs, 'headline time inference differs from its sensitivity row');
+  requireValue(typeof data.humanTime.interpretation === 'string' && data.humanTime.interpretation.length > 30,
+    'human-time interpretation is required');
   keys(data.integrity, ['sourceUsageRecordsSha256', 'captureAdapterSha256', 'captureConfigSha256', 'note'], 'integrity');
   requireValue(/^[a-f0-9]{64}$/.test(data.integrity.sourceUsageRecordsSha256), 'invalid source-data digest');
   requireValue(/^[a-f0-9]{64}$/.test(adapterSha256) && data.integrity.captureAdapterSha256 === adapterSha256,
@@ -220,27 +274,49 @@ function table(headers, rows, label) {
   </table></div>`;
 }
 
-export function renderUsageAudit(data) {
+export function renderUsageAudit(data, reviewCorpus) {
   const total = data.totals;
   const scope = data.scope;
+  const timing = data.timing, human = data.humanTime;
   const rateRows = [...data.rates].sort((a, b) => a.model.localeCompare(b.model)
     || CHANNELS.indexOf(a.channel) - CHANNELS.indexOf(b.channel)
     || Number(nano(a.nanoAiuPerToken) - nano(b.nanoAiuPerToken)));
   const metrics = [
-    ['Recorded requests', number(total.requests)],
-    ['Recorded model IDs', number(data.models.length)],
-    ['Embedded delegated agents', number(total.embeddedAgentCount)],
-    ['Output-channel tokens', number(total.tokens.output)],
-    ['USD equivalent / not a bill', dollars(total.listPriceUsdExact)],
-    ['Request-active union', `${hours(total.requestActiveUnionMs)} h`],
+    ['start-date', 'Start date (UTC)', dateLabel(timing.firstRequestStartedAt), `First inferred request start: ${clockLabel(timing.firstRequestStartedAt)}`],
+    ['last-update', 'Last update (UTC)', dateLabel(data.generatedAt), `Snapshot captured ${clockLabel(data.generatedAt)}; coverage cutoff below`],
+    ['days', 'Days in recorded span', number(timing.calendarDaysInclusive), `Inclusive UTC dates; ${(timing.recordedSpanMs / 86400000).toFixed(2)} elapsed days, not human workdays`],
+    ['requests', 'Recorded requests', number(total.requests), 'Scoped ledger events, not human messages'],
+    ['models', 'Recorded model IDs', number(data.models.length), 'Exact ledger identifiers, not inferred model names'],
+    ['agents', 'Embedded delegated agents', number(total.embeddedAgentCount), 'Distinct delegated-agent identities, published only as a count'],
+    ['model-elapsed', 'Elapsed model usage', `${hours(total.requestActiveUnionMs)} h`, 'Request-active interval union; concurrent overlaps removed'],
+    ['human-time', 'Interaction-time proxy', `${hours(human.inferredHumanMs)} h`, `${human.defaultIdleCutoffMinutes}-minute sitting residual; not actual prompting or review time`],
+    ['engaged-time', 'Inferred engaged time', `${hours(human.engagedUnionMs)} h`, 'Model-active union plus human-side residual'],
+    ['output', 'Output-channel tokens', number(total.tokens.output), 'Priced output channel; not unique accepted work'],
+    ['cost', 'USD equivalent / not a bill', dollars(total.listPriceUsdExact), 'Upstream charge conversion, not an invoice'],
+    ['model-work', 'Summed model request time', `${hours(total.modelWorkMs)} h`, 'Additive work across requests; not elapsed wall time'],
   ];
+  if (reviewCorpus) {
+    const review = estimateReview(reviewCorpus, defaultReviewInputs(reviewCorpus));
+    metrics.splice(8, 0, ['author-review', 'Author review (workload estimate)', reviewRange(review.reviewMinMinutes, review.reviewMaxMinutes), reviewCardNote(review)]);
+  }
   return `<section id="usage-summary" class="audit-summary">
     <p class="eyebrow">Recorded usage / bounded disclosure</p>
     <h1>AI usage audit.</h1>
     <p class="audit-lede">The local Copilot ledger behind Commons Collective, grouped by the model identifier actually recorded. Calculations reuse a pinned version of Ethical Tech CoLab's usage-calc.</p>
     <div class="audit-warning"><strong>A snapshot, not a bill or a live usage meter.</strong> Includes records before <time datetime="${escape(scope.cutoffExclusive)}">${escape(scope.cutoffExclusive)}</time> (UTC). ${escape(scope.cutoffReason)} Other machines and unlogged activity are not established by these records.</div>
-    <dl class="audit-metrics">${metrics.map(([label, value]) => `<div><dt>${escape(label)}</dt><dd>${escape(value)}</dd></div>`).join('')}</dl>
-    <nav class="audit-links" aria-label="Audit resources"><a href="./ai-usage.json" download>Download aggregate data</a><a href="./usage-method.md" download>Method and reproduction</a><a href="${escape(data.upstream.repository)}/tree/${escape(data.upstream.commit)}">Pinned usage-calc source</a></nav>
+    <dl class="audit-metrics">${metrics.map(([key, label, value, note]) => `<div data-audit-metric="${escape(key)}"><dt>${escape(label)}</dt><dd>${escape(value)}</dd><p>${escape(note)}</p></div>`).join('')}</dl>
+    <p class="audit-note">Start date is the earliest request-interval start inferred from recorded completion time and duration. Last update is this snapshot's capture time, not the last model response. Days covers inclusive UTC dates in the recorded activity span; it does not count human workdays. The last included response was ${escape(timing.lastRequestCompletedAt)}.</p>
+    <nav class="audit-links" aria-label="Audit resources"><a href="./ai-usage.json" download>Download aggregate data</a><a href="./usage-method.md" download>Method and reproduction</a><a href="./ai-usage-2026-09-19.json" download>Previous snapshot, 19 September 2026</a><a href="${escape(data.upstream.repository)}/tree/${escape(data.upstream.commit)}">Pinned usage-calc source</a>${reviewCorpus ? '<a href="#author-review">Review workload and revision evidence</a>' : ''}</nav>
+  </section>
+  <section id="usage-time"><h2>Model time and interaction-time proxy</h2>
+    <p><strong>The interaction residual is not a timesheet or a productivity estimate.</strong> Actual prompting time and actual review time are not measured. The pinned framework groups requests into sittings according to gaps between completion timestamps, starts each sitting at its earliest request start, and unions overlapping sittings. The non-model remainder is an inference; it can include tool waits, interruptions, or unattended automation. It can miss human reading after the last request and human work concurrent with model activity.</p>
+    <p class="audit-time-equation">${hours(human.engagedUnionMs)} h inferred engaged time = ${hours(total.requestActiveUnionMs)} h model-active elapsed time + ${hours(human.inferredHumanMs)} h inferred human-side residual, at the ${human.defaultIdleCutoffMinutes}-minute cutoff.</p>
+    ${table(['Idle cutoff', 'Merged sittings', 'Engaged union', 'Model-active union', 'Inferred human-side residual'],
+      human.sensitivity.map(row => [`${row.idleCutoffMinutes} min${row.idleCutoffMinutes === human.defaultIdleCutoffMinutes ? ' (headline)' : ''}`,
+        number(row.sittingCount), `${hours(row.engagedUnionMs)} h`, `${hours(total.requestActiveUnionMs)} h`, `${hours(row.inferredHumanMs)} h`]),
+    'Human-time inference sensitivity, not measured labor')}
+    <p class="audit-note">The model-active union stays fixed across cutoffs. Hours are rounded independently; the exact millisecond identity is checked before display. The human residual changes with the engagement assumption; this sensitivity is not a confidence interval or a bound on actual labor. The complete recorded wall-clock span is ${hours(timing.recordedSpanMs)} h, including long gaps, and must not be counted as human time. These are pooled intervals for this one project's observed machine, not a sum of per-agent or per-model human hours.</p>
+    <p class="audit-note">No prompt or response content is needed for this inference. The same pinned <a href="${escape(data.upstream.repository)}/blob/${escape(data.upstream.commit)}/usagecalc/intervals.py">usage-calc interval functions</a> compute the sitting and model unions. Date reporting intentionally uses UTC for reproducibility rather than the upstream dashboard's machine-local date display.</p>
   </section>
   <section id="usage-models"><h2>By recorded model</h2>
     <p>${data.models.length === 1 ? `All included requests record the same model ID. ${total.embeddedAgentCount} delegated agents or multiple prices must not be mistaken for different model types.` : 'Model IDs are taken from the ledger, not inferred from agent names.'} The identifier does not independently establish the model weights, revision, or hidden provider routing.</p>
@@ -248,6 +324,7 @@ export function renderUsageAudit(data) {
       data.models.map(row => [row.model, number(row.requests), number(row.tokens.input), number(row.tokens.cache_read),
         number(row.tokens.cache_write), number(row.tokens.output), dollars(row.listPriceUsdExact), `${hours(row.modelWorkMs)} h`]), 'Usage by recorded model')}
     <p class="audit-note">Token values come from price-bearing channel details. Cached traffic is repeated context, not unique authored material. Recorded reasoning metadata totals ${number(total.reasoningMetadataTokens)} tokens and is not added again to the ${number(total.pricedTokens)} priced-channel tokens.</p>
+    <p class="audit-note">Displayed model costs round independently to cents, so adding displayed rows can differ by a cent from the rounded total. The downloadable data retains each unrounded decimal and exact charge units.</p>
   </section>
   <section id="usage-roles"><h2>Main assistant and delegated work</h2>
     ${table(['Model ID', 'Role', 'Requests', 'Priced-channel tokens', 'USD equivalent', 'Summed request time'],
@@ -271,6 +348,8 @@ export function renderUsageAudit(data) {
   <section id="usage-scope"><h2>Scope, reconciliation, and privacy</h2>
     <dl class="audit-facts">
       <div><dt>Included event timestamps</dt><dd>${escape(scope.firstRecordedAt)} to ${escape(scope.lastRecordedAt)}</dd></div>
+      <div><dt>Request-interval span</dt><dd>${escape(timing.firstRequestStartedAt)} to ${escape(timing.lastRequestCompletedAt)}; ${number(timing.recordedSpanMs)} ms</dd></div>
+      <div><dt>Date coverage</dt><dd>${timing.calendarDaysInclusive} inclusive UTC calendar dates; ${timing.datesWithRecordedUsage} dates contain completed usage events</dd></div>
       <div><dt>Exclusive cutoff</dt><dd>${escape(scope.cutoffExclusive)}</dd></div>
       <div><dt>Captured</dt><dd>${escape(data.generatedAt)}</dd></div>
       <div><dt>Local coverage</dt><dd>${scope.machinesObserved} machine; ${scope.sessionsWithIncludedUsage} matching session with usage; ${scope.matchingSessionsWithoutIncludedUsage} matching sessions without included usage</dd></div>
@@ -284,13 +363,15 @@ export function renderUsageAudit(data) {
       <p>Selected-usage digest: <code>${escape(data.integrity.sourceUsageRecordsSha256)}</code></p><p>${escape(data.integrity.note)}</p>
       <p>Capture-adapter SHA-256: <code>${escape(data.integrity.captureAdapterSha256)}</code></p>
       <p>Capture-configuration SHA-256: <code>${escape(data.integrity.captureConfigSha256)}</code></p>
+      <p>Time inference: ${human.defaultIdleCutoffMinutes}-minute default completion-gap cutoff. The displayed model/human decomposition reconciles in milliseconds, not by adding rounded hours.</p>
       <p><a href="./usage-calc-provenance.json">Module provenance and checksums</a> · <a href="./usage-audit-config.json">Capture configuration</a></p>
     </details>
   </section>
   <section id="usage-limits"><h2>What this cannot establish</h2><ul>${data.limitations.map(item => `<li>${escape(item)}</li>`).join('')}</ul></section>`;
 }
 
-export function usageAuditSection(data) {
+export function usageAuditSection(data, reviewCorpus) {
+  const review = reviewCorpus && estimateReview(reviewCorpus, defaultReviewInputs(reviewCorpus));
   return {
     id: 'audit-ai-usage',
     title: 'AI usage audit by recorded model',
@@ -298,7 +379,9 @@ export function usageAuditSection(data) {
     paragraphs: [
       `The scoped local ledger records ${number(data.totals.requests)} requests across ${data.models.length} model identifier(s): ${data.models.map(row => row.model).join(', ')}. It includes ${data.totals.embeddedAgentCount} embedded delegated agents.`,
       `The recorded charges convert to ${dollars(data.totals.listPriceUsdExact)} under usage-calc's stated AI-credit assumption. This is a list-price equivalent, not an invoice or measured subscription spending.`,
-      `The snapshot ends before ${data.scope.cutoffExclusive} and excludes producing the audit and later work. The website reads the published aggregate snapshot, not the private local ledger.`,
+      `Start: ${data.timing.firstRequestStartedAt}; refreshed: ${data.generatedAt}; ${data.timing.calendarDaysInclusive} inclusive UTC calendar dates. Recorded model-active elapsed time is ${hours(data.totals.requestActiveUnionMs)} h; inferred human-side residual (interaction proxy) is ${hours(data.humanTime.inferredHumanMs)} h at a ${data.humanTime.defaultIdleCutoffMinutes}-minute idle cutoff, not actual prompting or review time.`,
+      ...(review ? [`The main report's section-revision history represents ${number(review.baselineExposureWords)} word exposures, or ${reviewRange(review.reviewMinMinutes, review.reviewMaxMinutes)} at the declared reference reading pace. This is a required-review workload estimate, not logged labor, and cannot be added to model time or the overlapping interaction proxy. Review assumptions and commit evidence are on the audit page.`] : []),
+      `The snapshot includes records before ${data.scope.cutoffExclusive}, including earlier audit work but excluding this refresh and later activity. The website reads the published aggregate snapshot, not the private local ledger.`,
     ],
   };
 }

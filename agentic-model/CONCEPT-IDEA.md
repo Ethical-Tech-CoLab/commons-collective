@@ -690,7 +690,7 @@ This boundary has empirical support: Bisbee et al. find that demographic/persona
 
 Do not make an LLM call for every actor every period by default. First benchmark a non-LLM kernel; use selected decision points or limited subexperiments if LLM behavior adds a testable research question.
 
-Future runs should have a separate model-by-model usage record, using the project's [usage-calc integration](../usage/README.md) where compatible. Separate simulated money from real experiment compute/AI costs. The current published audit is a bounded historical snapshot: it does **not** cover this concept or future simulation work. Do not silently extend it or infer energy use from token charges.
+Future runs should have a separate model-by-model usage record, using the project's [usage-calc integration](../usage/README.md) where compatible. Separate simulated money from real experiment compute/AI costs. The published audit is bounded by its declared cutoff; a user-authorized refresh now includes recorded development work before that boundary. It does not meter browser simulations or future execution. Do not silently extend it, infer actual human labor from its sitting residual, or infer energy use from token charges.
 
 ## 14. Verification and validation: different claims, different evidence
 

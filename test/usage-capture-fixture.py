@@ -42,13 +42,13 @@ with tempfile.TemporaryDirectory(prefix="commons-usage-fixture-") as directory:
         {"tokenType": "output", "tokenCount": 2, "costPerBatch": 50, "batchSize": 10},
     ])
 
-    def row(identity, model, at, sid="private-session-id", agent=None, token_details=details):
+    def row(identity, model, at, sid="private-session-id", agent=None, token_details=details, duration=5000):
         values = dict.fromkeys(module.EVENT_COLUMNS)
         values.update({
             "id": identity, "session_id": sid, "turn_index": 0, "agent_id": agent,
             "model": model, "input_tokens": 999, "output_tokens": 2,
             "cache_read_tokens": 0, "cache_write_tokens": 0, "reasoning_tokens": 1,
-            "total_nano_aiu": 30, "request_multiplier": 1, "duration_ms": 5000,
+            "total_nano_aiu": 30, "request_multiplier": 1, "duration_ms": duration,
             "time_to_first_token_ms": 10, "initiator": "user",
             "api_endpoint": "PRIVATE_ENDPOINT_SENTINEL", "reasoning_effort": "high",
             "finish_reason": "stop", "token_details_json": token_details, "created_at": at,
@@ -76,6 +76,10 @@ with tempfile.TemporaryDirectory(prefix="commons-usage-fixture-") as directory:
     assert result["totals"]["modelWorkMs"] == 10000
     assert result["totals"]["requestActiveUnionMs"] == 7000
     assert result["totals"]["embeddedAgentCount"] == 1
+    assert result["timing"]["firstRequestStartedAt"] == "2020-01-01T00:00:05.000Z"
+    assert result["timing"]["recordedSpanMs"] == 7000
+    assert result["timing"]["calendarDaysInclusive"] == 1
+    assert result["humanTime"]["inferredHumanMs"] == 0
     assert result["scope"]["excludedRowsAtOrAfterCutoff"] == 1
     assert result["coverage"]["rowsWithFlatTokenColumnDifferences"] == 2
     assert {row["model"] for row in result["models"]} == {"fixture-a", "fixture-b"}
@@ -98,4 +102,33 @@ with tempfile.TemporaryDirectory(prefix="commons-usage-fixture-") as directory:
     con.commit()
     assert_rejected(db, scope, config, "duplicate token channel")
     con.close()
-    print("Synthetic audit checks passed: strict charges, cutoff, scope, overlap, privacy, and read-only collection.")
+    time_db = directory / "synthetic-time-ledger.db"
+    con = sqlite3.connect(time_db)
+    con.execute("CREATE TABLE sessions (id,cwd)")
+    con.execute("INSERT INTO sessions VALUES (?,?)", ("private-session-id", str(scope)))
+    con.execute("CREATE TABLE assistant_usage_events (" + ",".join(module.EVENT_COLUMNS) + ")")
+    con.executemany("INSERT INTO assistant_usage_events VALUES (" + ",".join("?" for _ in module.EVENT_COLUMNS) + ")", [
+        row(10, "fixture-a", "2020-01-01T23:59:59Z", duration=2000),
+        row(11, "fixture-a", "2020-01-02T00:04:59Z", duration=60000),
+        row(12, "fixture-b", "2020-01-02T00:12:59Z", agent="private-agent-id", duration=660000),
+        row(13, "fixture-a", "2020-01-02T02:00:00Z", duration=30000),
+    ])
+    con.commit()
+    con.close()
+    time_config = dict(config, cutoffExclusive="2020-01-02T03:00:00Z")
+    timed = module.capture(time_db, scope, time_config)
+    assert timed["totals"]["modelWorkMs"] == 752000
+    assert timed["totals"]["requestActiveUnionMs"] == 692000
+    assert timed["timing"]["recordedSpanMs"] == 7203000
+    assert timed["timing"]["calendarDaysInclusive"] == 2
+    assert timed["timing"]["datesWithRecordedUsage"] == 2
+    assert timed["humanTime"]["actualHumanLaborMeasured"] is False
+    assert timed["humanTime"]["engagedUnionMs"] == 812000
+    assert timed["humanTime"]["inferredHumanMs"] == 120000
+    assert [item["inferredHumanMs"] for item in timed["humanTime"]["sensitivity"]] == [0, 120000, 120000, 120000]
+    assert [item["sittingCount"] for item in timed["humanTime"]["sensitivity"]] == [3, 2, 2, 2]
+    for item in timed["humanTime"]["sensitivity"]:
+        assert item["engagedUnionMs"] == timed["totals"]["requestActiveUnionMs"] + item["inferredHumanMs"]
+    assert_rejected(time_db, scope, dict(time_config, timeInference={"defaultIdleCutoffMinutes": 7, "sensitivityMinutes": [2, 5, 10, 30]}), "default idle")
+    assert_rejected(time_db, scope, dict(time_config, timeInference={"defaultIdleCutoffMinutes": 10, "sensitivityMinutes": [10, 5]}), "increasing")
+    print("Synthetic audit checks passed: strict charges, cutoff, scope, overlap, privacy, dates, sitting residuals, and read-only collection.")
