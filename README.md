@@ -167,6 +167,32 @@ service, outstanding obligations, restricted cash, and institutional failure.
 An imported run requires the matching engine build. It never silently resumes
 with a newer or incompatible engine.
 
+### Investor-funded startup planning
+
+The AI Commons view also has a separate **startup-finance plan**: paying-member
+ramp, three initial staff growing to ten, loaded compensation, acquisition and
+onboarding, marketing, travel, quarterly events, technology, legal/accounting,
+and administration. Investor capital can be switched on/off without changing
+the spending or member plan. A negative projected balance is a funding gap,
+not an executed transaction or a business operating without cash.
+
+The plan reports uses of funds through the selected break-even target, peak
+cash need, reserves/contingency, cash versus run-rate break-even, and conditional
+Monte Carlo capital ranges. Paid enrollment is blocked when the modeled
+all-in member price is not sufficiently better than equivalent retail service.
+The growth ramp is an assumption, not a prediction that marketing guarantees
+adoption.
+
+[Methods and funding results](agentic-model/STARTUP-FUNDING.md) include a
+10,000-trial design comparison and 4,000 independent-seed validation trials.
+Reproduce them with `node scripts\analyze-startup.mjs`. Monetary staffing and
+marketing inputs are illustrative, not quotes. Finance-plan exports use their
+own format and do not claim to be completed operating-agent runs.
+
+The original operating defaults remain available as a labeled stress reference
+for reproducibility. The finance extension does not alter the original engine
+or invalidate compatible operating-run replay.
+
 Source: [simulation/](simulation/), [interface](site/simulation.html),
 [specification](agentic-model/SPECIFICATION.md), and
 [implementation status](agentic-model/PLAN.md#browser-build-status).

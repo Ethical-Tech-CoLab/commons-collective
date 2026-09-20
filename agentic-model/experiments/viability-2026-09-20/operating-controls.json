@@ -1,0 +1,3645 @@
+{
+  "study": "AI Commons operator-and-member viability",
+  "engineVersion": "0.1.0",
+  "createdAt": "2026-09-20T00:58:59.948Z",
+  "phase": "controls",
+  "paired": true,
+  "replications": 3,
+  "periods": 36,
+  "sourceConfigSha256": "75d0aac3a1e126aa568d1b7cfe5426e680dfae37f9bddf65b1dc273379c77c5e",
+  "criteria": {
+    "financial": "No funding stop or operator arrears; nonnegative earned surplus excluding opening capital and restricted grants; nonnegative final 12-period surplus; closing unrestricted cash >= three periods of operator cost.",
+    "memberCost": "Each consumer ever charged an administration fee pays strictly less, including service obligations, administration fees and completed switch charges, than retail for the same contracted service-period basket.",
+    "service": "In a matched A0 run, no paying member loses attempted or fulfilled tasks; total unmet demand does not increase.",
+    "limitation": "Synthetic conditional outcomes, not empirical probabilities or proof of contributor welfare. Individual maintenance effort/payments and nonmonetary burdens are not established by this engine."
+  },
+  "results": [
+    {
+      "id": "original",
+      "description": "Original stress reference",
+      "config": {
+        "schemaVersion": 1,
+        "modelId": "ai-commons",
+        "seed": "ccsl-ai-commons-v1",
+        "arrangement": "A3",
+        "family": "F0",
+        "mode": "P1",
+        "params": {
+          "periods": 36,
+          "covenant": 2000,
+          "grant": 0,
+          "grantPeriods": 12,
+          "paymentDelay": 0,
+          "mandateTicks": 180,
+          "withdrawTick": -1,
+          "permissionRate": 1,
+          "participationRate": 0.7,
+          "approvalRate": 0.7,
+          "complaints": 0,
+          "reviewCapacity": 5,
+          "consumers": 1000,
+          "contributors": 100,
+          "providers": 3,
+          "objects": 200,
+          "interest": 0.6,
+          "comprehension": 0.8,
+          "budget": 3000,
+          "retailPrice": 2000,
+          "variableCost": 1400,
+          "setupCost": 20000,
+          "markup": 1500,
+          "minimumCommitment": 50,
+          "providerCapacity": 2000,
+          "tasks": 20,
+          "quality": 0.8,
+          "minimumQuality": 0.75,
+          "qualityEffect": 0,
+          "objectPrice": 1000,
+          "effortCost": 600,
+          "verificationCost": 200,
+          "contributionBudget": 100000,
+          "successValue": 20,
+          "decay": 0.005,
+          "maintenanceCost": 500,
+          "maintenanceSuccess": 0.9,
+          "feeHost": 50,
+          "feeA2": 300,
+          "feeA3": 400,
+          "costHost": 40000,
+          "costA2": 250000,
+          "costA3": 350000,
+          "openingCash": 1000000,
+          "providerCash": 5000000,
+          "switchingCost": 500,
+          "switchSuccess": 0.95,
+          "switchDelay": 2,
+          "renewalPeriods": 3
+        }
+      },
+      "counts": {
+        "trials": 3,
+        "financiallyHealthy": 0,
+        "jointlyHealthy": 0,
+        "institutionalFailures": 3,
+        "anyMemberCostLoss": 3,
+        "anyMemberNotStrictlyBetterOnCost": 3,
+        "anyServiceWorse": 3
+      },
+      "distributions": {
+        "meanPeriodSurplusCents": {
+          "min": -31208.88888888889,
+          "p05": -31121.77777777778,
+          "median": -30337.777777777777,
+          "p95": -29705.777777777777,
+          "max": -29635.555555555555
+        },
+        "closingCashCents": {
+          "min": 226480,
+          "p05": 229616,
+          "median": 257840,
+          "p95": 280592,
+          "max": 283120
+        },
+        "minimumPeriodCashCents": {
+          "min": 149680,
+          "p05": 152080,
+          "median": 173680,
+          "p95": 195280,
+          "max": 197680
+        },
+        "meanParticipants": {
+          "min": 24,
+          "p05": 24.272222222222222,
+          "median": 26.72222222222222,
+          "p95": 28.697222222222223,
+          "max": 28.916666666666668
+        },
+        "minimumParticipants": {
+          "min": 0,
+          "p05": 0,
+          "median": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "everPayingMembers": {
+          "min": 329,
+          "p05": 334,
+          "median": 379,
+          "p95": 384.4,
+          "max": 385
+        },
+        "aggregatePurchasingBenefitCents": {
+          "min": -228620,
+          "p05": -228299,
+          "median": -225410,
+          "p95": -208967,
+          "max": -207140
+        },
+        "commonsWork": {
+          "min": 126,
+          "p05": 126.8,
+          "median": 134,
+          "p95": 144.8,
+          "max": 146
+        }
+      },
+      "trials": [
+        {
+          "replication": 0,
+          "seed": "viability-controls-0000",
+          "institutionFailed": true,
+          "firstFailureTick": 90,
+          "financiallyHealthy": false,
+          "jointlyHealthy": false,
+          "earnedSurplusCents": -1066880,
+          "meanPeriodSurplusCents": -29635.555555555555,
+          "lastYearSurplusCents": 0,
+          "closingCashCents": 283120,
+          "minimumPeriodCashCents": 197680,
+          "operatorArrearsCents": 350000,
+          "everPayingMembers": 379,
+          "memberCostLosers": 379,
+          "memberCostNonWinners": 379,
+          "minimumMemberBenefitCents": -897,
+          "medianMemberBenefitCents": -596,
+          "aggregatePurchasingBenefitCents": -225410,
+          "meanParticipants": 28.916666666666668,
+          "minimumParticipants": 0,
+          "noDealPeriods": 32,
+          "serviceWorseMembers": 250,
+          "lostFulfilledTasksAmongMembers": 382,
+          "extraUnmet": 486,
+          "attempted": 719514,
+          "fulfilled": 575931,
+          "unmet": 486,
+          "qualityRate": 0.8004444666816768,
+          "commonsWork": 146,
+          "contributionServicesPurchased": 0,
+          "contributorPaidCents": 83000,
+          "periods": [
+            {
+              "period": 1,
+              "fees": 103200,
+              "covenant": 20640,
+              "costIncurred": 350000,
+              "closingCash": 732560,
+              "participants": 258,
+              "surplus": -267440
+            },
+            {
+              "period": 2,
+              "fees": 103200,
+              "covenant": 20640,
+              "costIncurred": 350000,
+              "closingCash": 465120,
+              "participants": 258,
+              "surplus": -267440
+            },
+            {
+              "period": 3,
+              "fees": 103200,
+              "covenant": 20640,
+              "costIncurred": 350000,
+              "closingCash": 197680,
+              "participants": 258,
+              "surplus": -267440
+            },
+            {
+              "period": 4,
+              "fees": 106800,
+              "covenant": 21360,
+              "costIncurred": 350000,
+              "closingCash": 283120,
+              "participants": 267,
+              "surplus": -264560
+            },
+            {
+              "period": 5,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 6,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 7,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 8,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 9,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 10,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 11,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 12,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 13,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 14,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 15,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 16,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 17,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 18,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 19,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 20,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 21,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 22,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 23,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 24,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 25,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 26,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 27,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 28,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 29,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 30,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 31,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 32,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 33,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 34,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 35,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 36,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 283120,
+              "participants": 0,
+              "surplus": 0
+            }
+          ]
+        },
+        {
+          "replication": 1,
+          "seed": "viability-controls-0001",
+          "institutionFailed": true,
+          "firstFailureTick": 90,
+          "financiallyHealthy": false,
+          "jointlyHealthy": false,
+          "earnedSurplusCents": -1123520,
+          "meanPeriodSurplusCents": -31208.88888888889,
+          "lastYearSurplusCents": 0,
+          "closingCashCents": 226480,
+          "minimumPeriodCashCents": 149680,
+          "operatorArrearsCents": 350000,
+          "everPayingMembers": 329,
+          "memberCostLosers": 329,
+          "memberCostNonWinners": 329,
+          "minimumMemberBenefitCents": -969,
+          "medianMemberBenefitCents": -606,
+          "aggregatePurchasingBenefitCents": -207140,
+          "meanParticipants": 24,
+          "minimumParticipants": 0,
+          "noDealPeriods": 32,
+          "serviceWorseMembers": 217,
+          "lostFulfilledTasksAmongMembers": 333,
+          "extraUnmet": 413,
+          "attempted": 719587,
+          "fulfilled": 575448,
+          "unmet": 413,
+          "qualityRate": 0.7996920455761429,
+          "commonsWork": 126,
+          "contributionServicesPurchased": 0,
+          "contributorPaidCents": 69000,
+          "periods": [
+            {
+              "period": 1,
+              "fees": 83200,
+              "covenant": 16640,
+              "costIncurred": 350000,
+              "closingCash": 716560,
+              "participants": 208,
+              "surplus": -283440
+            },
+            {
+              "period": 2,
+              "fees": 83200,
+              "covenant": 16640,
+              "costIncurred": 350000,
+              "closingCash": 433120,
+              "participants": 208,
+              "surplus": -283440
+            },
+            {
+              "period": 3,
+              "fees": 83200,
+              "covenant": 16640,
+              "costIncurred": 350000,
+              "closingCash": 149680,
+              "participants": 208,
+              "surplus": -283440
+            },
+            {
+              "period": 4,
+              "fees": 96000,
+              "covenant": 19200,
+              "costIncurred": 350000,
+              "closingCash": 226480,
+              "participants": 240,
+              "surplus": -273200
+            },
+            {
+              "period": 5,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 6,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 7,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 8,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 9,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 10,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 11,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 12,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 13,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 14,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 15,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 16,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 17,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 18,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 19,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 20,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 21,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 22,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 23,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 24,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 25,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 26,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 27,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 28,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 29,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 30,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 31,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 32,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 33,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 34,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 35,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 36,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 226480,
+              "participants": 0,
+              "surplus": 0
+            }
+          ]
+        },
+        {
+          "replication": 2,
+          "seed": "viability-controls-0002",
+          "institutionFailed": true,
+          "firstFailureTick": 90,
+          "financiallyHealthy": false,
+          "jointlyHealthy": false,
+          "earnedSurplusCents": -1092160,
+          "meanPeriodSurplusCents": -30337.777777777777,
+          "lastYearSurplusCents": 0,
+          "closingCashCents": 257840,
+          "minimumPeriodCashCents": 173680,
+          "operatorArrearsCents": 350000,
+          "everPayingMembers": 385,
+          "memberCostLosers": 385,
+          "memberCostNonWinners": 385,
+          "minimumMemberBenefitCents": -925,
+          "medianMemberBenefitCents": -597,
+          "aggregatePurchasingBenefitCents": -228620,
+          "meanParticipants": 26.72222222222222,
+          "minimumParticipants": 0,
+          "noDealPeriods": 32,
+          "serviceWorseMembers": 259,
+          "lostFulfilledTasksAmongMembers": 376,
+          "extraUnmet": 474,
+          "attempted": 719526,
+          "fulfilled": 575731,
+          "unmet": 474,
+          "qualityRate": 0.800153156383508,
+          "commonsWork": 134,
+          "contributionServicesPurchased": 0,
+          "contributorPaidCents": 76500,
+          "periods": [
+            {
+              "period": 1,
+              "fees": 93200,
+              "covenant": 18640,
+              "costIncurred": 350000,
+              "closingCash": 724560,
+              "participants": 233,
+              "surplus": -275440
+            },
+            {
+              "period": 2,
+              "fees": 93200,
+              "covenant": 18640,
+              "costIncurred": 350000,
+              "closingCash": 449120,
+              "participants": 233,
+              "surplus": -275440
+            },
+            {
+              "period": 3,
+              "fees": 93200,
+              "covenant": 18640,
+              "costIncurred": 350000,
+              "closingCash": 173680,
+              "participants": 233,
+              "surplus": -275440
+            },
+            {
+              "period": 4,
+              "fees": 105200,
+              "covenant": 21040,
+              "costIncurred": 350000,
+              "closingCash": 257840,
+              "participants": 263,
+              "surplus": -265840
+            },
+            {
+              "period": 5,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 6,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 7,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 8,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 9,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 10,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 11,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 12,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 13,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 14,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 15,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 16,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 17,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 18,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 19,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 20,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 21,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 22,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 23,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 24,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 25,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 26,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 27,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 28,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 29,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 30,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 31,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 32,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 33,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 34,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 35,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 36,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 257840,
+              "participants": 0,
+              "surplus": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "capital-only",
+      "description": "More starting capital, unchanged negative economics",
+      "config": {
+        "schemaVersion": 1,
+        "modelId": "ai-commons",
+        "seed": "ccsl-ai-commons-v1",
+        "arrangement": "A3",
+        "family": "F0",
+        "mode": "P1",
+        "params": {
+          "periods": 36,
+          "covenant": 2000,
+          "grant": 0,
+          "grantPeriods": 12,
+          "paymentDelay": 0,
+          "mandateTicks": 180,
+          "withdrawTick": -1,
+          "permissionRate": 1,
+          "participationRate": 0.7,
+          "approvalRate": 0.7,
+          "complaints": 0,
+          "reviewCapacity": 5,
+          "consumers": 1000,
+          "contributors": 100,
+          "providers": 3,
+          "objects": 200,
+          "interest": 0.6,
+          "comprehension": 0.8,
+          "budget": 3000,
+          "retailPrice": 2000,
+          "variableCost": 1400,
+          "setupCost": 20000,
+          "markup": 1500,
+          "minimumCommitment": 50,
+          "providerCapacity": 2000,
+          "tasks": 20,
+          "quality": 0.8,
+          "minimumQuality": 0.75,
+          "qualityEffect": 0,
+          "objectPrice": 1000,
+          "effortCost": 600,
+          "verificationCost": 200,
+          "contributionBudget": 100000,
+          "successValue": 20,
+          "decay": 0.005,
+          "maintenanceCost": 500,
+          "maintenanceSuccess": 0.9,
+          "feeHost": 50,
+          "feeA2": 300,
+          "feeA3": 400,
+          "costHost": 40000,
+          "costA2": 250000,
+          "costA3": 350000,
+          "openingCash": 3000000,
+          "providerCash": 5000000,
+          "switchingCost": 500,
+          "switchSuccess": 0.95,
+          "switchDelay": 2,
+          "renewalPeriods": 3
+        }
+      },
+      "counts": {
+        "trials": 3,
+        "financiallyHealthy": 0,
+        "jointlyHealthy": 0,
+        "institutionalFailures": 3,
+        "anyMemberCostLoss": 3,
+        "anyMemberNotStrictlyBetterOnCost": 3,
+        "anyServiceWorse": 3
+      },
+      "distributions": {
+        "meanPeriodSurplusCents": {
+          "min": -90453.33333333333,
+          "p05": -90416,
+          "median": -90080,
+          "p95": -85210,
+          "max": -84668.88888888889
+        },
+        "closingCashCents": {
+          "min": 93680,
+          "p05": 95024,
+          "median": 107120,
+          "p95": 282440,
+          "max": 301920
+        },
+        "minimumPeriodCashCents": {
+          "min": 18800,
+          "p05": 19344,
+          "median": 24240,
+          "p95": 211367.99999999997,
+          "max": 232160
+        },
+        "meanParticipants": {
+          "min": 69.61111111111111,
+          "p05": 70.84166666666667,
+          "median": 81.91666666666667,
+          "p95": 82.96666666666667,
+          "max": 83.08333333333333
+        },
+        "minimumParticipants": {
+          "min": 0,
+          "p05": 0,
+          "median": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "everPayingMembers": {
+          "min": 428,
+          "p05": 430.7,
+          "median": 455,
+          "p95": 469.4,
+          "max": 471
+        },
+        "aggregatePurchasingBenefitCents": {
+          "min": -463910,
+          "p05": -463368,
+          "median": -458490,
+          "p95": -424353,
+          "max": -420560
+        },
+        "commonsWork": {
+          "min": 369,
+          "p05": 374.5,
+          "median": 424,
+          "p95": 433,
+          "max": 434
+        }
+      },
+      "trials": [
+        {
+          "replication": 0,
+          "seed": "viability-controls-0000",
+          "institutionFailed": true,
+          "firstFailureTick": 330,
+          "financiallyHealthy": false,
+          "jointlyHealthy": false,
+          "earnedSurplusCents": -3256320,
+          "meanPeriodSurplusCents": -90453.33333333333,
+          "lastYearSurplusCents": 0,
+          "closingCashCents": 93680,
+          "minimumPeriodCashCents": 18800,
+          "operatorArrearsCents": 350000,
+          "everPayingMembers": 455,
+          "memberCostLosers": 455,
+          "memberCostNonWinners": 455,
+          "minimumMemberBenefitCents": -1757,
+          "medianMemberBenefitCents": -1085,
+          "aggregatePurchasingBenefitCents": -458490,
+          "meanParticipants": 81.91666666666667,
+          "minimumParticipants": 0,
+          "noDealPeriods": 24,
+          "serviceWorseMembers": 306,
+          "lostFulfilledTasksAmongMembers": 526,
+          "extraUnmet": 666,
+          "attempted": 719334,
+          "fulfilled": 575787,
+          "unmet": 666,
+          "qualityRate": 0.8004445779012253,
+          "commonsWork": 424,
+          "contributionServicesPurchased": 0,
+          "contributorPaidCents": 235500,
+          "periods": [
+            {
+              "period": 1,
+              "fees": 103200,
+              "covenant": 20640,
+              "costIncurred": 350000,
+              "closingCash": 2732560,
+              "participants": 258,
+              "surplus": -267440
+            },
+            {
+              "period": 2,
+              "fees": 103200,
+              "covenant": 20640,
+              "costIncurred": 350000,
+              "closingCash": 2465120,
+              "participants": 258,
+              "surplus": -267440
+            },
+            {
+              "period": 3,
+              "fees": 103200,
+              "covenant": 20640,
+              "costIncurred": 350000,
+              "closingCash": 2197680,
+              "participants": 258,
+              "surplus": -267440
+            },
+            {
+              "period": 4,
+              "fees": 106800,
+              "covenant": 21360,
+              "costIncurred": 350000,
+              "closingCash": 1933120,
+              "participants": 267,
+              "surplus": -264560
+            },
+            {
+              "period": 5,
+              "fees": 106800,
+              "covenant": 21360,
+              "costIncurred": 350000,
+              "closingCash": 1668560,
+              "participants": 267,
+              "surplus": -264560
+            },
+            {
+              "period": 6,
+              "fees": 106800,
+              "covenant": 21360,
+              "costIncurred": 350000,
+              "closingCash": 1404000,
+              "participants": 267,
+              "surplus": -264560
+            },
+            {
+              "period": 7,
+              "fees": 89600,
+              "covenant": 17920,
+              "costIncurred": 350000,
+              "closingCash": 1125680,
+              "participants": 224,
+              "surplus": -278320
+            },
+            {
+              "period": 8,
+              "fees": 89600,
+              "covenant": 17920,
+              "costIncurred": 350000,
+              "closingCash": 847360,
+              "participants": 224,
+              "surplus": -278320
+            },
+            {
+              "period": 9,
+              "fees": 89600,
+              "covenant": 17920,
+              "costIncurred": 350000,
+              "closingCash": 569040,
+              "participants": 224,
+              "surplus": -278320
+            },
+            {
+              "period": 10,
+              "fees": 93600,
+              "covenant": 18720,
+              "costIncurred": 350000,
+              "closingCash": 293920,
+              "participants": 234,
+              "surplus": -275120
+            },
+            {
+              "period": 11,
+              "fees": 93600,
+              "covenant": 18720,
+              "costIncurred": 350000,
+              "closingCash": 18800,
+              "participants": 234,
+              "surplus": -275120
+            },
+            {
+              "period": 12,
+              "fees": 93600,
+              "covenant": 18720,
+              "costIncurred": 350000,
+              "closingCash": 93680,
+              "participants": 234,
+              "surplus": -275120
+            },
+            {
+              "period": 13,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 14,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 15,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 16,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 17,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 18,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 19,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 20,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 21,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 22,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 23,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 24,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 25,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 26,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 27,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 28,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 29,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 30,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 31,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 32,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 33,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 34,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 35,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 36,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 93680,
+              "participants": 0,
+              "surplus": 0
+            }
+          ]
+        },
+        {
+          "replication": 1,
+          "seed": "viability-controls-0001",
+          "institutionFailed": true,
+          "firstFailureTick": 300,
+          "financiallyHealthy": false,
+          "jointlyHealthy": false,
+          "earnedSurplusCents": -3048080,
+          "meanPeriodSurplusCents": -84668.88888888889,
+          "lastYearSurplusCents": 0,
+          "closingCashCents": 301920,
+          "minimumPeriodCashCents": 232160,
+          "operatorArrearsCents": 350000,
+          "everPayingMembers": 428,
+          "memberCostLosers": 428,
+          "memberCostNonWinners": 428,
+          "minimumMemberBenefitCents": -1731,
+          "medianMemberBenefitCents": -1045,
+          "aggregatePurchasingBenefitCents": -420560,
+          "meanParticipants": 69.61111111111111,
+          "minimumParticipants": 0,
+          "noDealPeriods": 25,
+          "serviceWorseMembers": 285,
+          "lostFulfilledTasksAmongMembers": 458,
+          "extraUnmet": 565,
+          "attempted": 719435,
+          "fulfilled": 575323,
+          "unmet": 565,
+          "qualityRate": 0.7996872545817204,
+          "commonsWork": 369,
+          "contributionServicesPurchased": 0,
+          "contributorPaidCents": 200000,
+          "periods": [
+            {
+              "period": 1,
+              "fees": 83200,
+              "covenant": 16640,
+              "costIncurred": 350000,
+              "closingCash": 2716560,
+              "participants": 208,
+              "surplus": -283440
+            },
+            {
+              "period": 2,
+              "fees": 83200,
+              "covenant": 16640,
+              "costIncurred": 350000,
+              "closingCash": 2433120,
+              "participants": 208,
+              "surplus": -283440
+            },
+            {
+              "period": 3,
+              "fees": 83200,
+              "covenant": 16640,
+              "costIncurred": 350000,
+              "closingCash": 2149680,
+              "participants": 208,
+              "surplus": -283440
+            },
+            {
+              "period": 4,
+              "fees": 96000,
+              "covenant": 19200,
+              "costIncurred": 350000,
+              "closingCash": 1876480,
+              "participants": 240,
+              "surplus": -273200
+            },
+            {
+              "period": 5,
+              "fees": 96000,
+              "covenant": 19200,
+              "costIncurred": 350000,
+              "closingCash": 1603280,
+              "participants": 240,
+              "surplus": -273200
+            },
+            {
+              "period": 6,
+              "fees": 96000,
+              "covenant": 19200,
+              "costIncurred": 350000,
+              "closingCash": 1330080,
+              "participants": 240,
+              "surplus": -273200
+            },
+            {
+              "period": 7,
+              "fees": 96800,
+              "covenant": 19360,
+              "costIncurred": 350000,
+              "closingCash": 1057520,
+              "participants": 242,
+              "surplus": -272560
+            },
+            {
+              "period": 8,
+              "fees": 96800,
+              "covenant": 19360,
+              "costIncurred": 350000,
+              "closingCash": 784960,
+              "participants": 242,
+              "surplus": -272560
+            },
+            {
+              "period": 9,
+              "fees": 96800,
+              "covenant": 19360,
+              "costIncurred": 350000,
+              "closingCash": 512400,
+              "participants": 242,
+              "surplus": -272560
+            },
+            {
+              "period": 10,
+              "fees": 87200,
+              "covenant": 17440,
+              "costIncurred": 350000,
+              "closingCash": 232160,
+              "participants": 218,
+              "surplus": -280240
+            },
+            {
+              "period": 11,
+              "fees": 87200,
+              "covenant": 17440,
+              "costIncurred": 350000,
+              "closingCash": 301920,
+              "participants": 218,
+              "surplus": -280240
+            },
+            {
+              "period": 12,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 13,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 14,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 15,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 16,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 17,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 18,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 19,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 20,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 21,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 22,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 23,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 24,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 25,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 26,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 27,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 28,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 29,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 30,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 31,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 32,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 33,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 34,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 35,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 36,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 301920,
+              "participants": 0,
+              "surplus": 0
+            }
+          ]
+        },
+        {
+          "replication": 2,
+          "seed": "viability-controls-0002",
+          "institutionFailed": true,
+          "firstFailureTick": 330,
+          "financiallyHealthy": false,
+          "jointlyHealthy": false,
+          "earnedSurplusCents": -3242880,
+          "meanPeriodSurplusCents": -90080,
+          "lastYearSurplusCents": 0,
+          "closingCashCents": 107120,
+          "minimumPeriodCashCents": 24240,
+          "operatorArrearsCents": 350000,
+          "everPayingMembers": 471,
+          "memberCostLosers": 471,
+          "memberCostNonWinners": 471,
+          "minimumMemberBenefitCents": -1733,
+          "medianMemberBenefitCents": -1088,
+          "aggregatePurchasingBenefitCents": -463910,
+          "meanParticipants": 83.08333333333333,
+          "minimumParticipants": 0,
+          "noDealPeriods": 24,
+          "serviceWorseMembers": 316,
+          "lostFulfilledTasksAmongMembers": 488,
+          "extraUnmet": 616,
+          "attempted": 719384,
+          "fulfilled": 575619,
+          "unmet": 616,
+          "qualityRate": 0.8001554107403,
+          "commonsWork": 434,
+          "contributionServicesPurchased": 0,
+          "contributorPaidCents": 239000,
+          "periods": [
+            {
+              "period": 1,
+              "fees": 93200,
+              "covenant": 18640,
+              "costIncurred": 350000,
+              "closingCash": 2724560,
+              "participants": 233,
+              "surplus": -275440
+            },
+            {
+              "period": 2,
+              "fees": 93200,
+              "covenant": 18640,
+              "costIncurred": 350000,
+              "closingCash": 2449120,
+              "participants": 233,
+              "surplus": -275440
+            },
+            {
+              "period": 3,
+              "fees": 93200,
+              "covenant": 18640,
+              "costIncurred": 350000,
+              "closingCash": 2173680,
+              "participants": 233,
+              "surplus": -275440
+            },
+            {
+              "period": 4,
+              "fees": 105200,
+              "covenant": 21040,
+              "costIncurred": 350000,
+              "closingCash": 1907840,
+              "participants": 263,
+              "surplus": -265840
+            },
+            {
+              "period": 5,
+              "fees": 105200,
+              "covenant": 21040,
+              "costIncurred": 350000,
+              "closingCash": 1642000,
+              "participants": 263,
+              "surplus": -265840
+            },
+            {
+              "period": 6,
+              "fees": 105200,
+              "covenant": 21040,
+              "costIncurred": 350000,
+              "closingCash": 1376160,
+              "participants": 263,
+              "surplus": -265840
+            },
+            {
+              "period": 7,
+              "fees": 96800,
+              "covenant": 19360,
+              "costIncurred": 350000,
+              "closingCash": 1103600,
+              "participants": 242,
+              "surplus": -272560
+            },
+            {
+              "period": 8,
+              "fees": 96800,
+              "covenant": 19360,
+              "costIncurred": 350000,
+              "closingCash": 831040,
+              "participants": 242,
+              "surplus": -272560
+            },
+            {
+              "period": 9,
+              "fees": 96800,
+              "covenant": 19360,
+              "costIncurred": 350000,
+              "closingCash": 558480,
+              "participants": 242,
+              "surplus": -272560
+            },
+            {
+              "period": 10,
+              "fees": 103600,
+              "covenant": 20720,
+              "costIncurred": 350000,
+              "closingCash": 291360,
+              "participants": 259,
+              "surplus": -267120
+            },
+            {
+              "period": 11,
+              "fees": 103600,
+              "covenant": 20720,
+              "costIncurred": 350000,
+              "closingCash": 24240,
+              "participants": 259,
+              "surplus": -267120
+            },
+            {
+              "period": 12,
+              "fees": 103600,
+              "covenant": 20720,
+              "costIncurred": 350000,
+              "closingCash": 107120,
+              "participants": 259,
+              "surplus": -267120
+            },
+            {
+              "period": 13,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 14,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 15,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 16,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 17,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 18,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 19,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 20,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 21,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 22,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 23,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 24,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 25,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 26,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 27,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 28,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 29,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 30,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 31,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 32,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 33,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 34,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 35,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 36,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 107120,
+              "participants": 0,
+              "surplus": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fee-only-8",
+      "description": "Raise fees without fixing member value",
+      "config": {
+        "schemaVersion": 1,
+        "modelId": "ai-commons",
+        "seed": "ccsl-ai-commons-v1",
+        "arrangement": "A3",
+        "family": "F0",
+        "mode": "P1",
+        "params": {
+          "periods": 36,
+          "covenant": 2000,
+          "grant": 0,
+          "grantPeriods": 12,
+          "paymentDelay": 0,
+          "mandateTicks": 180,
+          "withdrawTick": -1,
+          "permissionRate": 1,
+          "participationRate": 0.7,
+          "approvalRate": 0.7,
+          "complaints": 0,
+          "reviewCapacity": 5,
+          "consumers": 1000,
+          "contributors": 100,
+          "providers": 3,
+          "objects": 200,
+          "interest": 0.6,
+          "comprehension": 0.8,
+          "budget": 3000,
+          "retailPrice": 2000,
+          "variableCost": 1400,
+          "setupCost": 20000,
+          "markup": 1500,
+          "minimumCommitment": 50,
+          "providerCapacity": 2000,
+          "tasks": 20,
+          "quality": 0.8,
+          "minimumQuality": 0.75,
+          "qualityEffect": 0,
+          "objectPrice": 1000,
+          "effortCost": 600,
+          "verificationCost": 200,
+          "contributionBudget": 100000,
+          "successValue": 20,
+          "decay": 0.005,
+          "maintenanceCost": 500,
+          "maintenanceSuccess": 0.9,
+          "feeHost": 50,
+          "feeA2": 300,
+          "feeA3": 800,
+          "costHost": 40000,
+          "costA2": 250000,
+          "costA3": 350000,
+          "openingCash": 1000000,
+          "providerCash": 5000000,
+          "switchingCost": 500,
+          "switchSuccess": 0.95,
+          "switchDelay": 2,
+          "renewalPeriods": 3
+        }
+      },
+      "counts": {
+        "trials": 3,
+        "financiallyHealthy": 0,
+        "jointlyHealthy": 0,
+        "institutionalFailures": 3,
+        "anyMemberCostLoss": 0,
+        "anyMemberNotStrictlyBetterOnCost": 3,
+        "anyServiceWorse": 0
+      },
+      "distributions": {
+        "meanPeriodSurplusCents": {
+          "min": -29166.666666666668,
+          "p05": -29166.666666666668,
+          "median": -29166.666666666668,
+          "p95": -29166.666666666668,
+          "max": -29166.666666666668
+        },
+        "closingCashCents": {
+          "min": 300000,
+          "p05": 300000,
+          "median": 300000,
+          "p95": 300000,
+          "max": 300000
+        },
+        "minimumPeriodCashCents": {
+          "min": 300000,
+          "p05": 300000,
+          "median": 300000,
+          "p95": 300000,
+          "max": 300000
+        },
+        "meanParticipants": {
+          "min": 0,
+          "p05": 0,
+          "median": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "minimumParticipants": {
+          "min": 0,
+          "p05": 0,
+          "median": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "everPayingMembers": {
+          "min": 0,
+          "p05": 0,
+          "median": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "aggregatePurchasingBenefitCents": {
+          "min": 0,
+          "p05": 0,
+          "median": 0,
+          "p95": 0,
+          "max": 0
+        },
+        "commonsWork": {
+          "min": 0,
+          "p05": 0,
+          "median": 0,
+          "p95": 0,
+          "max": 0
+        }
+      },
+      "trials": [
+        {
+          "replication": 0,
+          "seed": "viability-controls-0000",
+          "institutionFailed": true,
+          "firstFailureTick": 60,
+          "financiallyHealthy": false,
+          "jointlyHealthy": false,
+          "earnedSurplusCents": -1050000,
+          "meanPeriodSurplusCents": -29166.666666666668,
+          "lastYearSurplusCents": 0,
+          "closingCashCents": 300000,
+          "minimumPeriodCashCents": 300000,
+          "operatorArrearsCents": 350000,
+          "everPayingMembers": 0,
+          "memberCostLosers": 0,
+          "memberCostNonWinners": 0,
+          "minimumMemberBenefitCents": null,
+          "medianMemberBenefitCents": null,
+          "aggregatePurchasingBenefitCents": 0,
+          "meanParticipants": 0,
+          "minimumParticipants": 0,
+          "noDealPeriods": 36,
+          "serviceWorseMembers": 0,
+          "lostFulfilledTasksAmongMembers": 0,
+          "extraUnmet": 0,
+          "attempted": 720000,
+          "fulfilled": 576313,
+          "unmet": 0,
+          "qualityRate": 0.8004347222222222,
+          "commonsWork": 0,
+          "contributionServicesPurchased": 0,
+          "contributorPaidCents": 0,
+          "periods": [
+            {
+              "period": 1,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 350000,
+              "closingCash": 650000,
+              "participants": 0,
+              "surplus": -350000
+            },
+            {
+              "period": 2,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 350000,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": -350000
+            },
+            {
+              "period": 3,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 350000,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": -350000
+            },
+            {
+              "period": 4,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 5,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 6,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 7,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 8,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 9,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 10,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 11,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 12,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 13,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 14,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 15,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 16,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 17,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 18,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 19,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 20,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 21,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 22,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 23,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 24,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 25,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 26,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 27,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 28,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 29,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 30,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 31,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 32,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 33,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 34,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 35,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 36,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            }
+          ]
+        },
+        {
+          "replication": 1,
+          "seed": "viability-controls-0001",
+          "institutionFailed": true,
+          "firstFailureTick": 60,
+          "financiallyHealthy": false,
+          "jointlyHealthy": false,
+          "earnedSurplusCents": -1050000,
+          "meanPeriodSurplusCents": -29166.666666666668,
+          "lastYearSurplusCents": 0,
+          "closingCashCents": 300000,
+          "minimumPeriodCashCents": 300000,
+          "operatorArrearsCents": 350000,
+          "everPayingMembers": 0,
+          "memberCostLosers": 0,
+          "memberCostNonWinners": 0,
+          "minimumMemberBenefitCents": null,
+          "medianMemberBenefitCents": null,
+          "aggregatePurchasingBenefitCents": 0,
+          "meanParticipants": 0,
+          "minimumParticipants": 0,
+          "noDealPeriods": 36,
+          "serviceWorseMembers": 0,
+          "lostFulfilledTasksAmongMembers": 0,
+          "extraUnmet": 0,
+          "attempted": 720000,
+          "fulfilled": 575781,
+          "unmet": 0,
+          "qualityRate": 0.7996958333333334,
+          "commonsWork": 0,
+          "contributionServicesPurchased": 0,
+          "contributorPaidCents": 0,
+          "periods": [
+            {
+              "period": 1,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 350000,
+              "closingCash": 650000,
+              "participants": 0,
+              "surplus": -350000
+            },
+            {
+              "period": 2,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 350000,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": -350000
+            },
+            {
+              "period": 3,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 350000,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": -350000
+            },
+            {
+              "period": 4,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 5,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 6,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 7,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 8,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 9,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 10,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 11,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 12,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 13,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 14,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 15,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 16,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 17,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 18,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 19,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 20,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 21,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 22,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 23,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 24,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 25,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 26,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 27,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 28,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 29,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 30,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 31,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 32,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 33,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 34,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 35,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 36,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            }
+          ]
+        },
+        {
+          "replication": 2,
+          "seed": "viability-controls-0002",
+          "institutionFailed": true,
+          "firstFailureTick": 60,
+          "financiallyHealthy": false,
+          "jointlyHealthy": false,
+          "earnedSurplusCents": -1050000,
+          "meanPeriodSurplusCents": -29166.666666666668,
+          "lastYearSurplusCents": 0,
+          "closingCashCents": 300000,
+          "minimumPeriodCashCents": 300000,
+          "operatorArrearsCents": 350000,
+          "everPayingMembers": 0,
+          "memberCostLosers": 0,
+          "memberCostNonWinners": 0,
+          "minimumMemberBenefitCents": null,
+          "medianMemberBenefitCents": null,
+          "aggregatePurchasingBenefitCents": 0,
+          "meanParticipants": 0,
+          "minimumParticipants": 0,
+          "noDealPeriods": 36,
+          "serviceWorseMembers": 0,
+          "lostFulfilledTasksAmongMembers": 0,
+          "extraUnmet": 0,
+          "attempted": 720000,
+          "fulfilled": 576107,
+          "unmet": 0,
+          "qualityRate": 0.8001486111111111,
+          "commonsWork": 0,
+          "contributionServicesPurchased": 0,
+          "contributorPaidCents": 0,
+          "periods": [
+            {
+              "period": 1,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 350000,
+              "closingCash": 650000,
+              "participants": 0,
+              "surplus": -350000
+            },
+            {
+              "period": 2,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 350000,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": -350000
+            },
+            {
+              "period": 3,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 350000,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": -350000
+            },
+            {
+              "period": 4,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 5,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 6,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 7,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 8,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 9,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 10,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 11,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 12,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 13,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 14,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 15,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 16,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 17,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 18,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 19,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 20,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 21,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 22,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 23,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 24,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 25,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 26,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 27,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 28,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 29,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 30,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 31,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 32,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 33,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 34,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 35,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            },
+            {
+              "period": 36,
+              "fees": 0,
+              "covenant": 0,
+              "costIncurred": 0,
+              "closingCash": 300000,
+              "participants": 0,
+              "surplus": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

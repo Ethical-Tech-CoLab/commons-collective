@@ -1,0 +1,85 @@
+{
+  "notes": {
+    "scope": "Staffed investor-funded startup finance for AI Commons; distinct from the existing individual-agent operating model.",
+    "units": "Projection and result cash fields are integer USD cents; config monetary inputs are USD.",
+    "method": "10,000 design trials across ten profiles; 4,000 independent-seed holdout trials across two selected profiles. Triangular member-scale, correlated cost and churn-rate assumptions, plus uniform additional launch delay.",
+    "memberProtection": "Charge fees only when the minimum launch cohort and a minimum $0.50 monthly saving after fees are satisfied. Price comparison assumes equivalent AI service and an existing-provider procurement case; it is not proof of nonmonetary welfare or general migration safety.",
+    "investorBoundary": "Capital funds losses and reserves, not revenue or guaranteed growth. No debt service, taxes, investor required return or legally approved repayment is modeled.",
+    "baselineDiagnosis": {
+      "originalSavedRunChecksum": "4248275e8c798890",
+      "exactlyReplayed": true,
+      "initialPayingMembers": 229,
+      "feeUsd": 4,
+      "covenantFraction": 0.2,
+      "retainedFeesPerPeriodUsd": 732.8,
+      "operatingCostPerPeriodUsd": 3500,
+      "fundingStopTick": 90,
+      "endingOperatorArrearsUsd": 3500,
+      "minimumPayingMembersForOriginalCost": 1094,
+      "eligibleConsumers": 1000,
+      "aggregatePurchasingCostDisadvantageUsd": 2116.8
+    }
+  },
+  "cases": [
+    {
+      "id": "only-1000-paying-members",
+      "summary": {
+        "capital": 600000000,
+        "capitalRequired": 915471565,
+        "capitalForNoShortfall": 752097230,
+        "capitalWithReserve": 796062230,
+        "reserveAddon": 43965000,
+        "contingency": 119409335,
+        "firstShortfallMonth": 50,
+        "funded": false,
+        "meetsReserveAndContingency": false,
+        "operatingBreakEvenMonth": null,
+        "runRateBreakEvenMonth": null,
+        "cumulativeBreakEvenMonth": null,
+        "potentialCapitalRepaymentMonth": null,
+        "runRateMembersNeeded": 78919,
+        "lastMembers": 1000,
+        "lastStaff": 10,
+        "lastMonthlyProfit": -15415000,
+        "endingCash": -151857230,
+        "minimumPlannedCash": -152097230,
+        "minimumMemberSaving": 53,
+        "matureCashHealthy": false,
+        "meetsBreakEvenTarget": false,
+        "memberPriceProtected": true,
+        "totalFees": 12503400,
+        "totalUses": 764360630
+      }
+    },
+    {
+      "id": "provider-cost-15.50",
+      "summary": {
+        "capital": 600000000,
+        "capitalRequired": 921610000,
+        "capitalForNoShortfall": 757600000,
+        "capitalWithReserve": 801400000,
+        "reserveAddon": 43800000,
+        "contingency": 120210000,
+        "firstShortfallMonth": 50,
+        "funded": false,
+        "meetsReserveAndContingency": false,
+        "operatingBreakEvenMonth": null,
+        "runRateBreakEvenMonth": null,
+        "cumulativeBreakEvenMonth": null,
+        "potentialCapitalRepaymentMonth": null,
+        "runRateMembersNeeded": 78919,
+        "lastMembers": 0,
+        "lastStaff": 10,
+        "lastMonthlyProfit": -15600000,
+        "endingCash": -157600000,
+        "minimumPlannedCash": -157600000,
+        "minimumMemberSaving": null,
+        "matureCashHealthy": false,
+        "meetsBreakEvenTarget": false,
+        "memberPriceProtected": false,
+        "totalFees": 0,
+        "totalUses": 757600000
+      }
+    }
+  ]
+}

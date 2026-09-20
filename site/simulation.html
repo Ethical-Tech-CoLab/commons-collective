@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../styles.css">
   <link rel="stylesheet" href="../header.css">
   <link rel="stylesheet" href="./simulation.css">
+  <link rel="stylesheet" href="./startup.css">
   <script type="module" src="./app.mjs"></script>
 </head>
 <body class="simulation">
@@ -38,9 +39,12 @@
     <p id="announcement" class="sim-announcement" role="status" aria-live="polite" aria-atomic="true">Loading the local simulation controls. If this message persists, reload the page or check that JavaScript and module workers are supported.</p>
     <div id="sim-error" class="sim-error" role="alert" hidden></div>
 
+    {{STARTUP}}
+
     <div class="sim-workspace">
       <aside class="sim-config" aria-labelledby="scenario-heading">
-        <div class="sim-panel-heading"><span class="sim-section-number">01</span><h2 id="scenario-heading">Set the scenario</h2></div>
+        <div class="sim-panel-heading"><span class="sim-section-number">01</span><h2 id="scenario-heading">Operating-agent detail</h2></div>
+        <p class="sim-help">The original operating defaults are an unfunded stress reference, not a recommended startup plan. Use the staffed funding plan above for ramp-up capital; these separate agent inputs do not inherit its budget.</p>
         <div class="sim-model-choice">
           <label for="model-select">Simulation model</label>
           <select id="model-select" aria-describedby="model-description model-reset-note" disabled></select>

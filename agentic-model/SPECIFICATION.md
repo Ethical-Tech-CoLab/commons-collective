@@ -756,3 +756,81 @@ Illustrative parameter bounds/defaults; local legal/rights assumptions; counterp
 - **R4:** Existing [arithmetic tests](../test/model.test.mjs), [operator accounting tests](../test/operator-economics.test.mjs), and [usage method](../usage/README.md). They are reusable invariants and historical boundaries, not evidence that this new simulator is implemented.
 
 The [plan](PLAN.md) sequences delivery and review. The [backlog](BACKLOG.md) maps each deliverable to these requirements and tests. Neither confers authority to deploy real institutions or implies completed engineering work.
+
+## S16: Staffed startup finance and capital availability
+
+The user subsequently required investor capital as a normal startup assumption,
+with fewer than five initial staff growing to ten, explicit marketing/travel/
+events and other costs, a user ramp, a target break-even period, and a capital
+on/off comparison. This adds a **cohort finance projection**, not an undocumented
+change to the individual-agent operating engine.
+
+The reference plan uses three staff growing to ten over 24 months, $120,000
+fully loaded annual compensation per person, $100,000 external setup, and a
+planned 150,000 paying members by month 24. The service fee is $3/month with a
+20% commons covenant. These are illustrative inputs requiring real cost and
+adoption evidence, not institutional commitments.
+
+### Required distinctions
+
+- Investor capital is financing, never earned revenue.
+- A chosen user ramp is a conditional business plan, not simulated proof that
+  acquisition spending produces those users.
+- Capital-off keeps the plan identical but labels projected activities after
+  a cash shortfall unfunded and non-executable.
+- Financial capacity is separate from operating break-even and investor
+  principal recovery. Taxes, debt service, investor return requirements and
+  approved distribution rights are outside the initial projection.
+- Member-price protection compares equivalent service at an existing provider,
+  with no member-paid switching cost. It does not establish real quality,
+  portability, privacy, or nonmonetary welfare.
+- Paid launch requires both a minimum cohort and strictly positive member
+  saving after the service fee, with a configurable positive minimum.
+
+### Cash and uses of funds
+
+The model records staff payroll and hiring, external setup, fixed marketing,
+incremental acquisition and onboarding for gross new/replacement members,
+ongoing member support, travel, scheduled events, technology, legal/accounting,
+office/insurance/admin, and fee-funded commons transfers. Categories are
+separate to expose potential double counting.
+
+Member churn is replenished in the planned ramp, and replacement acquisition
+has a cost. Events occur on the selected cadence rather than being silently
+smoothed for cash purposes. Staff counts are integers.
+
+Operating uses are paid before the month's receipts for conservative cash
+sizing. The required capital is the worst chronological pre-receipt cash
+deficit, with a rolling recurring-cost reserve and an additional capital
+contingency. Reserves/contingency are not themselves modeled spending.
+
+The uses-of-funds table must identify the selected target month, gross fees,
+commons allocation, total uses and net financing consumed. It must not imply
+that gross uses are all financed by investors.
+
+Cash break-even requires six consecutive nonnegative cash-operating months.
+Meeting the target additionally requires nonnegative operations in the final
+six months, so an early good window cannot hide a loss-making mature business.
+Run-rate break-even is separately calculated without expansion acquisition/
+hiring and with average event cost, but includes replacement acquisition.
+
+### Uncertainty and interface
+
+The initial Monte Carlo method uses explicit triangular member-scale,
+correlated-cost and churn assumptions, plus uniform additional launch delay.
+Report the number of trials, capital quantiles and conditional goal shares.
+Never label those shares empirical probabilities of business success.
+
+The finance panel is shown for AI Commons, uses project-relative module workers
+on Pages, and resets on model change. Edits/cancellation advance its own
+generation barrier; old worker/file responses cannot revive prior results.
+Finance JSON has its own format/version. Import validates the configuration
+and recalculates it instead of trusting saved result numbers.
+
+The original operating engine build identity must remain unchanged when only
+the independent finance method/UI changes. Existing operating-run imports and
+verified replay must continue to work.
+
+Implementation and evidence: [startup.mjs](../simulation/startup.mjs),
+[financial tests](../test/startup-finance.test.mjs), and
+[startup funding study](STARTUP-FUNDING.md).

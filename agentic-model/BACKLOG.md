@@ -257,3 +257,20 @@ synthetic demo only, not the institutional claims in the research.
 | Accessibility, performance, review and publication boundary | B23-B25 | T30-T34 |
 
 An item is complete only when its deliverable exists, its acceptance evidence is recorded, its dependencies are complete, and a reviewer accepts any applicable caveats. Documentation creation does not complete implementation items. Conditional B22 may remain explicitly unapproved without mislabeling the P0/P1/P3 prototype as a live-agent release.
+
+## B26: Investor capital, staffed ramp and use-of-funds projection
+
+- **Priority/status:** user-requested extension / implemented and locally verified; empirical assumptions remain unvalidated
+- **Depends on:** shared static application, scoped model reset and explicit
+  distinction between financial plans and executed operating simulations.
+- **Specification/tests:** S16; startup-finance and startup-browser tests.
+- **Deliverable:** AI Commons finance view with investor-capital toggle,
+  configurable paying-member ramp and target month, staff below five growing
+  to ten, loaded pay, marketing/acquisition, onboarding/support, travel/events,
+  technology/legal/admin, capital reserve/contingency, and monthly sources/uses.
+- **Acceptance:** funding-off does not secretly change costs/users; unfunded
+  future activity is not presented as executed. Capital is not revenue.
+  Members are not admitted to a worse modeled price. Startup and mature
+  profitability are distinguished, conditional Monte Carlo assumptions are
+  visible, imports regenerate results, model switching invalidates pending
+  work, and previous operating-run replay remains compatible.

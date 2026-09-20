@@ -1,0 +1,8 @@
+{
+  "status": "Diagnostic operating-model controls; not the staffed startup forecast",
+  "profiles": [
+    { "id": "original", "description": "Original stress reference", "params": {} },
+    { "id": "capital-only", "description": "More starting capital, unchanged negative economics", "params": { "openingCash": 3000000 } },
+    { "id": "fee-only-8", "description": "Raise fees without fixing member value", "params": { "feeA3": 800 } }
+  ]
+}

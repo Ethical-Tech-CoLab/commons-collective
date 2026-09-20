@@ -1,5 +1,6 @@
 import { MODELS, ARRANGEMENTS, ENGINE_VERSION, BUILD_ID, validateConfig } from './config.mjs';
 import { exportScenario, importArtifact } from './artifacts.mjs';
+import { initStartupFinance } from './startup-ui.mjs';
 import {
   createSession, resetSession, editSession, beginSession, updateSession,
   acceptsMessage, acceptsImport, parseSweep,
@@ -22,6 +23,7 @@ let state = createSession();
 let worker = null;
 let runSequence = 0;
 let fileSequence = 0;
+const startupFinance = initStartupFinance(document.getElementById('startup-finance'));
 
 const number = (value, digits = 0) => Number.isFinite(value)
   ? value.toLocaleString(undefined, { maximumFractionDigits: digits, minimumFractionDigits: digits }) : '—';
@@ -101,6 +103,7 @@ function reset(modelId = state.config.modelId, config = null, replayArtifact = n
   const next = resetSession(state, modelId, config);
   // Publish the identity barrier before terminating the old worker or touching controls.
   state = replayArtifact ? updateSession(next, { replay: { artifact: replayArtifact, verified: false } }) : next;
+  startupFinance.reset(modelId);
   terminateWorker();
   $('artifact-file').value = '';
   for (const details of document.querySelectorAll('.simulation main details')) details.open = false;

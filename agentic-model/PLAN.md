@@ -229,3 +229,23 @@ Names, commitments, fees, calendar estimates, and funding remain unassigned. Thi
 For the current documentation-only task, check links, requirement/test/backlog coverage, numerical hand-checks, absence of contradictory model IDs/defaults, and the public-build boundary. Existing Pages CI can confirm no regression to the published research.
 
 Do **not** mark future tests, prototype milestones, empirical hypotheses, or backlog implementation items complete because these documents parse. The [backlog](BACKLOG.md) remains proposed until implementation is separately authorized.
+
+## Staffed startup-finance extension
+
+The subsequent funding request adds a separate monthly cohort-finance view to
+the AI Commons case. It explicitly includes an investor, staffing from three
+to ten, acquisition/onboarding, travel/events, marketing, tooling and
+administration, reserves, and a user ramp. Capital can be turned off while
+retaining the identical planned costs/users to reveal the funding gap.
+
+The [funding study](STARTUP-FUNDING.md) records the original operating-run
+diagnosis, transparent input assumptions, uses of funds, capital ranges, and
+independent-seed Monte Carlo validation. The projection does not turn assumed
+user growth into observed market demand or treat lower prices as proof of all
+forms of member welfare.
+
+Release gates are exact sources/uses reconciliation, correct cash trough and
+reserve treatment, staffing/event cadence, strict member-price protection,
+funding-on/off invariance of the plan, worker/reset/import isolation, and
+continued compatibility with the original operating-run replay. Existing
+research, grant proposals and the historical AI-usage audit remain unchanged.

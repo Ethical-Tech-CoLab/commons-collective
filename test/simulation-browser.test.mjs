@@ -256,3 +256,118 @@ test('worker stepping preserves replay verification, batch finalization and inco
   assert.equal(results.invalidInitialization.modelId, 'ai-commons');
   await page.close();
 });
+
+async function financeDownload(page, selector = '#startup-export-plan') {
+  const downloading = page.waitForEvent('download');
+  await page.locator(selector).click();
+  return JSON.parse(await readFile(await (await downloading).path(), 'utf8'));
+}
+
+test('startup capital toggle preserves the plan and exposes the target use of funds', { timeout: 60000 }, async () => {
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  await page.goto(base);
+  await page.waitForFunction(() => !document.querySelector('#startup-projection').hidden);
+  assert.equal(await page.locator('#startup-capitalEnabled').isChecked(), true);
+  const on = await financeDownload(page);
+  assert.equal(on.summary.capital, 600000000);
+  assert.equal(on.summary.capitalRequired, 415129847);
+  assert.equal(on.rows[0].staff, 3);
+  assert.equal(on.rows[23].staff, 10);
+  assert.match(await page.locator('#startup-target-window').textContent(), /36/);
+  await page.locator('#startup-capitalEnabled').uncheck();
+  const off = await financeDownload(page);
+  assert.deepEqual(off.totals, on.totals);
+  assert.equal(off.summary.capitalRequired, on.summary.capitalRequired);
+  assert.equal(off.summary.capital, 0);
+  assert.equal(off.summary.funded, false);
+  assert.deepEqual(off.rows.map(row => row.members), on.rows.map(row => row.members));
+  assert.match(await page.locator('#startup-capital-note').textContent(), /unfunded plan/i);
+  await page.locator('#startup-breakEvenTarget').fill('24');
+  const target = await financeDownload(page);
+  assert.equal(target.budgetToTarget.throughMonth, 24);
+  assert.equal(target.summary.meetsBreakEvenTarget, false);
+  assert.match(await page.locator('#startup-sources-table').textContent(), /Through month 24/);
+  await page.locator('#startup-staffStart').fill('5');
+  assert.equal(await page.locator('#startup-projection').isVisible(), false);
+  assert.equal(await page.locator('#startup-export-plan').isDisabled(), true);
+  assert.equal(await page.locator('#startup-error').isVisible(), true);
+  await page.locator('#model-select').selectOption('library-oer');
+  assert.equal(await page.locator('#startup-finance').isVisible(), false);
+  await page.locator('#model-select').selectOption('ai-commons');
+  assert.equal(await page.locator('#startup-staffStart').inputValue(), '3');
+  assert.equal(await page.locator('#startup-capitalEnabled').isChecked(), true);
+  assert.equal(await page.locator('#startup-breakEvenTarget').inputValue(), '36');
+  for (const width of [1440, 900, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true);
+  }
+  await page.close();
+});
+
+test('startup Monte Carlo runs on Pages paths and finance imports regenerate untrusted outputs', { timeout: 60000 }, async () => {
+  const page = await browser.newPage();
+  await page.goto(base);
+  await page.locator('#startup-trials').fill('20');
+  await page.locator('#startup-run').click();
+  await page.waitForFunction(() => !document.querySelector('#startup-trial-results').hidden);
+  const trials = await financeDownload(page, '#startup-export-trials');
+  assert.equal(trials.trials, 20);
+  assert.equal(trials.config.params.capitalEnabled, 1);
+  assert.ok(trials.requiredCapital.p95 >= trials.requiredCapital.median);
+  assert.match(await page.locator('#startup-trial-results').textContent(), /not a real-world success probability/i);
+  const plan = await financeDownload(page);
+  plan.summary.capitalRequired = 1;
+  plan.config.params.feeUsd = 2.5;
+  await page.locator('#startup-plan-file').setInputFiles({ name: 'finance.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(plan)) });
+  await page.waitForFunction(() => document.querySelector('#startup-import-status').textContent.includes('recalculated'));
+  const recomputed = await financeDownload(page);
+  assert.equal(recomputed.config.params.feeUsd, 2.5);
+  assert.equal(recomputed.summary.capitalRequired, 475409857);
+  assert.equal(await page.locator('#startup-trial-results').isVisible(), false);
+  assert.equal(await page.locator('#startup-trials').inputValue(), '100');
+  await page.locator('#startup-plan-file').setInputFiles({ name: 'wrong.json', mimeType: 'application/json', buffer: Buffer.from('{"format":"ccsl-run"}') });
+  await page.waitForFunction(() => !document.querySelector('#startup-error').hidden);
+  assert.match(await page.locator('#startup-error').textContent(), /operating importer/i);
+  await page.close();
+});
+
+test('late finance workers cannot overwrite edited or reset capital assumptions', { timeout: 60000 }, async () => {
+  const page = await browser.newPage();
+  await page.addInitScript(() => {
+    window.Worker = class {
+      postMessage(message) {
+        const callback = this.onmessage;
+        setTimeout(() => callback?.({ data: { type: 'complete', generation: message.generation, result: { broken: true } } }), 150);
+      }
+      terminate() {}
+    };
+  });
+  await page.goto(base);
+  await page.locator('#startup-run').click();
+  await page.locator('#startup-capitalEnabled').uncheck();
+  await page.waitForTimeout(250);
+  assert.equal(await page.locator('#startup-error').isVisible(), false);
+  assert.equal(await page.locator('#startup-trial-results').isVisible(), false);
+  await page.locator('#startup-run').click();
+  await page.locator('#model-select').selectOption('library-oer');
+  await page.locator('#model-select').selectOption('ai-commons');
+  await page.waitForTimeout(250);
+  assert.equal(await page.locator('#startup-capitalEnabled').isChecked(), true);
+  assert.equal(await page.locator('#startup-error').isVisible(), false);
+  assert.equal(await page.locator('#startup-trial-results').isVisible(), false);
+  await page.close();
+});
+
+test('finance extension preserves the original published operating replay identity', { timeout: 60000 }, async () => {
+  const page = await browser.newPage();
+  await page.goto(base);
+  const saved = JSON.parse(await readFile(new URL('../agentic-model/experiments/viability-2026-09-20/original-operating-scenario.json', import.meta.url), 'utf8'));
+  const result = await page.evaluate(async config => {
+    const { BUILD_ID } = await import('./config.mjs');
+    const { run, summarize } = await import('./engine.mjs');
+    return { buildId: BUILD_ID, checksum: summarize(run(config)).checksum };
+  }, saved.config);
+  assert.equal(result.buildId, '9bd1e996a4abea2f');
+  assert.equal(result.checksum, '4248275e8c798890');
+  await page.close();
+});
