@@ -28,11 +28,11 @@ The photograph poses institutional questions; its claims about consensus, absent
 
 <!-- workshop:brief -->
 
-### Alignment with published Ethical Tech CoLab principles
+### Alignment with repository-stated Ethical Tech CoLab principles
 
-Ethical Tech CoLab's public materials identify **Field-grounded**, **Prototype-first**, and **Open by default** as working principles. Its foundational ethical-AI paper emphasizes institutions, human-rights constraints, avoidance of harm, and participation by affected people. We operationalize those commitments rather than inventing an official Ethical Tech CoLab charter. [S01] [S02]
+A pinned public-repository snapshot of Ethical Tech CoLab's website content identifies **Field-grounded**, **Prototype-first**, and **Open by default** as working principles. This is stored About-page copy, not verified wording on a rendered public principles page: the [About route is disabled in the cited source](https://github.com/Ethical-Tech-CoLab/website/blob/6fadc0fb0a93c112bee7cc91a2f9e3c00a2f9565/src/app/about/page.tsx). The [public website](https://ethical-tech-colab.github.io/website/) provides organizational context. The separate ethical-AI paper emphasizes institutions, human-rights constraints, avoidance of harm, and participation by affected people. We use these as design references, not an invented official Ethical Tech CoLab charter or an endorsement of this research. [S01] [S02]
 
-| Published commitment | Operational requirement for this project | Evidence needed before expansion |
+| Source-stated principle or commitment | Operational requirement for this project | Evidence needed before expansion |
 |---|---|---|
 | Field-grounded | Compensated design sessions with consumers, creators, community stewards, and people affected by data about them | Decisions changed by participants; accessible redress; inclusion of people who refuse participation |
 | Prototype-first | Test membership, mandate comprehension, refusal, and settlement with fictional or low-risk material before acquiring personal data | Measured understanding, actual negotiated terms, reconciled payments, and adverse-event records |
@@ -220,33 +220,25 @@ The first market should be narrow enough to establish authority and inspect bene
 
 1. **Member dues:** fund representation and purchasing services, with waivers or sponsored membership to prevent income-based exclusion.
 2. **Transparent service charges:** compensate curation, rights verification, delivery, and audit. Do not disguise them as royalties for public-domain information.
-3. **Licensing commissions:** apply only to authorized licensed uses; disclose allocation before participation.
+3. **Licensing commissions:** a possible separately negotiated variant, not a deduction implemented in the current Lab's contributor contract; apply only to authorized uses with prior disclosure.
 4. **Procurement administration:** a disclosed fee or dues-funded service, not an undisclosed supplier kickback.
 5. **Commons contracts and grants:** fund nonexclusive public infrastructure, independent evaluation, and underserved participants.
 
+These are institutional design options. A proposed income source is not booked by the financial summary unless the selected detailed model actually includes it. In particular, current contributor-agency receipts are not an additional operator revenue stream.
+
 The initial operator should not depend on selling profiles, ads targeted from private archives, or speculative token appreciation. Venture capital may fit some interoperable infrastructure services, but a return requirement can conflict with non-extractive membership governance. Any investor participation must be subordinate to the mission and cannot buy contributor permission.
 
-### A falsifiable operating scenario
+### One financial source, detailed model and summary
 
-All figures below are **annual, hypothetical USD assumptions**, before tax and variable payment costs.
+Follow the Money is a read-only rollup of the selected Simulation Lab source. It must match the same period, currency, account perimeter, receipts, costs, and liabilities exactly. It is not a second calculator that assumes licensing income or applies a different distribution rule. Inputs belong in the Lab; the summary aggregates its output and identifies its source.
 
-| Assumption or result | Arithmetic | Interpretation |
-|---|---|---|
-| 10,000 paying purchasing-service members | 10,000 x $24 dues = $240,000 | Optional service dues are revenue, not creator compensation or voting fees |
-| AI service baseline | $240 per member | Hypothetical market benchmark; requires a matched real quote |
-| Negotiated discount | 20% x $240 = $48 | Gross annual saving; no data transfer is required |
-| Consumer saving after dues | $48 - $24 = $24 | $240,000 across members, if comparable service quality is maintained |
-| Supplier pass-through | 10,000 x $192 = $1,920,000 | Not cooperative operating revenue |
-| Separate licensing receipts | $120,000 | Contract income; not an estimate of "what data are worth" |
-| Licensing operations allocation | 20% x $120,000 = $24,000 | Available for the operator under the proposed split |
-| Total operating resources | $240,000 + $24,000 = $264,000 | Excludes commons, reserves, and member distribution funds |
-| Illustrative operating cost | $300,000 | Staff, counsel, support, audit, security, and administration assumption |
-| Operating gap | $264,000 - $300,000 = -$36,000 | This scenario is not self-sustaining |
-| 20% of memberships waived | $192,000 dues + $24,000 = $216,000 | Gap grows to $84,000 unless sponsors cover waivers or costs fall |
+The current startup view models investor-funded ramp-up, staff, acquisition and support costs, member prices, and an explicit commons covenant. Its forecast is distinct from the operating-agent model's simulated payment journal. A forecast must not be called a cleared receipt, and neither is evidence of a real institution or transaction.
 
-At $24 dues, $24,000 licensing operations income, and $300,000 costs, break-even requires **11,500 paying members**, assuming costs and the licensing contract remain unchanged. With 20% fee waivers, it requires **14,375 total members** under the same simplified assumptions. Real costs may scale with membership; these are arithmetic thresholds, not forecasts.
+<!-- money:startup -->
 
-These calculations concern the paid purchasing-service tier and its waivers, not every person opting into the free community. Additional free participants add support and governance costs that must be measured and funded; the example does not establish that those costs are negligible.
+The earlier standalone annual-dues/licensing illustration and its independent 40/30/20/10 split are retired from the live financial model. They must not be added to this plan as extra income or treated as its default distribution rule. Alternative contractual terms require a separately specified, implemented, and identified scenario, not an unexplained change in the summary.
+
+These calculations concern paid services, not civic membership or an entitlement to sell other people's information. Free participation, support, accessibility, and governance costs still need funding. Fees must be evaluated against comparable service quality and actual switching costs, not merely against a headline discount.
 
 Equal member payments are a governance choice, not an estimate of marginal contribution. A more granular valuation scheme might reward effort or quality but adds measurement, gaming, and dispute costs. No precise attribution from an individual record to every generated output is assumed. Externalities also mean that one person's sale can affect others who never agreed to sell. [S24]
 
@@ -258,19 +250,18 @@ Separate five meanings of "data value": buyer willingness to pay; contribution t
 
 The photographed Vincent card explicitly raises equity stakes in data or AI companies as one possible long-run incentive. Treat this separately from a fee for current work, a royalty, cooperative patronage, or the public sovereign-fund proposal discussed later. No instrument is universally appropriate. Compare cash flow, valuation, dilution, vesting, liquidity, risk, tax/securities treatment, and who controls decisions. Contributors must not be forced to accept speculative equity instead of promised pay, and investor voting power must not silently replace civic membership rights. This is a research and legal-review question, not an offer of securities or evidence that individual data creates an ownership share in a model. [S97]
 
-### The proposed waterfall
+### Contract-specific flows implemented in the Lab
 
-For a fictional **$120,000 settled licensing contract** and **1,000 eligible contributors**, the toy model allocates:
+| Flow | Implemented accounting | Governing constraint |
+|---|---|---|
+| Investor capital | Financing into the operator, not earned revenue | Does not create permission, a dividend entitlement, or guaranteed demand |
+| Buyer payment for AI/provider service | Provider consideration, not operator revenue | Compare equivalent service and enforce the buyer's mandate |
+| Administration/service fee | Operator revenue; the configured A3 covenant transfers its stated share to the independent commons fund | The published reference is 20% of these fees, not 20% of every incoming dollar |
+| Authorized contribution or maintenance entitlement | Full contracted contributor amount enters the agency ledger; disbursement or outstanding liability is recorded separately | No default operator or commons deduction from money already owed to a contributor |
+| Commons maintenance funding | Restricted funding and its permitted payments are shown in the commons ledger | A transfer is not proof of completed public benefit |
+| Reserves | Cash retention and the model's stated liquidity target, where modeled | A reserve target is not an additional expense or an automatic percentage of licensing revenue |
 
-| Destination | Share | Annual amount | Governing constraint |
-|---|---|---|---|
-| Member contributor pool | 40% | $48,000 | $48 each under equal allocation; purchasing membership alone creates no entitlement |
-| Commons fund | 30% | $36,000 | Restricted to publicly reported stewardship and public-good awards |
-| Operations | 20% | $24,000 | Subject to approved cost budget and audit |
-| Reserve | 10% | $12,000 | Disclosed risk reserve; no automatic treatment as operator profit |
-| Total | 100% | $120,000 | Every cent must reconcile |
-
-The percentages are proposed contractual choices, not a legal formula or empirical fairness result. Contributions to the commons must be disclosed before a member signs; they are not taken silently after a promised payout. Actual contracts must specify whether receipts are gross or net of taxes, refunds, transaction costs, and other obligations before applying a waterfall.
+For example, an accepted and funded $10 contributor entitlement is $10 owed to that contributor under the current agency contract. It is not silently split into $4/$3/$2/$1. Administration fees and their commons covenant are separate flows. A different negotiated allocation would require a different named contract implemented consistently in both detailed and summary views.
 
 ### A real payment path would require
 
@@ -278,16 +269,11 @@ The percentages are proposed contractual choices, not a legal formula or empiric
 
 Use regulated financial-service providers as applicable. Minimize identity collection, but do not promise anonymous disbursement where payment, tax, anti-fraud, or sanctions rules require verification. Keep identity records separate from content and public receipts. Failed payments remain member liabilities, not revenue; unclaimed funds need a jurisdiction-specific policy. Publish aggregate audited totals, not names or bank details.
 
-The example uses integer cents. Each pool rounds down except the reserve, which absorbs allocation rounding. Individual payments round down, and undistributed contributor cents remain a member liability for later allocation. The interactive model and automated tests implement these rules.
+The executable models use integer cents and explicit contract rounding. Each account must satisfy opening cash plus incoming cash minus outgoing cash equals closing cash. Agency cash must remain matched by unpaid contributor entitlements; internal transfers are eliminated in a combined institutional view. Unpaid invoices are not cleared cash, and failed payments do not become operator income.
 
-| Licensing receipts | Contributor pool | Equal payment to 1,000 eligible contributors |
-|---|---|---|
-| $0 | $0 | $0 |
-| $60,000 | $24,000 | $24 |
-| $120,000 | $48,000 | $48 |
-| $240,000 | $96,000 | $96 |
+Follow the Money exposes those reconciliations for a chosen cumulative window. Operating-run figures are regenerated from the completed run's configuration and checked against its recorded checksum before a ledger is displayed. Startup figures are aggregated from the same monthly projection rows and checked against the Lab's detailed budget. Downstream fund balances or contributor payments that a projection does not model are labeled **not modeled**, never invented as zero or calculated from an unrelated percentage.
 
-The baseline purchasing saving of $24 is separate from any licensing payment. A member eligible for both could receive $72 of combined benefit under these assumptions, but that must not be advertised as a universal or guaranteed dividend. A person who contributes no licensable material may still deserve full voting rights and meaningful purchasing benefits.
+Purchasing savings and contributor earnings remain separate stakeholder outcomes. Neither is a universal data dividend. A person who contributes no licensable material may still deserve full voting rights and meaningful purchasing benefits.
 
 ### Public-good allocation
 
@@ -413,9 +399,9 @@ Treat the notes' fear/greed framing as a limited motivation hypothesis, not an e
 
 1. Alice is the fictional author of original, non-sensitive material. The association verifies her authority and any assignment, collaborator, or source restrictions.
 2. She grants a one-year, nonexclusive mandate for a **retrieval service**, not training. The contract specifies permitted excerpts, attribution, retention, recipient, fees, and remedies.
-3. The fictional educational provider buys a $120,000 annual service covering 1,000 eligible contributors. Bob uses its assistant to ask a question; access logs identify the contracted collection and permitted operation.
+3. The fictional educational provider evaluates Alice's specifically authorized retrieval-service offer. If it accepts and funds a $10 entitlement in the chosen scenario, the payment has a named contract and recipient. No receipt is invented when the offer is rejected. Bob's assistant request identifies the relevant collection and permitted operation.
 4. A receipt records delivery against the contract. It does **not** claim to calculate the contribution of every sentence to the model's internal weights.
-5. Cleared receipts are reconciled. Under the proposed waterfall Alice is entitled to $48 if equally eligible, the pool contributes $36,000 to the commons, and costs and reserves are reported separately.
+5. The full contracted $10 is recorded in the contributor-agency ledger and either paid to Alice or retained as cash matched by a payable. Operator fees, the commons covenant, and verification costs are separately identified. The money rollup shows those same entries rather than imposing a second allocation.
 6. Bob can inspect provenance and report incorrect attribution. Alice can dispute a use or revoke future mandate renewals, subject to the signed contract and applicable rights.
 7. If the buyer wants training access, it must negotiate a separate permission and review the changed risk. No technical flag alone converts the old contract into the new one.
 
@@ -600,7 +586,7 @@ The strongest counterargument is that a new institution adds overhead without cr
 
 **Days 61-90: independent go/no-go review.** Evaluate comprehension, buyer interest, legal authority, distribution, and costs. Publish evidence and failure cases. Proceed only to a bounded pilot with explicit limits; otherwise revise the institution or redirect funds to existing stewards.
 
-**Immediate deliverables provided here:** the public research text; source register with claim limits; a fictional knowledge object; an interactive, tested settlement example; and a publication workflow that rebuilds and deploys on every push to the repository's main branch. They are infrastructure for the research, not evidence that its proposed institutions already work.
+**Immediate deliverables provided here:** the public research text; source register with claim limits; a fictional governed object; executable simulations with reconciled financial summaries; a public trial-evidence archive; and a publication workflow that rebuilds and deploys on every push to the repository's main branch. They are infrastructure for the research, not evidence that its proposed institutions already work.
 
 ## 19. Data dividends, Pigouvian taxes, and commons credits
 
@@ -1036,7 +1022,7 @@ Preregister held-out tests, subgroup analysis, uncertainty reporting, full costs
 
 The defining property is **accountable human agency**, not an open-source label, decentralization, or branding alone. Openness can be valuable, but it is neither necessary for every individual component nor sufficient for the whole system.
 
-This is a **proposed working definition for this research**, not official CoLab approval, a statement that the stack has been implemented, or an accreditation scheme. It draws on the published CoLab orientation toward affected people, institutional accountability, human rights, and avoidance of harm while remaining a distinct proposal. [S01] [S02]
+This is a **proposed working definition for this research**, not official CoLab approval, a statement that the stack has been implemented, or an accreditation scheme. It draws on the repository-stated orientation and the cited ethical-AI paper's treatment of affected people, institutional accountability, human rights, and avoidance of harm while remaining a distinct proposal. [S01] [S02]
 
 ### The accountability tuple
 

@@ -249,3 +249,17 @@ reserve treatment, staffing/event cadence, strict member-price protection,
 funding-on/off invariance of the plan, worker/reset/import isolation, and
 continued compatibility with the original operating-run replay. Existing
 research, grant proposals and the historical AI-usage audit remain unchanged.
+
+## Reconciled financial summary and trial publication
+
+The next integration replaces the independent Follow the Money calculator with
+the selected Lab output's rollup. The operator perimeter, window, currency,
+source identity, and forecast-versus-simulated-transaction status stay visible.
+No separate high-level percentages may drift from the detailed source.
+
+Acceptance includes all cumulative startup windows, operating journal and
+liability reconciliation, internal-transfer elimination, one-click source
+handoff and file import, original-run replay compatibility, and regenerated
+research/PDF figures. Public trial tables must reconcile to the downloadable
+design/holdout data and per-trial summary records. Em-dash cleanup must not
+silently change source quotations or pinned upstream code.

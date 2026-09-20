@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { settle, purchasingSavings, commonsCreditTax } from '../site/model.mjs';
 
-test('published baseline conserves all receipts and yields $48 per member', () => {
+test('archived licensing fixture conserves receipts and yields $48 per contributor', () => {
   assert.deepEqual(settle(12_000_000, 1000), {
     grossCents: 12_000_000, members: 4_800_000, commons: 3_600_000,
     operations: 2_400_000, reserve: 1_200_000, perMember: 4800, memberLiability: 0,
@@ -29,7 +29,7 @@ test('invalid amounts and member counts fail explicitly', () => {
     assert.throws(() => settle(100, value), RangeError);
   }
 });
-test('published procurement benefit excludes licensing income', () => {
+test('historical procurement illustration excludes licensing income', () => {
   assert.equal(purchasingSavings(24000, 2000, 2400), 2400);
   assert.equal(purchasingSavings(24000, 0, 2400), -2400);
   assert.throws(() => purchasingSavings(24000, 10001, 2400), RangeError);

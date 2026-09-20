@@ -1,4 +1,6 @@
 import { STARTUP_VERSION, STARTUP_FIELDS, createStartupConfig, validateStartupConfig, projectStartup } from './startup.mjs';
+import { startupMoney } from './money.mjs';
+import { startupMoneyRequest, sendMoneyRequest } from './money-request.mjs';
 
 const svgNS = 'http://www.w3.org/2000/svg';
 const maxPlanBytes = 1024 * 1024;
@@ -32,8 +34,8 @@ const useLabels = {
   administration: 'Office, insurance & administration', commons: 'Commons share of service fees',
 };
 const number = (value, digits = 0) => Number.isFinite(value)
-  ? value.toLocaleString('en-US', { minimumFractionDigits: digits, maximumFractionDigits: digits }) : '—';
-const money = value => Number.isFinite(value) ? `$${number(value / 100, 2)}` : '—';
+  ? value.toLocaleString('en-US', { minimumFractionDigits: digits, maximumFractionDigits: digits }) : 'Not available';
+const money = value => Number.isFinite(value) ? `$${number(value / 100, 2)}` : 'Not available';
 const month = value => value === null ? 'Not reached in horizon' : `Month ${number(value, Number.isInteger(value) ? 0 : 1)}`;
 const errorText = error => error instanceof Error ? error.message : String(error);
 
@@ -44,6 +46,7 @@ export function initStartupFinance(rootElement) {
   const hasWorkers = typeof Worker !== 'undefined';
   let generation = 0, worker = null, destroyed = false, activeModel = 'ai-commons';
   let config = null, projection = null, trialResult = null, trialCount = 100;
+  let moneyWindowExplicit = false;
   const listeners = [], downloads = new Map();
   const on = (node, event, handler) => {
     node.addEventListener(event, handler);
@@ -84,6 +87,7 @@ export function initStartupFinance(rootElement) {
     $('run').disabled = unavailable || !hasWorkers || worker !== null;
     $('cancel').disabled = worker === null;
     $('export-plan').disabled = unavailable;
+    $('inspect-money').disabled = unavailable;
     $('export-trials').disabled = unavailable || trialResult === null;
   }
   function showError(error) {
@@ -257,7 +261,7 @@ export function initStartupFinance(rootElement) {
     $('cash-chart').replaceChildren(svg);
   }
   function renderSources(result) {
-    const target = result.budgetToTarget;
+    const target = startupMoney(result, result.config.params.breakEvenTarget).budget;
     set('target-window', `Month 0–${target.throughMonth} · USD`);
     const targetRows = [
       ['Source: available committed investor capital', money(result.summary.capital)],
@@ -275,13 +279,8 @@ export function initStartupFinance(rootElement) {
       : `fees exceed cumulative uses by ${money(-target.netFundingConsumed)} at the target; that surplus is not a promised distribution`;
     set('target-funding-note', `${target.note} Gross uses are ${money(target.totalUses)} and gross member fees are ${money(target.grossFees)}; ${netDescription}. Cash timing still requires a peak bridge of ${money(target.peakCashDeficit)} before fees arrive. The required-capital summary separately protects the full ${result.config.params.horizon}-month horizon, with reserve and contingency.`);
     const periods = [
-      { label: 'Through cash break-even', budget: result.budgetToBreakEven },
-      { label: 'Full horizon', budget: {
-        throughMonth: result.config.params.horizon, uses: result.totals,
-        grossFees: result.summary.totalFees, totalUses: result.summary.totalUses,
-        netFundingConsumed: result.summary.totalUses - result.summary.totalFees,
-        peakCashDeficit: result.summary.capitalForNoShortfall,
-      } },
+      { label: 'Through cash break-even', budget: result.summary.operatingBreakEvenMonth === null ? null : startupMoney(result, result.summary.operatingBreakEvenMonth).budget },
+      { label: 'Full horizon', budget: startupMoney(result, result.config.params.horizon).budget },
     ];
     const at = callback => periods.map(({ budget }) => budget ? callback(budget) : 'Not reached');
     const rows = [
@@ -345,8 +344,8 @@ export function initStartupFinance(rootElement) {
     renderSources(result);
     const monthlyRows = [{
       unfunded: s.firstShortfallMonth === 0,
-      cells: ['0 · setup', '—', '—', '—', '—', money(0), money(result.totals.setup), money(0), money(-result.totals.setup),
-        money(s.capital - result.totals.setup), money(s.capital - result.totals.setup), '—', '—', s.firstShortfallMonth === 0 ? 'Unfunded plan' : 'Cash covered'],
+      cells: ['0 · setup', 'Not applicable', 'Not applicable', 'Not applicable', 'Not applicable', money(0), money(result.totals.setup), money(0), money(-result.totals.setup),
+        money(s.capital - result.totals.setup), money(s.capital - result.totals.setup), 'Not applicable', 'Not applicable', s.firstShortfallMonth === 0 ? 'Unfunded plan' : 'Cash covered'],
     }, ...rows.map(row => ({
       unfunded: !row.financed,
       cells: [number(row.month), number(row.desiredMembers), number(row.members), number(row.acquired), number(row.staff),
@@ -378,6 +377,8 @@ export function initStartupFinance(rootElement) {
       config = readInputs();
       projection = projectStartup(config);
       renderProjection(projection);
+      $('money-through').max = config.params.horizon;
+      if (!moneyWindowExplicit) $('money-through').value = config.params.breakEvenTarget;
       $('progress').max = trialCount;
       set('status', 'Assumption-based plan recalculated. This is not an executed operating-agent simulation.');
     } catch (error) {
@@ -392,7 +393,7 @@ export function initStartupFinance(rootElement) {
   function renderTrials(result) {
     const wrap = $('trial-results');
     const share = number(result.conditionalSuccessShare * 100, 1);
-    const heading = element('h4', 'Conditional trial results — not a real-world success probability');
+    const heading = element('h4', 'Conditional trial results, not a real-world success probability');
     const metrics = element('dl', undefined, 'startup-metrics');
     metrics.append(
       metric('Trials meeting all conditions', `${share}%`, `${number(result.successful)} / ${number(result.trials)} completed trials`),
@@ -530,6 +531,8 @@ export function initStartupFinance(rootElement) {
       createControls(nextConfig);
       $('seed').value = nextConfig.seed;
       $('trials').value = '100';
+      moneyWindowExplicit = false;
+      $('money-through').value = nextConfig.params.breakEvenTarget;
       trialCount = 100;
       $('progress').max = 100;
       for (const details of rootElement.querySelectorAll('details')) details.open = false;
@@ -546,17 +549,19 @@ export function initStartupFinance(rootElement) {
       updateActions();
     }
   }
-  function reset(modelId = 'ai-commons') {
+  function reset(modelId = 'ai-commons', suppliedConfig = null) {
     if (destroyed) return;
     activeModel = modelId;
     invalidateTrials('Not run. No Monte Carlo results.');
     config = null;
     projection = null;
     trialCount = 100;
-    const defaults = createStartupConfig();
+    moneyWindowExplicit = false;
+    const defaults = suppliedConfig ? validateStartupConfig(suppliedConfig) : createStartupConfig();
     createControls(defaults);
     $('seed').value = defaults.seed;
     $('trials').value = '100';
+    $('money-through').value = defaults.params.breakEvenTarget;
     $('plan-file').value = '';
     $('progress').max = 100;
     for (const details of rootElement.querySelectorAll('details')) details.open = false;
@@ -582,7 +587,7 @@ export function initStartupFinance(rootElement) {
     updateActions();
   }
   on(rootElement, 'input', event => {
-    if (destroyed || activeModel !== 'ai-commons' || !event.target.matches('input') || event.target === $('plan-file')) return;
+    if (destroyed || activeModel !== 'ai-commons' || !event.target.matches('input') || event.target === $('plan-file') || event.target === $('money-through')) return;
     invalidateTrials('Assumptions edited. Previous trials cleared; run again when ready.');
     recompute();
   });
@@ -601,7 +606,27 @@ export function initStartupFinance(rootElement) {
     if (trialResult) download(trialResult, `startup-trials-${projection.id}-${trialResult.trials}.json`);
   });
   on($('plan-file'), 'change', importPlan);
+  on($('money-through'), 'input', () => { moneyWindowExplicit = true; });
+  on($('inspect-money'), 'click', () => {
+    try {
+      if (!projection) throw new Error('Calculate a valid finance plan before inspecting its money flows.');
+      if (!$('money-through').value.trim()) throw new Error('Select a cumulative month first.');
+      sendMoneyRequest(startupMoneyRequest(projection.config, Number($('money-through').value)), '../index.html#lab');
+    } catch (error) { showError(error); }
+  });
   $('worker-support').hidden = hasWorkers;
   reset('ai-commons');
-  return { reset, destroy };
+  return { reset, destroy, cancelBackground() {
+    if (worker) {
+      invalidateTrials('Finance sampling was canceled when leaving the page. Run it again to obtain completed results.');
+      updateActions();
+    }
+  }, loadConfig(value, through) {
+    reset('ai-commons', value);
+    if (through !== undefined) {
+      moneyWindowExplicit = through !== value.params.breakEvenTarget;
+      $('money-through').value = through;
+    }
+    set('status', 'Shared Lab assumptions restored. Financial values are recalculated, not copied from a summary.');
+  } };
 }

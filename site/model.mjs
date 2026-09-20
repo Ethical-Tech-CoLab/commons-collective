@@ -1,3 +1,4 @@
+// Archived licensing illustration, retained for regression history, not the live Lab contract.
 export const SHARES = Object.freeze({
   members: 4000,
   commons: 3000,

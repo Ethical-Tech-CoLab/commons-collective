@@ -33,7 +33,7 @@
   <rect width="1680" height="2520" fill="#120c1a"/>
   <text x="48" y="51" class="eyebrow">COMMONS COLLECTIVE / A NODE-BY-NODE DESIGN MAP</text>
   <text x="48" y="107" class="title">Every node is a bargaining point.</text>
-  <text x="48" y="149" class="intro">Follow a request. At each handoff, ask where control, data, rents and resources go — and who can change the terms.</text>
+  <text x="48" y="149" class="intro">Follow a request. At each handoff, ask where control, data, rents and resources go and who can change the terms.</text>
   <text x="48" y="181" class="intro">The branches are possible governance choices, not automatic outcomes or judgments about named providers.</text>
   <path d="M50 220H87" class="request"/><text x="102" y="226" class="legend">Request / execution ↓</text>
   <path d="M389 220H352" class="risk-branch"/><text x="407" y="226" class="legend">Capture risk ←</text>

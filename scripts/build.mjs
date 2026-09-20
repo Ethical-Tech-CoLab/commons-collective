@@ -11,6 +11,8 @@ import {
 } from './workshop.mjs';
 import { validatePublications, publicationLink, assertNoRepositoryOnlyReferences } from './publications.mjs';
 import { buildSimulation } from './build-simulation.mjs';
+import { referenceMoney, buildMoney, moneyReportMarkdown } from './build-money.mjs';
+import { buildTrialEvidence } from './build-trials.mjs';
 
 const root = new URL('../', import.meta.url);
 const read = path => readFile(new URL(path, root), 'utf8');
@@ -22,7 +24,10 @@ const sources = [
   ...JSON.parse(await read('research/sources.json')),
   ...JSON.parse(await read('research/replication-sources.json')),
 ].sort((a, b) => a.id.localeCompare(b.id));
-const report = await read('research/report.md');
+const financialReference = referenceMoney();
+const reportSource = await read('research/report.md');
+if (!reportSource.includes('<!-- money:startup -->')) throw new Error('The research must include its canonical Lab financial rollup.');
+const report = reportSource.replace('<!-- money:startup -->', moneyReportMarkdown(financialReference));
 const workshopSource = await read('research/workshop-statements.json');
 const workshopMappingSource = await read('research/workshop-map.json');
 const conferenceSource = await read('research/conference-notes-review.json');
@@ -67,12 +72,17 @@ const qrMarkup = (await read('site/qr-share.html'))
   .replace('{{PROJECT_DISPLAY_URL}}', escape(`${projectUrl.hostname}${projectUrl.pathname}`))
   .replace('./project-qr.svg', `./project-qr.svg?v=${fingerprint(qrSvg)}`);
 const stylesheet = await read('site/styles.css');
-const model = await read('site/model.mjs');
-const app = (await read('site/app.mjs')).replace("'./model.mjs'", `'./model.mjs?v=${fingerprint(model)}'`);
+const simulationBuild = await buildSimulation(root, renderHeader('simulation'));
+const moneyMarkup = await buildMoney(root, financialReference);
+const moneyCss = await read('site/money.css');
+const app = (await read('site/app.mjs')).replace("'./simulation/money-view.mjs'", `'./simulation/money-view.mjs?v=${simulationBuild.revision}'`);
 const ids = new Set();
 for (const source of sources) {
   if (!/^S\d{2}$/.test(source.id) || ids.has(source.id)) throw new Error(`Invalid/duplicate source: ${source.id}`);
   if (!['https:'].includes(new URL(source.url).protocol)) throw new Error(`Unsafe source URL: ${source.id}`);
+  if (source.contextUrl && (new URL(source.contextUrl).protocol !== 'https:' || typeof source.contextTitle !== 'string' || !source.contextTitle.trim())) {
+    throw new Error(`Invalid reader-facing source context: ${source.id}`);
+  }
   for (const key of ['title', 'author', 'year', 'claim', 'limit', 'accessed']) {
     if (!source[key]) throw new Error(`Source ${source.id} missing ${key}`);
   }
@@ -108,11 +118,12 @@ for (const id of ids) {
 }
 const references = sources.map(source =>
   `<li id="ref-${source.id}"><span class="source-id">${source.id} / ${escape(source.year)}</span>
-  <p><strong>${escape(source.author)}.</strong> <a href="${escape(source.url)}">${escape(source.title)}</a></p>
+  <p><strong>${escape(source.author)}.</strong> <a href="${escape(source.url)}">${escape(source.title)}</a>${source.contextUrl ? ` &middot; <a href="${escape(source.contextUrl)}">${escape(source.contextTitle)}</a>` : ''}</p>
   <p>${escape(source.claim)}</p><p class="limit"><strong>Limit:</strong> ${escape(source.limit)} <span>Accessed ${escape(source.accessed)}.</span></p></li>`
 ).join('\n');
 const contents = `<ol>${headings.map(({ id, text }) => `<li><a href="#${id}">${text}</a></li>`).join('')}</ol>`;
 const html = template.replace('{{REPORT}}', rendered).replace('{{CONTENTS}}', contents)
+  .replace('{{MONEY_VIEW}}', moneyMarkup)
   .replace('{{HEADER}}', renderHeader('main'))
   .replace('{{PROJECT_QR}}', qrMarkup)
   .replaceAll('./favicon.svg', faviconUrl)
@@ -121,6 +132,7 @@ const html = template.replace('{{REPORT}}', rendered).replace('{{CONTENTS}}', co
   .replace('href="./header.css"', `href="./header.css?v=${fingerprint(headerCss)}"`)
   .replace('href="./qr-share.css"', `href="./qr-share.css?v=${fingerprint(qrCss)}"`)
   .replace('href="./workshop.css"', `href="./workshop.css?v=${fingerprint(workshopCss)}"`)
+  .replace('href="./money.css"', `href="./money.css?v=${fingerprint(moneyCss)}"`)
   .replace('href="./pdf.css"', `href="./pdf.css?v=${fingerprint(pdfCss)}"`)
   .replace('src="./app.mjs"', `src="./app.mjs?v=${fingerprint(app)}"`);
 if (/\{\{[A-Z_]+\}\}/.test(html)) throw new Error('Unresolved template placeholder');
@@ -131,6 +143,7 @@ await writeFile(new URL('dist/project-qr.png', root), await QRCode.toBuffer(proj
 await writeFile(new URL('dist/qr-share.css', root), qrCss);
 await writeFile(new URL('dist/index.html', root), html);
 await writeFile(new URL('dist/app.mjs', root), app);
+await writeFile(new URL('dist/money.css', root), moneyCss);
 await writeFile(new URL('dist/pdf.css', root), pdfCss);
 const diagram = diagramTemplate.replace('{{HEADER}}', renderHeader('diagram'))
   .replace('{{NODE_MECHANISMS}}', nodeMechanisms)
@@ -142,7 +155,8 @@ await writeFile(new URL('dist/divergence.html', root), diagram);
 for (const file of ['styles.css', 'header.css', 'model.mjs', 'divergence.svg', 'favicon.svg']) {
   await copyFile(new URL(`site/${file}`, root), new URL(`dist/${file}`, root));
 }
-const bibliography = sources.map(s => `- **${s.id}.** ${s.author} (${s.year}). [${s.title}](${s.url}). ${s.claim} Limit: ${s.limit} Accessed ${s.accessed}.`).join('\n\n');
+const sourceMarkdown = s => `- **${s.id}.** ${s.author} (${s.year}). [${s.title}](${s.url}).${s.contextUrl ? ` [${s.contextTitle}](${s.contextUrl}).` : ''} ${s.claim} Limit: ${s.limit} Accessed ${s.accessed}.`;
+const bibliography = sources.map(sourceMarkdown).join('\n\n');
 await writeFile(new URL('dist/report.md', root), `${expandedReport}\n\n## References\n\n${bibliography}\n`);
 await writeFile(new URL('dist/sources.json', root), JSON.stringify(sources, null, 2));
 await copyFile(new URL('examples/knowledge-object.json', root), new URL('dist/knowledge-object.json', root));
@@ -288,7 +302,7 @@ for (const publication of renderedPublications) {
   assertNoRepositoryOnlyReferences(page, publicationManifest);
   await writeFile(new URL(`dist/${publication.output}`, root), page);
   const paperBibliography = sources.filter(source => publication.cited.has(source.id))
-    .map(s => `- **${s.id}.** ${s.author} (${s.year}). [${s.title}](${s.url}). ${s.claim} Limit: ${s.limit} Accessed ${s.accessed}.`).join('\n\n');
+    .map(sourceMarkdown).join('\n\n');
   const download = /^## (References|Bibliography)\b/m.test(publication.markdown)
     ? publication.markdown
     : `${publication.markdown}\n\n## Source register\n\n${paperBibliography}\n`;
@@ -309,7 +323,7 @@ async function checkPublicationBoundary(directory) {
     }
   }
 }
-await buildSimulation(root, renderHeader('simulation'));
+await buildTrialEvidence(root, renderHeader('work'));
 await checkPublicationBoundary(new URL('dist/', root));
 await writeFile(new URL('dist/.nojekyll', root), '');
 console.log(`Built ${headings.length} report sections, ${renderedPublications.length} public papers, ${sources.length} cited sources, and ${presentation.workItems.length} linked work items.`);

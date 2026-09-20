@@ -371,3 +371,101 @@ test('finance extension preserves the original published operating replay identi
   assert.equal(result.checksum, '4248275e8c798890');
   await page.close();
 });
+
+test('Lab finance and Follow the Money share exact values and restore the same source', { timeout: 60000 }, async () => {
+  const page = await browser.newPage();
+  await page.goto(base);
+  await page.locator('#startup-feeUsd').fill('2.5');
+  const plan = await financeDownload(page);
+  await page.locator('#startup-money-through').fill('12');
+  await page.locator('#startup-inspect-money').click();
+  await page.waitForURL(/index\.html/);
+  await page.waitForFunction(() => document.querySelector('#money-status').textContent.includes('reconciled exactly'));
+  const expected = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(plan.rows[11].cash / 100);
+  assert.equal(await page.locator('.money-overview > div').nth(2).locator('dd').textContent(), expected);
+  assert.match(await page.locator('.money-source').textContent(), /month 0 through 12/);
+  assert.ok((await page.locator('.money-source').textContent()).includes(plan.id));
+  assert.equal(await page.evaluate(() => Object.keys(sessionStorage).filter(key => key.startsWith('ccsl-money-transfer:')).length), 0);
+  await page.locator('#money-edit').click();
+  await page.waitForURL(/simulation/);
+  await page.waitForFunction(() => document.querySelector('#startup-feeUsd').value === '2.5');
+  assert.equal(await page.locator('#startup-money-through').inputValue(), '12');
+  assert.equal(await page.locator('#startup-breakEvenTarget').inputValue(), '36', 'view window must not change financial assumptions');
+  assert.equal(await page.evaluate(() => Object.keys(sessionStorage).filter(key => key.startsWith('ccsl-money-transfer:')).length), 0);
+  await page.close();
+});
+
+test('operating money view verifies the source and uses the exact selected ledger prefix', { timeout: 60000 }, async () => {
+  const page = await browser.newPage();
+  await page.goto(base);
+  const input = await page.evaluate(async () => {
+    const { createConfig } = await import('./config.mjs');
+    const { createWorld, advanceWorld, run, summarize } = await import('./engine.mjs');
+    const { exportRun } = await import('./artifacts.mjs');
+    const config = createConfig('ai-commons');
+    Object.assign(config.params, { periods: 2, consumers: 20, contributors: 4, objects: 10, minimumCommitment: 5,
+      tasks: 100, qualityEffect: 3, objectPrice: 1, verificationCost: 0, paymentDelay: 180, grant: 10000 });
+    const complete = run(config), first = createWorld(config); advanceWorld(first, 30);
+    return { artifact: exportRun(complete), prefixCash: first.ledger.accounts.operator,
+      checksum: summarize(complete).checksum };
+  });
+  await page.locator('#artifact-file').setInputFiles({ name: 'operating.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(input.artifact)) });
+  await page.locator('#import-file').click();
+  await page.waitForFunction(() => !document.querySelector('#inspect-money').disabled);
+  await page.locator('#money-operating-through').fill('1');
+  await page.locator('#inspect-money').click();
+  await page.waitForURL(/index\.html/);
+  await page.waitForFunction(() => document.querySelector('#money-status').textContent.includes('reconciled exactly'));
+  assert.ok((await page.locator('.money-source').textContent()).includes(input.checksum));
+  assert.match(await page.locator('.money-source').textContent(), /periods 1 through 1/);
+  assert.equal(await page.locator('.money-account').count(), 3);
+  const expected = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(input.prefixCash / 100);
+  assert.equal(await page.locator('.money-overview > div').nth(2).locator('dd').textContent(), expected);
+  const bad = structuredClone(input.artifact);
+  bad.expectedChecksum = '0000000000000000'; bad.summary.checksum = bad.expectedChecksum;
+  await page.locator('#money-file').setInputFiles({ name: 'corrupted.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(bad)) });
+  await page.waitForFunction(() => !document.querySelector('#money-error').hidden);
+  assert.match(await page.locator('#money-error').textContent(), /checksum mismatch/i);
+  assert.equal(await page.locator('.money-overview').count(), 0, 'invalid source cannot fall back to unrelated positive figures');
+  await page.locator('#money-reset').click();
+  await page.waitForFunction(() => document.querySelector('#money-status').textContent.includes('reconciled exactly'));
+  assert.match(await page.locator('.money-source').textContent(), /Startup projection/);
+  await page.close();
+});
+
+test('Follow the Money baseline and file views work at the Pages project prefix without overflow', { timeout: 60000 }, async () => {
+  const page = await browser.newPage({ viewport: { width: 390, height: 900 } });
+  const origin = base.replace(/simulation\/$/, '');
+  await page.goto(`${origin}index.html#lab`);
+  await page.waitForFunction(() => document.querySelector('#money-status').textContent.includes('reconciled exactly'));
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true);
+  await page.locator('.money-controls-panel > summary').click();
+  await page.locator('#money-preset').selectOption('no-capital');
+  await page.waitForFunction(() => document.querySelector('.money-source')?.textContent.includes('Unfunded'));
+  assert.match(await page.locator('.money-overview > div').nth(2).locator('dd').textContent(), /-\$/);
+  await page.locator('#money-through').fill('0');
+  await page.locator('#money-apply').click();
+  await page.waitForFunction(() => document.querySelector('.money-source')?.textContent.includes('month 0 through 0'));
+  assert.equal(await page.locator('.money-overview > div').nth(2).locator('dd').textContent(), '-$100,000.00');
+  await page.close();
+});
+
+test('trial evidence exposes separate phase tables and downloadable records without a runtime app', { timeout: 60000 }, async () => {
+  const page = await browser.newPage({ viewport: { width: 390, height: 900 } });
+  const origin = base.replace(/simulation\/$/, '');
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto(`${origin}trials.html`);
+  assert.match(await page.locator('.intro').textContent(), /10,000.*4,000/);
+  assert.equal(await page.locator('#design > .table-scroll > table > tbody > tr').count(), 10);
+  assert.equal(await page.locator('#holdout > .table-scroll > table > tbody > tr').count(), 2);
+  assert.match(await page.locator('#holdout').textContent(), /1,963 \/ 2,000/);
+  assert.match(await page.locator('#holdout').textContent(), /1,924 \/ 2,000/);
+  assert.equal(await page.locator('script').count(), 0);
+  const downloads = await page.locator('#data a[href^="./study-data/"]').evaluateAll(nodes => nodes.map(node => node.href));
+  assert.ok(downloads.some(url => url.endsWith('startup-trials.jsonl.gz')));
+  for (const url of downloads) assert.equal((await page.request.get(url)).status(), 200, url);
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true);
+  assert.deepEqual(errors, []);
+  await page.close();
+});

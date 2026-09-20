@@ -134,8 +134,8 @@ export function createPresentationData({ report, headings, template, diagramTemp
       },
       {
         id: 'settlement',
-        title: requiredText(template, /<h2 id="lab-title">([\s\S]*?)<\/h2>/, 'calculator title'),
-        description: requiredText(template, /<h2 id="lab-title">[\s\S]*?<\/h2>\s*<p>([\s\S]*?)<\/p>/, 'calculator description'),
+        title: requiredText(template, /<h2 id="lab-title">([\s\S]*?)<\/h2>/, 'financial rollup title'),
+        description: requiredText(template, /<h2 id="lab-title">[\s\S]*?<\/h2>\s*<p>([\s\S]*?)<\/p>/, 'financial rollup description'),
         url: './index.html#lab',
       },
     ],

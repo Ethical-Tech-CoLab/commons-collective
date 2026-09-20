@@ -14,7 +14,7 @@ The question is not how many organizations to incorporate, but which missing fun
 
 Ostrom's polycentric account motivates contextual, nested governance rather than one headquarters governing every commons. Data-trust proposals illuminate delegated responsibility but do not create universal ownership of data. Relational governance explains why people affected by a dataset need representation even when they did not contribute it. These are design resources, not proof that this federation will work. [S03] [S07] [S25]
 
-The CoLab's field-grounded, prototype-first, open-by-default commitments inform a sequence: map existing institutions, pay affected people for design participation, test low-risk services, publish negative findings. No affiliation or endorsement follows from using these principles. Public methods must coexist with private member, patient, student, source, and community records. [S01] [S02]
+The CoLab's repository-stated field-grounded, prototype-first, open-by-default orientation informs a sequence: map existing institutions, pay affected people for design participation, test low-risk services, publish negative findings. S01 records stored website-repository copy, not a verified rendered principles page. No affiliation or endorsement follows from using it. Public methods must coexist with private member, patient, student, source, and community records. [S01] [S02]
 
 ## 2. Normative proposal: functions before entities
 

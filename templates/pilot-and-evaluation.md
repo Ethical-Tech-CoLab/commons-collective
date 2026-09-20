@@ -1,4 +1,4 @@
-# Pilot and evaluation — original annotated protocol template
+# Pilot and evaluation, original annotated protocol template
 
 **DRAFT / NOT EXECUTED · NONBINDING · version 0.1**
 
@@ -13,7 +13,7 @@ This is a proposed protocol, not evidence of participants, outcomes, ethics appr
 - **Rights:** [REQUIRED: permitted materials/purposes, refusals, privacy basis, accessibility and safeguarding].
 - **Appeal:** [REQUIRED: funded independent route, accessible contacts, response times and remedies].
 - **Exit:** [REQUIRED: independent stop authority, suspension procedure, transition reserve and custody owner].
-- **Approvals:** **not-reviewed** — [REQUIRED: competent reviewers, evidence, dates, conditions and expiry].
+- **Approvals:** **not-reviewed**, [REQUIRED: competent reviewers, evidence, dates, conditions and expiry].
 - **Evaluation independence:** [REQUIRED: evaluator, conflicts, protected budget and right to publish negative findings].
 
 ## 1. Fork/adapt/federate/create-new decision matrix
@@ -54,7 +54,7 @@ Specify comparator [REQUIRED: credible noncollective offer or matched prior serv
 
 Keep raw private records restricted. Publish methods, redacted aggregate outcomes, protocol versions, denominator definitions, adverse events and negative findings. Never publish source identities, student records or sensitive community material as “open evaluation data.”
 
-## 4. Preflight — before day 1
+## 4. Preflight, before day 1
 
 - [ ] Charter decision gate completed; no effective organization duplicated without evidence.
 - [ ] Scoped procurement, contributor agency, independent stewardship, operator, assurance and regulated-payment responsibilities allocated.
@@ -68,7 +68,7 @@ Keep raw private records restricted. Publish methods, redacted aggregate outcome
 - [ ] Customer demand, payer authority, service scope and funding commitments evidenced; recurring viability and renewal thresholds set before launch.
 - [ ] Rights-safe fictional/synthetic drill completed before live records are considered.
 
-## 5. 90-day gate checklist — feasibility, not growth permission
+## 5. 90-day gate checklist, feasibility, not growth permission
 
 - [ ] Every live activity has verified authority; rights and approvals remain current.
 - [ ] Withdrawal drill confirms timestamp, blocked new commitments, contract-specific surviving duties and notifications; no CC revocation is promised.
@@ -81,7 +81,7 @@ Keep raw private records restricted. Publish methods, redacted aggregate outcome
 
 **Annotation:** A failed check blocks expansion. Set remediation owner, budget and deadline [REQUIRED]; missed deadlines trigger the approved wind-down route, not automatic continuation.
 
-## 6. 180-day gate checklist — hypothesis decision
+## 6. 180-day gate checklist, hypothesis decision
 
 - [ ] Publish baseline versus observed quality-adjusted total cost, including all administration and exit costs.
 - [ ] Separate participant price reductions from subsidies and actual resource savings.

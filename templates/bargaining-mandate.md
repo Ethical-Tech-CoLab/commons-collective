@@ -1,4 +1,4 @@
-# Scoped bargaining mandate — original annotated drafting template
+# Scoped bargaining mandate, original annotated drafting template
 
 **DRAFT / NOT EXECUTED · NONBINDING · version 0.1**
 
@@ -12,7 +12,7 @@ This template does not grant representation, transfer rights, authorize payment,
 - **Rights:** [REQUIRED: rights inventory, license/version, co-owners, privacy basis, community protocols and exclusions].
 - **Appeal:** [REQUIRED: independent reviewer, accessible confidential contact, deadlines and funded assistance].
 - **Exit:** [REQUIRED: notice channels, effective timestamp rule, transfer limits and surviving duties].
-- **Approvals:** **not-reviewed** — [REQUIRED: reviewers, evidence, dates, conditions and expiry for all charter reviews].
+- **Approvals:** **not-reviewed**, [REQUIRED: reviewers, evidence, dates, conditions and expiry for all charter reviews].
 - **Permitted delegate:** [REQUIRED: accountable operator, conflict review, permitted staff and no implicit subdelegation].
 
 ## 1. Proposed delegation and decision matrix
@@ -21,10 +21,10 @@ This template does not grant representation, transfer rights, authorize payment,
 
 | Schedule | What may be negotiated | Authority evidence | Forbidden inference |
 | --- | --- | --- | --- |
-| A — Member procurement | [REQUIRED: exact services, quantities, quality/access conditions and budget ceiling] | Purchasing delegation, budget and competition review | All members accept every joint purchase |
-| B — Authorized new permissions | [REQUIRED: identified works/data, specific additional rights, purpose, users, territory and duration] | Rights chain plus privacy/community/legal review | Public availability or membership confers every right |
-| C — Voluntary commons covenant | [REQUIRED: maintenance contribution, purpose, duration and public reporting] | Voluntary contracting authority and funding terms | Royalty obligation attaches retroactively to open knowledge |
-| D — No negotiation | [REQUIRED: excluded material, purposes, parties or unresolved rights] | Exception/hold record and responsible reviewer | A blank exclusion schedule means unlimited permission |
+| A, Member procurement | [REQUIRED: exact services, quantities, quality/access conditions and budget ceiling] | Purchasing delegation, budget and competition review | All members accept every joint purchase |
+| B, Authorized new permissions | [REQUIRED: identified works/data, specific additional rights, purpose, users, territory and duration] | Rights chain plus privacy/community/legal review | Public availability or membership confers every right |
+| C, Voluntary commons covenant | [REQUIRED: maintenance contribution, purpose, duration and public reporting] | Voluntary contracting authority and funding terms | Royalty obligation attaches retroactively to open knowledge |
+| D, No negotiation | [REQUIRED: excluded material, purposes, parties or unresolved rights] | Exception/hold record and responsible reviewer | A blank exclusion schedule means unlimited permission |
 
 Choose schedules [REQUIRED]. Record why others are unused [REQUIRED]. Services shall not impose additional restrictions on underlying open content. New permissions must actually be necessary and controllable, not invented over public-domain facts or already licensed uses.
 

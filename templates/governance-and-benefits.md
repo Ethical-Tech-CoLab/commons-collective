@@ -1,4 +1,4 @@
-# Governance, benefits and continuity — annotated drafting template
+# Governance, benefits and continuity, annotated drafting template
 
 **DRAFT / NOT EXECUTED · NONBINDING · version 0.1**
 
@@ -14,7 +14,7 @@ Original proposed clauses for adaptation, not legally sufficient bylaws, trust t
 | Rights | [REQUIRED: protected groups, applicable rights floor and restricted evidence references] |
 | Appeal | [REQUIRED: independently appointed reviewer, budget, accessible route and deadlines] |
 | Exit | [REQUIRED: succession, liabilities, restricted funds, records and wind-down owner] |
-| Approvals | **not-reviewed** — [REQUIRED: named competent reviewers, evidence, conditions, dates and expiry] |
+| Approvals | **not-reviewed**, [REQUIRED: named competent reviewers, evidence, conditions, dates and expiry] |
 
 ## 1. Governance decision matrix
 

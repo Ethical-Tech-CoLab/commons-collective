@@ -1,4 +1,4 @@
-# Collective charter — original annotated drafting template
+# Collective charter, original annotated drafting template
 
 **DRAFT / NOT EXECUTED · NONBINDING · version 0.1**
 
@@ -16,7 +16,7 @@ No signatures are requested. This is not a sufficient legal instrument, incorpor
 | Rights assessment | [REQUIRED: license, privacy, labor, community, equality, accessibility and safeguarding review] |
 | Appeal and complaint route | [REQUIRED: independent body, accessible channels, response times, budget, emergency route] |
 | Exit and succession owner | [REQUIRED: withdrawal, operator replacement, liabilities, data custody and wind-down plan] |
-| Approvals | **not-reviewed** — [REQUIRED: complete the register below before proposing operation] |
+| Approvals | **not-reviewed**, [REQUIRED: complete the register below before proposing operation] |
 | Source and decision record | [REQUIRED: source IDs, checked dates, versioned minutes and protected evidence references] |
 
 ## 1. Necessity and institutional decision matrix
@@ -78,7 +78,7 @@ Mandates shall be portable only with the principal's authorization and a verifie
 
 Members may exit under [REQUIRED: notice, effective timestamp and continuing obligations]. Publicly licensed outputs remain available. Successors assume only lawfully transferable duties and authorized records. Restricted balances follow applicable law and funding terms, not a founders' discretionary distribution.
 
-## 7. Approval register — no implied clearance
+## 7. Approval register, no implied clearance
 
 All essential statuses begin **not-reviewed**:
 

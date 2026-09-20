@@ -306,7 +306,7 @@ Every contract MUST identify principal-versus-agent treatment, gross considerati
 
 Use integer cents. Quoted positive prices use declared upward rounding; basis-point allocations use downward rounding with residue assigned to a disclosed account. The existing [settlement and tax helpers](../site/model.mjs) are parity fixtures, not universal domain pricing rules.
 
-For the concept's $10 receipt under the 40/30/20/10 example, pools are $4/$3/$2/$1. Three equal contributors receive $1.33 each, leaving a $0.01 contributor liability. The existing annual [operator worksheet](../examples/service-operator-economics.json) stays a separate regression case; neither domain's new reference defaults claim to reproduce a real operator.
+The early 40/30/20/10 illustration is now an archived regression fixture, not a live financial policy. Under the implemented contribution contract, a $10 authorized entitlement enters the agency account and remains entirely owed to the contributor until paid. Administration fees and the configured commons covenant are separate entries. The existing annual [operator worksheet](../examples/service-operator-economics.json) stays a separate, explicitly identified regression case, not a second set of assumptions for Follow the Money.
 
 An A3 covenant allocates only from its named eligible receipt base. The reference service-administration covenant is 20% of **received administration fees**, not 20% of vendor gross invoices, contributor liabilities, opening capital, or restricted grants. A0-A2 have no covenant unless explicitly varied as a separate intervention.
 
@@ -834,3 +834,37 @@ verified replay must continue to work.
 Implementation and evidence: [startup.mjs](../simulation/startup.mjs),
 [financial tests](../test/startup-finance.test.mjs), and
 [startup funding study](STARTUP-FUNDING.md).
+
+## S17: One financial source and public trial evidence
+
+Follow the Money is a read-only rollup of a selected Lab source and cumulative
+window. It has no independent receipt totals, allocation percentages, or
+membership assumptions. Its default is computed from the same startup
+configuration and monthly projection used by the Lab. Operating views replay
+and checksum-verify the completed source before inspecting the selected
+ledger prefix.
+
+Both views use [money.mjs](../simulation/money.mjs). Operator sources minus uses
+must equal its cash or explicitly projected position. Contributor agency and
+restricted commons accounts are shown separately where the operating model
+actually models them; internal transfers are eliminated in a combined view.
+Projected downstream fund spending, unmodeled liabilities, and contributor
+distributions cannot be invented from percentages.
+
+The live research table is generated from this same reference rather than
+manually copied. The earlier independent licensing waterfall and annual-dues
+example are retired from the live financial narrative. Original arithmetic
+fixtures remain only as labeled regression history.
+
+Explicit user actions can move a source between Lab and summary using
+one-time session storage, removed at the destination. No scenario is uploaded
+or stored automatically. File import remains available. Model edits and resets
+invalidate stale requests; errors must not display a different default as if it
+were the requested source.
+
+The trial-evidence page publishes separate design and holdout summaries, source
+configurations, methods/provenance, and compressed per-trial summary records.
+Counts and aggregates must be checked against those records. These are 14,000
+cohort-finance trials under synthetic input assumptions, not 14,000
+individual-agent trajectories or empirical observations. Claims of raw
+transaction traces are not permitted when only per-trial summaries exist.

@@ -18,8 +18,8 @@
 
 An AI-assisted academic discussion draft, dated **18 September 2026**, developed
 from a session brief for the Ethical Tech CoLab. It combines an institutional
-research agenda, a consumer-facing technical walkthrough, a transparent toy
-settlement model, and a proposed philanthropic pilot.
+research agenda, a consumer-facing technical walkthrough, reconciled financial
+views of executable models, and a proposed philanthropic pilot.
 
 ## Status and attribution
 
@@ -41,10 +41,12 @@ a claim of authenticated access to the full Google Doc or its other tabs. No
 private communications, real consumer records, credentials, or payment details
 are included.
 
-The report operationalizes the CoLab's published field-grounded,
-prototype-first, and open-by-default principles. It also draws on the CoLab's
-published human-rights and participatory account of ethical AI. These
-connections are documented rather than presented as a new official charter.
+The report operationalizes the CoLab's repository-stated field-grounded,
+prototype-first, and open-by-default orientation. S01 is a pinned TypeScript
+content snapshot: its About page is currently hidden, so it does not establish
+that the wording is rendered on the public website. The report separately draws
+on the cited human-rights and participatory account of ethical AI. These
+connections are documented rather than presented as an official charter.
 
 ## Contents
 
@@ -111,9 +113,11 @@ the Python audit collector without accessing a real ledger.
 Build-time dependencies are `marked` and `qrcode`, locked in the lockfile.
 The QR code is generated locally from the canonical site URL, with a white
 quiet zone; an independent decoder verifies its PNG version in the tests.
-The deployed site has no runtime dependencies, analytics, external fonts,
-API calls, cookies, or account system. The calculator processes only hypothetical
-numbers locally in the browser. GitHub's own hosting infrastructure may retain
+The deployed site has no third-party runtime dependencies, analytics, external
+fonts, paid API calls, cookies, or account system. Calculations and file imports
+stay local. Explicit money-view sharing uses one-time session storage in the
+current tab and removes it when the destination reads it; there is no automatic
+scenario persistence or upload. GitHub's hosting infrastructure may retain
 ordinary request logs under its policies.
 
 ## Controlled research PDF
@@ -199,6 +203,35 @@ Source: [simulation/](simulation/), [interface](site/simulation.html),
 The study Markdown remains repository-only; the new app is a separate published
 demo linked from the existing Demos section. The historical AI-usage audit is
 unchanged and does not claim to measure these future browser executions.
+
+## Follow the Money and trial evidence
+
+[Follow the Money](https://ethical-tech-colab.github.io/commons-collective/#lab)
+is the read-only financial rollup of the selected Lab source, not an independent
+calculator. The same [money adapter](simulation/money.mjs) supplies the summary
+and the Lab's source/use view. The main research's reference financial table is
+also generated from that model at build time.
+
+The old 40/30/20/10 licensing illustration is retired from the live narrative
+and knowledge-object example. Authorized contributor entitlements remain
+entirely in the agency ledger; the configured commons covenant applies to
+administration fees. Capital is financing, not revenue. Each displayed
+account must reconcile exactly, and internal transfers are eliminated only
+for a combined institutional view. Unmodeled forecast liabilities or
+downstream distributions are labeled, not invented.
+
+Use **Inspect money flows** in the Lab to send the current finance plan or a
+completed operating source to the summary. Operating figures are replayed and
+checksum-verified before the selected cumulative ledger window is displayed.
+The summary can return the same source to the Lab or load a downloaded JSON.
+
+The [trial-evidence page](https://ethical-tech-colab.github.io/commons-collective/trials.html)
+publishes the design and independent-seed holdout results separately, along
+with configurations, provenance, aggregate JSON, and compressed per-trial
+summary records. The study source directory is
+[viability-2026-09-20](agentic-model/experiments/viability-2026-09-20/).
+These are cohort-finance trials under explicit assumptions, not empirical
+observations or full operating-agent transaction traces.
 
 ## Edit and publish
 
@@ -302,8 +335,8 @@ explicit local operation, not part of a website visit or normal build.
 | `site/favicon.svg` | Shared green header mark and browser favicon |
 | `site/qr-share.html`, `site/qr-share.css` | Locally generated project QR on the homepage and opening presentation slide |
 | `site/styles.css` | Responsive CoLab-inspired styling and print layout |
-| `site/model.mjs` | Pure integer-cent illustrative settlement arithmetic |
-| `site/app.mjs` | Browser-only calculator and bibliography filter |
+| `site/model.mjs` | Archived licensing and separate tax-arithmetic regression helpers |
+| `site/app.mjs` | Shared financial-rollup entry point and bibliography filter |
 | `scripts/build.mjs` | Markdown, citations, navigation, and downloads |
 | `scripts/generate-pdf.mjs`, `site/pdf.css` | Controlled main-report PDF export and print layout |
 | `test/pdf-validation.py` | Actual-PDF pagination, content, image, footer, and color checks |

@@ -43,11 +43,13 @@
     "id": "S01",
     "author": "Ethical Tech CoLab",
     "year": "2026",
-    "title": "Public website source: mission, vision, and working principles",
+    "title": "Repository snapshot: mission, vision, and working principles (stored About-page copy)",
     "url": "https://github.com/Ethical-Tech-CoLab/website/blob/6fadc0fb0a93c112bee7cc91a2f9e3c00a2f9565/src/content/site.ts",
-    "claim": "Published working principles are Field-grounded, Prototype-first, and Open by default; the mission and vision emphasize technology shaped by affected people.",
-    "limit": "Institutional self-description, not evidence that this proposed project has been reviewed or endorsed. Source is pinned to the revision inspected.",
-    "accessed": "2026-09-18"
+    "contextUrl": "https://ethical-tech-colab.github.io/website/",
+    "contextTitle": "Ethical Tech CoLab public website (organizational context)",
+    "claim": "The public repository copy lists Field-grounded, Prototype-first, and Open by default. Its mission concerns realizing human potential through technology; its vision specifically concerns technology shaped by affected people.",
+    "limit": "This is a pinned TypeScript content file, not JSON or a rendered principles page. The About route is disabled in the cited snapshot and in the current implementation inspected on the access date. The record supports stored repository wording, not verified public-page display, formal charter status, or endorsement of this project. The context link is the public homepage, not evidence that this wording appears there.",
+    "accessed": "2026-09-20"
   },
   {
     "id": "S02",

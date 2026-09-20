@@ -1,31 +1,6 @@
-import { settle } from './model.mjs';
+import { initMoneyView } from './simulation/money-view.mjs';
 
-const form = document.querySelector('#calculator');
-const error = document.querySelector('#calculator-error');
-const output = document.querySelector('#calculator-output');
-const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
-const format = cents => money.format(cents / 100);
-
-function update(event) {
-  event?.preventDefault();
-  if (!form.reportValidity()) return;
-  const dollars = Number(form.elements.revenue.value);
-  const members = Number(form.elements.members.value);
-  if (!Number.isSafeInteger(dollars) || !Number.isSafeInteger(members)) {
-    error.textContent = 'Enter whole dollars and a whole number of eligible members.';
-    output.hidden = true;
-    return;
-  }
-  const result = settle(dollars * 100, members);
-  error.textContent = '';
-  output.hidden = false;
-  for (const name of ['members', 'commons', 'operations', 'reserve', 'perMember', 'memberLiability']) {
-    document.querySelector(`[data-result="${name}"]`).textContent = format(result[name]);
-  }
-}
-
-form.addEventListener('submit', update);
-update();
+initMoneyView(document.querySelector('#money-view'));
 
 const search = document.querySelector('#source-search');
 const sourceItems = [...document.querySelectorAll('#references li')];

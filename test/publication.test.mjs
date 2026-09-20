@@ -27,6 +27,17 @@ test('bibliography has verified metadata and every source is referenced', () => 
     assert.ok(source.claim && source.limit);
   }
 });
+test('S01 distinguishes stored repository copy from a visible public principles page', () => {
+  const source = sources.find(item => item.id === 'S01');
+  assert.match(source.title, /Repository snapshot/);
+  assert.match(source.url, /6fadc0fb0a93c112bee7cc91a2f9e3c00a2f9565\/src\/content\/site\.ts$/);
+  assert.equal(source.contextUrl, 'https://ethical-tech-colab.github.io/website/');
+  assert.match(source.limit, /About route is disabled/);
+  assert.match(source.claim, /mission.*human potential.*vision.*affected people/);
+  assert.match(html, /Alignment with repository-stated Ethical Tech CoLab principles/);
+  assert.match(html, /public website \(organizational context\)/);
+  assert.doesNotMatch(html, /Alignment with published Ethical Tech CoLab principles/);
+});
 test('research covers requested surfaces and labels its limits', () => {
   for (const term of ['Alice', 'Bob', 'Humanity AI', 'Creative Commons', 'synthetic',
     'Gmail', 'Costco', 'energy', 'philanthrop', 'antitrust', 'Tomicah Tillemann', 'Sonam Jindal',

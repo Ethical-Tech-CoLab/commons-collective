@@ -435,7 +435,7 @@ Mandatory rights protections are identical across the compliant arrangement comp
 | `commons.funder_influence_rule` | R/D / voting/approval constraints | No automatic control from payment | Patronage and governance capture |
 | `commons.public_access_state` | R/O / access/license state and availability | Continued lawful reuse tracked separately from service uptime | Prevents enclosing the commons |
 
-Allocation shares are jointly constrained, not independently sampled percentages. The 40/30/20/10 split in the existing toy calculator is one **illustrative receipt waterfall**, not a recommended allocation for all services or the operator's entire turnover.
+Allocation shares are jointly constrained, not independently sampled percentages. The early 40/30/20/10 licensing illustration is retired from the live site. Current contributor entitlements remain in the agency ledger; the configured commons covenant applies separately to administration fees. Follow the Money now aggregates the selected Lab source rather than imposing another waterfall.
 
 ### 8.6 Later policy, energy, and infrastructure variables
 
@@ -601,7 +601,7 @@ An uncertainty-aware Pareto view can reveal trade-offs without declaring one win
 9. Bob can complain or switch; the event log shows actual elapsed modeled periods and costs.
 10. The maintenance transfer becomes an eligible expenditure only when work is performed under the fund's rules. Its additionality is compared against the counterfactual.
 
-**Hand-check fixture, not a forecast:** for a received $10.00 eligible payment under the existing illustrative 40/30/20/10 waterfall, allocate $4.00 to the contributor pool, $3.00 to the commons pool, $2.00 to operations, and $1.00 to reserve. If three contributors share the $4.00 pool equally, each receives $1.33 and $0.01 remains a contributor liability. It is not extra operator income.
+**Current hand-check, not a forecast:** a received $10.00 authorized contributor entitlement creates $10.00 of agency cash and $10.00 owed to the entitled contributor. When paid, both agency cash and that payable decrease by $10.00. Any administration fee and its commons covenant are separate entries. No amount owed to the contributor is silently relabeled operator revenue.
 
 This fixture must not be applied to all open-resource access or all service receipts. The operator's maintained-service business is a separate scenario with its own costs and contractual payment obligations.
 
@@ -708,7 +708,7 @@ Use ODD to describe entities, scheduling, initialization, data, submodels, purpo
 
 | Fixture | Required result | Source |
 |---|---|---|
-| Toy receipt settlement | $120,000 across 1,000 eligible members yields $48/member under the illustrative waterfall; total conserved | [model functions](../site/model.mjs), [tests](../test/model.test.mjs) |
+| Archived licensing illustration | The retired 40/30/20/10 arithmetic remains a regression fixture only; it is not the Lab's current contribution contract | [legacy functions](../site/model.mjs), [tests](../test/model.test.mjs) |
 | Tiny receipts | Allocation residue stays in disclosed reserve; equal-share residue remains contributor liability | [model tests](../test/model.test.mjs) |
 | Procurement illustration | $240 annual price, 20% discount, $24 fee gives $24 cash savings; excludes licensing income | [model tests](../test/model.test.mjs) |
 | Hypothetical commons credit | Nonrefundable credit capped at 40% of pre-credit liability; not a deduction or enacted law | [model functions](../site/model.mjs) |

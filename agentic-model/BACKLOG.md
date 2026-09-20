@@ -274,3 +274,32 @@ An item is complete only when its deliverable exists, its acceptance evidence is
   profitability are distinguished, conditional Monte Carlo assumptions are
   visible, imports regenerate results, model switching invalidates pending
   work, and previous operating-run replay remains compatible.
+
+## B27: Reconcile the high-level money view with detailed sources
+
+- **Status:** implemented and locally verified; deployment pending.
+- **Deliverable:** shared financial adapter, read-only summary, source/period
+  provenance, operator/commons/agency reconciliation, explicit forecast limits,
+  completed-run verification, local source handoff and file import.
+- **Acceptance:** all displayed cents match the selected underlying source;
+  no independent waterfall, invented licensing revenue or capital-as-income;
+  liabilities are not paid cash; transfers eliminate correctly; old operating
+  replay remains compatible; research figures derive from the same model.
+
+## B28: Publish the design and holdout evidence
+
+- **Status:** implemented and locally verified; deployment pending.
+- **Deliverable:** static trial page, phase/profile comparisons and histograms,
+  downloadable aggregates, input definitions, provenance manifest, and 14,000
+  compressed per-trial financial summary records.
+- **Acceptance:** counts/quantiles reconcile to the records; corrupt, missing or
+  stale evidence blocks publication; nominal plans are not counted as trials;
+  synthetic conditional shares are never empirical probabilities.
+
+## B29: Normalize authored punctuation
+
+- **Status:** source cleanup and regenerated-publication checks passed.
+- **Deliverable:** em-dash-free authored text, comma/restructured wording or
+  explicit missing-value labels, plus a regression scan.
+- **Acceptance:** no source-image or pinned-vendor edits, no falsified quoted
+  provenance, and no encoded em-dash substitutes in tracked text.

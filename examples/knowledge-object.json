@@ -1,6 +1,6 @@
 {
   "schemaVersion": "0.1-experimental",
-  "id": "urn:commons-collective:example:alice-field-guide:v1",
+  "id": "urn:commons-collective:example:alice-field-guide:v2",
   "syntheticExample": true,
   "description": "Fictional authored field-guide excerpt; no actual personal data or licensed asset is included.",
   "origin": { "type": "human-authored", "syntheticFraction": 0 },
@@ -20,7 +20,7 @@
   },
   "provenance": {
     "derivedFrom": [],
-    "version": 1,
+    "version": 2,
     "verificationStatus": "unverified-demonstration",
     "contentDigest": null
   },
@@ -31,11 +31,12 @@
   },
   "benefits": {
     "contractCurrency": "USD",
-    "memberPoolBps": 4000,
-    "commonsBps": 3000,
-    "operationsBps": 2000,
-    "reserveBps": 1000,
-    "memberAllocation": "equal-share-among-eligible-contributors",
+    "memberPoolBps": 10000,
+    "commonsBps": 0,
+    "operationsBps": 0,
+    "reserveBps": 0,
+    "memberAllocation": "full-contracted-entitlement-to-authorized-contributor",
+    "separateCommonsFunding": "The selected institutional scenario applies its covenant to administration fees, not this contributor entitlement.",
     "status": "illustrative-not-an-executed-contract"
   },
   "access": {

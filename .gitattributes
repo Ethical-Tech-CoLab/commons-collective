@@ -1,0 +1,3 @@
+# Frozen study hashes are byte-based and must not vary with checkout line endings.
+agentic-model/experiments/viability-2026-09-20/*.json text eol=lf
+agentic-model/experiments/viability-2026-09-20/*.jsonl.gz binary

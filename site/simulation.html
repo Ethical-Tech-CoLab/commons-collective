@@ -22,7 +22,7 @@
       <div>
         <p class="sim-eyebrow">Commons Collective / interactive research</p>
         <h1 id="lab-title">Simulation <em>Lab.</em></h1>
-        <p class="sim-deck">Different institutions. Shared constraints.<br>Explore what changes—and what does not.</p>
+        <p class="sim-deck">Different institutions. Shared constraints.<br>Explore what changes and what stays the same.</p>
       </div>
       <div class="sim-hero-note">
         <span class="sim-local"><span aria-hidden="true">●</span> Runs in your browser</span>
@@ -65,7 +65,7 @@
             <select id="mode" aria-describedby="mode-help">
               <option value="P0">P0 · Deterministic choices</option>
               <option value="P1">P1 · Seeded stochastic choices</option>
-              <option value="P2" disabled>P2 · Live AI — unavailable</option>
+              <option value="P2" disabled>P2 · Live AI, unavailable</option>
             </select>
             <p id="mode-help" class="sim-help">P0 can still include seeded world randomness. P2 has no live adapter, backend, or authorization on this static site. No API calls or real charges are made; it cannot be enabled here.</p>
             <label for="seed">Random seed</label>
@@ -96,7 +96,7 @@
           </div>
           <p id="active-model" class="sim-active-model">No model loaded</p>
           <div class="sim-clock">
-            <div><span class="sim-clock-label">Tick</span><strong id="tick">0</strong><span id="horizon">/ —</span></div>
+            <div><span class="sim-clock-label">Tick</span><strong id="tick">0</strong><span id="horizon">/ Not loaded</span></div>
             <div><span class="sim-clock-label">Period</span><strong id="period">0</strong><span>30 days</span></div>
           </div>
           <progress id="run-progress" max="1" value="0" aria-label="Trajectory progress"></progress>
@@ -154,7 +154,7 @@
           </div>
           <div class="sim-reading-note">
             <h3>Keep money, rights, and quality separate</h3>
-            <p>Operator cash is not member welfare. The purchasing cost difference compares modeled purchasing costs with direct purchasing and includes outstanding buyer liabilities—not just paid cash. Positive values mean lower modeled cost; late payments do not create savings. Restricted commons funds and contributor agency balances are not unrestricted operating income. Permission is a gate, not a price: more budget does not create contribution or repair authority.</p>
+            <p>Operator cash is not member welfare. The purchasing cost difference compares modeled purchasing costs with direct purchasing and includes outstanding buyer liabilities, not just paid cash. Positive values mean lower modeled cost; late payments do not create savings. Restricted commons funds and contributor agency balances are not unrestricted operating income. Permission is a gate, not a price: more budget does not create contribution or repair authority.</p>
             <p>Quality is the observed fulfilled/attempted task rate, not a promise. Read it beside denied and unmet demand: lower spending can accompany reduced service, and cost differences alone do not establish greater benefit. A missing quality rate means no valid denominator, not zero quality.</p>
           </div>
         </section>
@@ -207,11 +207,15 @@
 
         <section class="sim-panel" aria-labelledby="artifacts-heading">
           <div class="sim-panel-heading"><h2 id="artifacts-heading">Save, load &amp; verify</h2><span class="sim-caption">Versioned JSON · local files</span></div>
-          <p class="sim-help">Downloads are independent records and survive model resets. This page does not store scenarios in your browser. Save before switching or leaving.</p>
+          <p class="sim-help">Downloads are independent records and survive model resets. There is no automatic scenario persistence. Explicit financial-view sharing uses one-time storage in this tab. Save before switching or leaving.</p>
           <div class="sim-transport">
             <button id="save-scenario" class="sim-button" type="button" disabled>Save scenario</button>
             <button id="save-run" class="sim-button" type="button" disabled>Download completed run</button>
+            <button id="inspect-money" class="sim-button" type="button" disabled>Inspect money flows</button>
           </div>
+          <label for="money-operating-through">Money rollup: cumulative through 30-day period</label>
+          <input id="money-operating-through" type="number" min="0" step="1" value="36" disabled>
+          <p class="sim-help">The summary replays and verifies the completed source, then aggregates the selected ledger window. Explicit sharing temporarily stores the source in this tab and removes it at the destination. No data is uploaded.</p>
           <p class="sim-help">A scenario saves inputs only. A completed-run export is available only after a successful trajectory; it is never synthesized from partial or batch results.</p>
           <div class="sim-import">
             <label for="artifact-file">Choose a saved scenario or completed run (.json, up to 5 MB)</label>
@@ -229,7 +233,7 @@
     </div>
   </main>
   <footer class="sim-footer">
-    <p><strong>Understand the mechanism. Question the assumptions.</strong><br>This is a bounded, local simulation—not a live collective, a calibrated forecast, or a completed empirical study.</p>
+    <p><strong>Understand the mechanism. Question the assumptions.</strong><br>This bounded local simulation is not a live collective, a calibrated forecast, or a completed empirical study.</p>
     <a href="../index.html#report">Research &amp; limitations <span aria-hidden="true">↗</span></a>
   </footer>
 </body>

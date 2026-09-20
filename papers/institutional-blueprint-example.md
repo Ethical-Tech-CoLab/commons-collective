@@ -1,4 +1,4 @@
-# Commons Collective — Example A: A Library-Led Open Education Collective
+# Commons Collective, Example A: A Library-Led Open Education Collective
 
 **Institutional blueprint example paper · 2026-09-19 · version 0.1**
 
@@ -12,7 +12,7 @@ Example A specifies a library-led institution selling maintained retrieval, cura
 
 ## 1. Founding choice and public purpose
 
-The proposed locality is New York State, initially serving adult-facing public-library and university-library programs. Prospective founders are institutional library delegates, university OER staff, independent maintainers, and accessibility practitioners—not named real partners. Their hypothesized gap is recurring maintenance between initial OER publication and dependable institutional use: broken references, inaccessible formats, uncertain versions, and integration work.
+The proposed locality is New York State, initially serving adult-facing public-library and university-library programs. Prospective founders are institutional library delegates, university OER staff, independent maintainers, and accessibility practitioners, not named real partners. Their hypothesized gap is recurring maintenance between initial OER publication and dependable institutional use: broken references, inaccessible formats, uncertain versions, and integration work.
 
 The founding decision is **adapt first, federate only where useful, create only if necessary**. A convening group would compare an existing library consortium hosting this program, nonexclusive cooperation among existing providers, direct procurement, and a new body. It must document mandate gaps, costs, conflicts, dissent, and affected-public responses. No gap has yet been empirically established.
 
@@ -22,13 +22,13 @@ This paper adapts the repository's [charter](../templates/collective-charter.md)
 
 ## 2. Customers, services, and the open boundary
 
-Customers would be authorized library and university procurement units paying from service budgets. They buy a maintained collection endpoint, versioned retrieval index, attribution and provenance records, catalog integration, accessibility remediation, staff support, and specified acceptance tests. The alternative is direct contracting or in-house maintenance—not paying for permission to read.
+Customers would be authorized library and university procurement units paying from service budgets. They buy a maintained collection endpoint, versioned retrieval index, attribution and provenance records, catalog integration, accessibility remediation, staff support, and specified acceptance tests. The alternative is direct contracting or in-house maintenance, not paying for permission to read.
 
 The initial collection comprises introductory adult-learning modules whose public-domain status, CC BY permissions, or other sufficient authorization is verified item by item. Retrieval is document discovery with source links, not unsupervised instruction or model training. Student submissions, learner records, minors' data, behavioral profiles, sensitive community material, and unresolved rights are excluded. Pilot integrations would accept catalog records, not learner activity; the design excludes learner accounts and application-level learner query/IP logs. Hosting/security metadata needs a separate minimized, disclosed, lawful processing policy; no claim is made that all network infrastructure produces no logs. Staff business-contact information receives separate privacy controls.
 
 The **open public quality core** includes source references, license/version metadata, correction histories, accessibility checks, evaluation methods, and non-sensitive aggregate results. Newly commissioned public-benefit adaptations should be openly licensed where rights permit. Free access cannot depend on membership. UNESCO supports equitable OER access and sustainable maintenance; its open-science recommendation also recognizes justified restrictions. Neither recommendation grants missing permissions. [S73] [S72]
 
-Paid assurance reports, integration, response commitments, and service-level agreements purchase accountable work and capacity—not exclusive quality facts, favorable rankings, or suppressed defects. Commercial arrangements cannot restrict existing public-domain or CC BY reuse; no royalties arise merely from that reuse. [S26] Crossref and Wikimedia Enterprise offer bounded service-design analogies, not market validation for this proposal. [S82] [S83]
+Paid assurance reports, integration, response commitments, and service-level agreements purchase accountable work and capacity, not exclusive quality facts, favorable rankings, or suppressed defects. Commercial arrangements cannot restrict existing public-domain or CC BY reuse; no royalties arise merely from that reuse. [S26] Crossref and Wikimedia Enterprise offer bounded service-design analogies, not market validation for this proposal. [S82] [S83]
 
 ## 3. Membership and governing bodies
 
@@ -116,7 +116,7 @@ Direct purchasing may outperform this collective: governance could cost more tha
 
 Supplier concentration could allow a contractor to withhold integrations; require documented interfaces, export tests, and replacement support. Buyer dominance could favor marketable English-language modules over accessible public-interest work; independent allocation and affected-public review must expose that trade-off. Public quality claims can be wrong: publish correction evidence, not an unqualified certification seal.
 
-This is a normative, untested design, not legal advice, a feasibility study, or evidence of willingness to pay. Initial exclusion of learner data reduces risk but does not resolve all privacy, procurement, employment, accessibility, or copyright duties. Local reviewers must validate enforceability and representation. Institutional success means accountable service and public benefit—or an orderly decision not to proceed—not incorporation itself.
+This is a normative, untested design, not legal advice, a feasibility study, or evidence of willingness to pay. Initial exclusion of learner data reduces risk but does not resolve all privacy, procurement, employment, accessibility, or copyright duties. Local reviewers must validate enforceability and representation. Institutional success means accountable service and public benefit, or an orderly decision not to proceed, rather than incorporation itself.
 
 ## Bibliography
 

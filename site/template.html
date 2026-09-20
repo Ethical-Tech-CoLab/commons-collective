@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="./header.css">
   <link rel="stylesheet" href="./qr-share.css">
   <link rel="stylesheet" href="./workshop.css">
+  <link rel="stylesheet" href="./money.css">
   <link rel="stylesheet" href="./pdf.css" media="print">
   <script type="module" src="./app.mjs"></script>
 </head>
@@ -36,7 +37,8 @@
         <a href="./institution-example.html">Institutional example</a>
         <a href="./ai-usage.html">AI usage audit</a>
         <a href="./divergence.html">View the divergence chart</a>
-        <a href="#lab">Explore the toy economy</a>
+        <a href="#lab">Follow the money</a>
+        <a href="./trials.html">Trial results and data</a>
         <a id="print" href="./commons-collective.pdf" download>Download research PDF</a>
         <a href="./report.md" download>Download Markdown</a>
       </div>
@@ -61,29 +63,10 @@
     </div>
     <section id="lab" class="lab" aria-labelledby="lab-title">
       <p class="eyebrow">A working, inspectable prototype</p>
-      <p><a href="./divergence.html">Divergence diagram</a> &middot; Explore the infrastructure map, or use the settlement calculator below.</p>
-      <p><a href="./simulation/">Open the experimental Simulation Lab</a> &middot; Compare AI Commons and library scenarios, run seeded batches, and replay saved runs. Synthetic assumptions, not validated forecasts.</p>
       <h2 id="lab-title">Follow the money.</h2>
-      <p>Change an assumed annual licensing contract and the eligible contributor count. This is arithmetic, not a forecast, valuation, payment service, or promise of income. All calculations run in your browser; nothing is uploaded.</p>
-      <noscript><p>The interactive calculator requires JavaScript. The complete worked example and allocation table remain available in the research above.</p></noscript>
-      <form id="calculator">
-        <div><label for="revenue">Annual licensing receipts (whole USD)</label><input id="revenue" name="revenue" type="number" min="0" max="10000000000" step="1" value="120000" required></div>
-        <div><label for="members">Eligible contributors</label><input id="members" name="members" type="number" min="1" max="1000000000" step="1" value="1000" required></div>
-        <button class="button" type="submit">Recalculate</button>
-      </form>
-      <p id="calculator-error" role="alert"></p>
-      <div id="calculator-output" aria-live="polite" aria-atomic="true">
-        <dl class="results">
-          <div><dt>Member pool &middot; 40%</dt><dd data-result="members">$48,000.00</dd></div>
-          <div><dt>Commons fund &middot; 30%</dt><dd data-result="commons">$36,000.00</dd></div>
-          <div><dt>Operations &middot; 20%</dt><dd data-result="operations">$24,000.00</dd></div>
-          <div><dt>Reserve &middot; 10% + rounding</dt><dd data-result="reserve">$12,000.00</dd></div>
-          <div><dt>Per eligible contributor</dt><dd data-result="perMember">$48.00</dd></div>
-          <div><dt>Undisbursed member liability</dt><dd data-result="memberLiability">$0.00</dd></div>
-        </dl>
-        <p class="small">Payouts round down to whole cents. The member remainder stays owed to members, not to the operator. Allocation rounding stays in the disclosed reserve. Taxes, payment costs, contract liabilities, and eligibility must be resolved before any real distribution.</p>
-      </div>
-      <a href="./knowledge-object.json" download>Inspect the example knowledge object (JSON)</a>
+      <p>A read-only rollup of the selected Simulation Lab source. The summary and detailed model use the same cents, financial policies, and cumulative window.</p>
+      {{MONEY_VIEW}}
+      <p><a href="./divergence.html">Explore the infrastructure divergence diagram</a>. All model results are conditional on synthetic assumptions, not validated forecasts.</p>
     </section>
     <section id="references" class="references" aria-labelledby="references-title">
       <p class="eyebrow">Evidence register</p>
@@ -101,7 +84,7 @@
     <p class="evidence-note">Evidence, interpretation, and proposals are distinguished throughout. No participant endorsement is implied.</p>
     <p>AI-assisted research synthesis commissioned from a session brief. Human review, authorship confirmation, legal review, and empirical validation remain necessary. Names identify the requested research circle, not signatories.</p>
     <p>Views are not official positions of NYU, Microsoft, Creative Commons, Humanity AI, or any participant or partner. Experimental research; not legal, investment, or financial advice.</p>
-    <p>Original research: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Software: MIT. Workshop photographs, crops, and quoted source wording retain their respective rights and are not relicensed by this publication. No analytics, cookies, external fonts, or personal-data collection on this site.</p>
+    <p>Original research: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Software: MIT. Workshop photographs, crops, and quoted source wording retain their respective rights and are not relicensed by this publication. No analytics, cookies, external fonts, or personal-data collection. Explicit financial-view sharing uses one-time storage in this tab; scenarios are not uploaded.</p>
     <a href="https://github.com/Ethical-Tech-CoLab/commons-collective/issues">Propose a correction or contribute evidence</a>
     <p><a href="./ai-usage.html">AI usage by recorded model</a></p>
   </footer>

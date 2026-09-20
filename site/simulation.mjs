@@ -1,6 +1,7 @@
 import { MODELS, ARRANGEMENTS, ENGINE_VERSION, BUILD_ID, validateConfig } from './config.mjs';
 import { exportScenario, importArtifact } from './artifacts.mjs';
 import { initStartupFinance } from './startup-ui.mjs';
+import { operatingMoneyRequest, sendMoneyRequest, takeMoneyRequest } from './money-request.mjs';
 import {
   createSession, resetSession, editSession, beginSession, updateSession,
   acceptsMessage, acceptsImport, parseSweep,
@@ -23,12 +24,13 @@ let state = createSession();
 let worker = null;
 let runSequence = 0;
 let fileSequence = 0;
+let moneyThrough = null;
 const startupFinance = initStartupFinance(document.getElementById('startup-finance'));
 
 const number = (value, digits = 0) => Number.isFinite(value)
-  ? value.toLocaleString(undefined, { maximumFractionDigits: digits, minimumFractionDigits: digits }) : '—';
-const money = value => Number.isFinite(value) ? `$${number(value / 100, 2)}` : '—';
-const percent = value => Number.isFinite(value) ? `${number(value * 100, 1)}%` : '—';
+  ? value.toLocaleString(undefined, { maximumFractionDigits: digits, minimumFractionDigits: digits }) : 'Not available';
+const money = value => Number.isFinite(value) ? `$${number(value / 100, 2)}` : 'Not available';
+const percent = value => Number.isFinite(value) ? `${number(value * 100, 1)}%` : 'Not available';
 const errorText = error => error instanceof Error ? error.message : String(error);
 const model = () => MODELS.find(item => item.id === state.config.modelId);
 const busy = () => ['running', 'paused'].includes(state.status);
@@ -103,6 +105,7 @@ function reset(modelId = state.config.modelId, config = null, replayArtifact = n
   const next = resetSession(state, modelId, config);
   // Publish the identity barrier before terminating the old worker or touching controls.
   state = replayArtifact ? updateSession(next, { replay: { artifact: replayArtifact, verified: false } }) : next;
+  moneyThrough = null;
   startupFinance.reset(modelId);
   terminateWorker();
   $('artifact-file').value = '';
@@ -180,6 +183,7 @@ function readDraft() {
 }
 
 function editConfiguration() {
+  moneyThrough = null;
   const hadResults = state.summary || state.batch.result || busy();
   const draft = readDraft();
   try {
@@ -269,7 +273,7 @@ function renderSnapshot() {
   );
   $('timeline-table').replaceChildren(...(summary.timeline ?? []).map(point => row([
     number(point.tick), number(point.operatorCashCents / 100, 2),
-    Number.isFinite(point.qualityRate) ? number(point.qualityRate * 100, 1) : '— (no denominator)',
+    Number.isFinite(point.qualityRate) ? number(point.qualityRate * 100, 1) : 'Not available (no denominator)',
     number(point.participants), number(point.commonsWork),
   ])));
   const balances = [
@@ -280,7 +284,7 @@ function renderSnapshot() {
     ['Contributor payments to date', summary.contributorPaidCents],
     ['Purchasing cost difference vs direct to date', summary.memberNetBenefitCents],
   ].map(([label, value]) => row([label, number(value / 100, 2), 'USD (illustrative)']));
-  const domain = (summary.domainMetrics ?? []).map(item => row([item.label, Number.isFinite(item.value) ? number(item.value, Number.isInteger(item.value) ? 0 : 4) : item.value ?? '—', item.unit ?? '']));
+  const domain = (summary.domainMetrics ?? []).map(item => row([item.label, Number.isFinite(item.value) ? number(item.value, Number.isInteger(item.value) ? 0 : 4) : item.value ?? 'Not available', item.unit ?? '']));
   $('domain-table').replaceChildren(...balances, ...domain);
   renderChart();
 }
@@ -425,7 +429,7 @@ function renderBatch() {
       'Arrangement', 'Quality denominators / runs', 'Mean contributor paid (USD)', 'Mean commons work',
     ], setting.arrangements.map(item => [
       item.arrangement, `${number(item.qualityRuns)} / ${number(item.runs)}`,
-      Number.isFinite(item.meanContributorPaidCents) ? number(item.meanContributorPaidCents / 100, 2) : '—',
+      Number.isFinite(item.meanContributorPaidCents) ? number(item.meanContributorPaidCents / 100, 2) : 'Not available',
       number(item.meanCommonsWork, 1),
     ])));
     $('batch-output').append(section);
@@ -435,6 +439,14 @@ function renderBatch() {
 function renderArtifacts() {
   $('save-scenario').disabled = state.status === 'invalid';
   $('save-run').disabled = !state.artifact || state.status !== 'complete';
+  const moneySource = state.artifact ?? state.replay.artifact;
+  const moneyReady = moneySource && ['ready', 'complete'].includes(state.status);
+  $('inspect-money').disabled = !moneyReady;
+  $('money-operating-through').disabled = !moneyReady;
+  if (moneySource) {
+    $('money-operating-through').max = moneySource.config.params.periods;
+    $('money-operating-through').value = moneyThrough ?? moneySource.config.params.periods;
+  } else $('money-operating-through').value = state.config.params.periods;
   $('import-file').disabled = !state.ui.fileName || state.ui.fileToken !== null;
   $('replay').disabled = !supported || !state.replay.artifact || busy() || state.status === 'invalid';
   set('file-status', state.ui.fileToken !== null ? `Reading ${state.ui.fileName}…` : state.ui.fileName ? `Selected: ${state.ui.fileName}. Press Load selected file to validate it.` : 'No file selected.');
@@ -669,6 +681,15 @@ $('run-batch').addEventListener('click', () => launch('batch'));
 $('run-sweep').addEventListener('click', () => launch('sweep'));
 $('save-scenario').addEventListener('click', () => download('scenario'));
 $('save-run').addEventListener('click', () => download('run'));
+$('money-operating-through').addEventListener('input', () => { moneyThrough = Number($('money-operating-through').value); });
+$('inspect-money').addEventListener('click', () => {
+  try {
+    const artifact = state.artifact ?? state.replay.artifact;
+    if (!artifact || !['ready', 'complete'].includes(state.status)) throw new Error('Complete or import a completed run before inspecting its money.');
+    if (!$('money-operating-through').value.trim()) throw new Error('Select a cumulative period first.');
+    sendMoneyRequest(operatingMoneyRequest(artifact, Number($('money-operating-through').value)), '../index.html#lab');
+  } catch (error) { reportError(error); }
+});
 $('artifact-file').addEventListener('change', () => {
   state = updateSession(state, { ui: { ...state.ui, fileName: $('artifact-file').files?.[0]?.name ?? '', fileToken: null } });
   renderArtifacts();
@@ -676,6 +697,7 @@ $('artifact-file').addEventListener('change', () => {
 $('import-file').addEventListener('click', loadFile);
 $('replay').addEventListener('click', () => launch('replay'));
 window.addEventListener('pagehide', () => {
+  startupFinance.cancelBackground();
   if (busy()) {
     state = updateSession(state, { generation: state.generation + 1, runId: null, status: 'cancelled', artifact: null });
     terminateWorker();
@@ -692,6 +714,22 @@ renderControls();
 render();
 if (!supported) reportError('This browser cannot run module workers. No simulation has started. Use a current browser; scenario downloads remain available.');
 announce(`${model().title} reference defaults loaded. Ready, not running. Start a trajectory or inspect the assumptions.`);
+try {
+  const shared = takeMoneyRequest();
+  if (shared?.kind === 'startup') {
+    reset('ai-commons');
+    startupFinance.loadConfig(shared.config, shared.through);
+    announce('Shared startup assumptions restored from Follow the Money. The detailed budget and summary use the same model.');
+  } else if (shared?.kind === 'operating') {
+    reset(shared.artifact.config.modelId, shared.artifact.config, shared.artifact);
+    moneyThrough = shared.through;
+    renderArtifacts();
+    announce('The exact completed source is loaded. Replay it or inspect its verified financial window.');
+  }
+} catch (error) {
+  startupFinance.reset('library-oer');
+  reportError(new Error(`Shared financial source was not loaded: ${error.message} Reset or import a valid source to continue.`), true);
+}
 
 const header = document.querySelector('.site-header');
 if (header && typeof ResizeObserver !== 'undefined') {

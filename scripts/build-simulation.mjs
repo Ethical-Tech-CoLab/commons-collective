@@ -10,10 +10,11 @@ export async function buildSimulation(root, header) {
   const startupApp = await readFile(new URL('site/startup-ui.mjs', root), 'utf8');
   const startupCss = await readFile(new URL('site/startup.css', root), 'utf8');
   const startupHtml = await readFile(new URL('site/startup.html', root), 'utf8');
+  const moneyView = await readFile(new URL('site/money-view.mjs', root), 'utf8');
   // Finance projections are a separate method; adding them must not invalidate operating-run replay.
-  const operatingModules = modules.filter(([name]) => !name.startsWith('startup'));
+  const operatingModules = modules.filter(([name]) => !name.startsWith('startup') && !name.startsWith('money'));
   const engineId = createHash('sha256').update(operatingModules.map(([name, text]) => `${name}\n${text.replace(/\r\n/g, '\n')}`).join('\n')).digest('hex').slice(0, 16);
-  const revision = createHash('sha256').update(`${modules.map(([, text]) => text).join('\n')}\n${app}\n${css}\n${startupApp}\n${startupCss}\n${startupHtml}`).digest('hex').slice(0, 12);
+  const revision = createHash('sha256').update(`${modules.map(([, text]) => text).join('\n')}\n${app}\n${css}\n${startupApp}\n${startupCss}\n${startupHtml}\n${moneyView}`).digest('hex').slice(0, 12);
   const versionModules = text => text.replace(/(['"])(\.\/[a-z-]+\.mjs)\1/g, (_match, quote, name) => `${quote}${name}?v=${revision}${quote}`);
   const destination = new URL('dist/simulation/', root);
   await mkdir(destination, { recursive: true });
@@ -24,6 +25,7 @@ export async function buildSimulation(root, header) {
   await writeFile(new URL('app.mjs', destination), versionModules(app));
   await writeFile(new URL('simulation.css', destination), css);
   await writeFile(new URL('startup-ui.mjs', destination), versionModules(startupApp));
+  await writeFile(new URL('money-view.mjs', destination), versionModules(moneyView));
   await writeFile(new URL('startup.css', destination), startupCss);
   const page = (await readFile(new URL('site/simulation.html', root), 'utf8'))
     .replace('{{HEADER}}', header.replaceAll('href="./', 'href="../').replaceAll('src="./', 'src="../'))

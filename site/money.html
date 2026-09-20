@@ -1,0 +1,31 @@
+<div id="money-view" class="money-view" data-reference="./money-reference.json">
+  <p>Change assumptions in the Lab, then use <strong>Inspect money flows</strong> to bring that exact scenario here. No independent allocation percentages are applied.</p>
+  <p><a href="./simulation/#startup-finance">Open the startup plan in the Lab</a> · <a href="./trials.html">Inspect the 14,000-trial study and its data</a></p>
+  <p id="money-status" role="status" aria-live="polite">Published baseline, computed during this site build.</p>
+  <p id="money-error" role="alert" hidden></p>
+  <div id="money-output">{{MONEY_ROLLUP}}</div>
+  <div class="money-actions">
+    <button id="money-edit" type="button">Open this source in the Lab</button>
+    <button id="money-download" type="button">Download source-view request</button>
+    <button id="money-reset" type="button">Reset to current Lab baseline</button>
+  </div>
+  <details class="money-controls-panel">
+    <summary>Choose another source, cumulative period or saved Lab file</summary>
+    <div class="money-controls">
+    <label for="money-preset">Underlying source</label>
+    <select id="money-preset">
+      <option value="default">Current Lab startup baseline</option>
+      <option value="member-value-first">Published lower-fee startup plan</option>
+      <option value="no-capital">Published capital-off startup plan</option>
+      <option value="shared" disabled>Imported or shared Lab scenario</option>
+    </select>
+    <label for="money-through">Cumulative through month / 30-day period</label>
+    <input id="money-through" type="number" min="0" value="{{MONEY_THROUGH}}" step="1">
+    <button id="money-apply" type="button">Update rollup window</button>
+    <label for="money-file">Load a Lab finance-plan or completed operating-run JSON</label>
+    <input id="money-file" type="file" accept=".json,application/json">
+    </div>
+  </details>
+  <p class="small">All calculations and file reads stay in your browser. An explicit “Inspect money flows” or “Open this source” action uses one-time storage in this tab, removed when the destination reads it. No scenario is uploaded. If local sharing is unavailable, download and import its JSON.</p>
+  <noscript><p>The published baseline above is the same build-time Lab projection. JavaScript is required to inspect another scenario or period.</p></noscript>
+</div>

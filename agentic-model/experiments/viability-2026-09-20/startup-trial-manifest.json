@@ -1,0 +1,194 @@
+{
+  "format": "commons-startup-trial-manifest",
+  "version": 1,
+  "studyId": "viability-2026-09-20",
+  "methodVersion": "1.0.0",
+  "generation": {
+    "command": "node scripts/analyze-startup.mjs",
+    "method": "projectStartup(configuration, { uncertain: true, replication }) once for every declared phase, profile and replication; summarizeStartupTrials recomputed from persisted JSONL before publishing.",
+    "runtime": {
+      "node": "v24.14.0",
+      "zlib": "1.3.1-e00f703"
+    },
+    "compression": "node:zlib gzipSync, level 9, zero timestamp; UTF-8 JSON Lines with LF and a final newline.",
+    "recordKind": "Per-trial startup-cohort financial summaries, not full transaction/event traces or operating-agent runs. The raw trial archive excludes monthly trajectories. Three nominal plans include monthly rows as separate artifacts, not additional sampled trials.",
+    "sourceNormalization": "Remove optional UTF-8 BOM; normalize CRLF and CR to LF before SHA-256.",
+    "sources": [
+      {
+        "file": "simulation/startup.mjs",
+        "sha256": "0b1f8222e41d02b4daf74dadc458dc47fe44e93eecd3e792a4cb9e3cc15b7415"
+      },
+      {
+        "file": "simulation/math.mjs",
+        "sha256": "719a1089cd260a2bd9b4b5b1c97239f8687320ba5ba4c592acab7e355d111454"
+      },
+      {
+        "file": "scripts/analyze-startup.mjs",
+        "sha256": "39d94ecf5737fb72eb44f809c27ef66beb6a1e36c883fe0b1eeceaf0f55ca823"
+      }
+    ]
+  },
+  "seedScheme": {
+    "generator": "Counter-keyed xoshiro128** in simulation/math.mjs; deterministic pseudorandom draws, not a security generator.",
+    "draw": "random(configuration.seed, `startup:${replication}:${factor}`)",
+    "factors": [
+      "growth",
+      "cost",
+      "churn",
+      "delay"
+    ],
+    "replicationIndex": "Zero-based within each phase/profile.",
+    "designSeed": "startup-design-v1",
+    "holdoutSeed": "startup-holdout-v1",
+    "comparison": "Profiles within a phase reuse the same replication keys and seed (common random numbers). Profiles are paired assumptions, not independent observations. Holdout uses a separate seed, not new human or market observations."
+  },
+  "assumptions": {
+    "growth": "Symmetric triangular multiplier centered on 1 with width growthUncertainty.",
+    "cost": "Symmetric triangular multiplier centered on 1 with width costUncertainty, shared across modeled operating costs.",
+    "churn": "Symmetric triangular multiplier centered on 1 with width churnUncertainty.",
+    "delay": "launchDelay plus a discrete uniform integer from 0 through delayUncertainty, inclusive.",
+    "goal": "funded && meetsReserveAndContingency && meetsBreakEvenTarget && memberPriceProtected",
+    "capitalQuantiles": "Linear interpolation of sorted integer USD cents at index (n - 1) * p; quantiles may be fractional cents.",
+    "breakEven": "First start of six consecutive months with nonnegative operating cash profit; target also requires nonnegative cash profit in the final six months.",
+    "selection": "Only member-value-first and balanced were carried from design into holdout. This is not validation of all ten profiles or an independently preregistered selection.",
+    "limits": "Synthetic, uncalibrated assumptions; not empirical success probabilities, independent human observations, a causal capital effect, or investment forecasts. Capital does not change the planned member ramp or spending. Equivalent service and no member-paid switching costs are assumed. Taxes, debt service and investor return requirements are excluded."
+  },
+  "phases": [
+    {
+      "id": "design",
+      "seed": "startup-design-v1",
+      "profileCount": 10,
+      "replicationsPerProfile": 1000,
+      "planned": 10000,
+      "completed": 10000,
+      "missing": 0,
+      "failed": 0,
+      "excluded": 0,
+      "profiles": [
+        {
+          "id": "member-value-first",
+          "records": 1000
+        },
+        {
+          "id": "balanced",
+          "records": 1000
+        },
+        {
+          "id": "higher-fee",
+          "records": 1000
+        },
+        {
+          "id": "slower-ramp",
+          "records": 1000
+        },
+        {
+          "id": "lower-scale",
+          "records": 1000
+        },
+        {
+          "id": "higher-acquisition-cost",
+          "records": 1000
+        },
+        {
+          "id": "lower-acquisition-cost",
+          "records": 1000
+        },
+        {
+          "id": "higher-staff-cost",
+          "records": 1000
+        },
+        {
+          "id": "lower-staff-cost",
+          "records": 1000
+        },
+        {
+          "id": "faster-ramp",
+          "records": 1000
+        }
+      ]
+    },
+    {
+      "id": "holdout",
+      "seed": "startup-holdout-v1",
+      "profileCount": 2,
+      "replicationsPerProfile": 2000,
+      "planned": 4000,
+      "completed": 4000,
+      "missing": 0,
+      "failed": 0,
+      "excluded": 0,
+      "profiles": [
+        {
+          "id": "member-value-first",
+          "records": 2000
+        },
+        {
+          "id": "balanced",
+          "records": 2000
+        }
+      ]
+    }
+  ],
+  "records": {
+    "planned": 14000,
+    "completed": 14000,
+    "missing": 0,
+    "failed": 0,
+    "excluded": 0,
+    "failurePolicy": "Abort generation on any projection or serialization error; retain unfavorable outcomes and null break-even results. No imputation or silent exclusions."
+  },
+  "recordSchema": {
+    "phase": "design or holdout",
+    "profile": "Profile ID in startup-trial-inputs.json",
+    "replication": "Zero-based replication index",
+    "status": "completed",
+    "seedReference": "Base seed and counter key prefix; append growth, cost, churn or delay.",
+    "projectionId": "Model identifier from config and factors, not a cryptographic provenance hash.",
+    "factors": "Realized growth, cost and churn multipliers plus total delay in months.",
+    "summary": "All projection summary financial outputs and Boolean outcome flags. Money is integer USD cents; months and member/staff counts are unscaled. Null month means not reached in the configured horizon.",
+    "flags": "goalsMet is the conjunction defined in assumptions.goal."
+  },
+  "artifacts": [
+    {
+      "file": "startup-design-results.json",
+      "bytes": 63905,
+      "sha256": "312858d716b7b7bc56337b8e9e85ae5319aacb73d1e692350264a8569b22b9a5"
+    },
+    {
+      "file": "startup-holdout-results.json",
+      "bytes": 13979,
+      "sha256": "d848f75392e8112d0743c870ab52d3b8a76eefbaf9a10be62b5d7e99ecea6301"
+    },
+    {
+      "file": "startup-trial-inputs.json",
+      "bytes": 25418,
+      "sha256": "bfa999c58305b5a78712500cadae9e2862b14a312a917a6d83f85996e80421db"
+    },
+    {
+      "file": "funded-startup-plan.json",
+      "bytes": 60017,
+      "sha256": "3ac60b4793078be06af2e70fc3dc4b59bff4e26a3336f0853d8805a5638f3873"
+    },
+    {
+      "file": "no-capital-startup-plan.json",
+      "bytes": 60110,
+      "sha256": "4d9a55c56a04329631011c58afb44652f741068dbeadb6d64b960eccfd373d97"
+    },
+    {
+      "file": "member-value-first-plan.json",
+      "bytes": 60040,
+      "sha256": "fb9a686fce389a2f517f232028bbc3cce9cee18fc433aa2536ad6291f00d43d9"
+    }
+  ],
+  "raw": {
+    "file": "startup-trials.jsonl.gz",
+    "bytes": 1825421,
+    "sha256": "16b5c38541cf3fe6fd05eb09dd4612a723b63c3c6dcc56f0606034a2664f2b81",
+    "decompressed": {
+      "file": "startup-trials.jsonl",
+      "bytes": 13880246,
+      "sha256": "216a0c642063d967238941ab721d8883cb479adf636c126e64473a78ce427172"
+    },
+    "records": 14000
+  }
+}
