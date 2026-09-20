@@ -236,8 +236,6 @@ The current startup view models investor-funded ramp-up, staff, acquisition and 
 
 <!-- money:startup -->
 
-The earlier standalone annual-dues/licensing illustration and its independent 40/30/20/10 split are retired from the live financial model. They must not be added to this plan as extra income or treated as its default distribution rule. Alternative contractual terms require a separately specified, implemented, and identified scenario, not an unexplained change in the summary.
-
 These calculations concern paid services, not civic membership or an entitlement to sell other people's information. Free participation, support, accessibility, and governance costs still need funding. Fees must be evaluated against comparable service quality and actual switching costs, not merely against a headline discount.
 
 Equal member payments are a governance choice, not an estimate of marginal contribution. A more granular valuation scheme might reward effort or quality but adds measurement, gaming, and dispute costs. No precise attribution from an individual record to every generated output is assumed. Externalities also mean that one person's sale can affect others who never agreed to sell. [S24]
